@@ -5,14 +5,16 @@ public int longestAcesdingSubSequence(int[] arr){
   int[] long = new int[arr.length];
   int gloablMax = 1;
   for(int i = 0; i < arr.length; i++){
-    long[i] = 1;
+    long[i] = 1;  //+1 and then compare
     for(int j = 0; j < i; j++){
+      //arr[] and long[] are different concept
       if(arr[j] < arr[i]){
-        //when long[i] > long[j] + 1   ==>> 2345067, long[0]+1 < long[]
+        //when long[i] > long[j] + 1   ==>> 2345067, long=1,2,3,4,1,5,6
+        //when long[i] > long[j] + 1   ==>> 2345367, long=1,2,3,4,2,5,6
         long[i] = Math.max(long[j] + 1, long[i]);
       }
     }
-    res = Math.max(long[i], gloablMax);
+    gloablMax = Math.max(long[i], gloablMax);
   }
   return gloablMax;
 
