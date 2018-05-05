@@ -30,10 +30,11 @@ static class MyComparator implements Comparator<Point>{
       return -1;
     else if(p1.y > p2.y)
       return 1;
-    else if(p1.x < p2.x)
-      return -1;
-    else if(p1.x > p2.x)
-      return 1;
+    //not necessary
+    // else if(p1.x < p2.x)
+    //   return -1;
+    // else if(p1.x > p2.x)
+    //   return 1;
     return 0;
   }
 }

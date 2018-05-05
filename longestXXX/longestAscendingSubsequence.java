@@ -9,8 +9,8 @@ public int longestAcesdingSubSequence(int[] arr){
     for(int j = 0; j < i; j++){
       //arr[] and long[] are different concept
       if(arr[j] < arr[i]){
-        //when long[i] > long[j] + 1   ==>> 2345067, long=1,2,3,4,1,5,6
-        //when long[i] > long[j] + 1   ==>> 2345367, long=1,2,3,4,2,5,6
+        //when long[i] > long[j] + 1   ==>> 2345067, long=1,2,3,4,1,5!,6
+        //when long[i] > long[j] + 1   ==>> 2345367, long=1,2,3,4,2,5!,6
         long[i] = Math.max(long[j] + 1, long[i]);
       }
     }

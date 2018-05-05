@@ -1,10 +1,11 @@
 //0000 left 111 i??? right 2222
+// 3 numbers 
 public void rainbowSort(int[] arr){
 	if(arr == null || arr.length <= 1)
 		return;
 	int left = 0;
 	int right = arr.length -1;
-	int i = 0; 
+	int i = 0;
 	while(i <= right){
 		if(arr[i] == 0){
 			swap(arr, left++, i++);
