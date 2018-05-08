@@ -1,3 +1,4 @@
+//unsroted
 //solution1: hashset
 public int missing(int[] array) {
 	int n = arr.length+1;
