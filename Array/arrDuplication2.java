@@ -20,8 +20,8 @@ public int[] arrDup2(int[] arr) {
     		counter = 1;
     		arr[++slow] = arr[fast];
     	}
-    return slow+1;  //length of the after arr
-    //return Arrays.copyOf(arr, slow+1);
+    //return slow+1;  //length of the after arr
+    return Arrays.copyOf(arr, slow+1);
 }
 
 //solution2: slow(not including slow) are final results to return
