@@ -1,3 +1,5 @@
+//“acb2c4” → “acbbcccc” 1
+//“a1c0b2c4” → “abbcccc” 2
 //Q3: string encoding
 public String reduceString(String s){
 	if(s == null || s.length() == 0)

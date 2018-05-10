@@ -31,6 +31,6 @@
 //========5) string encoding and decoding
 //Q5: encodeSpace
 //Q6: decodeSpace
-//
-decompress string1
-decompress string2: “a1c0b2c4” → “abbcccc”
+// compress string
+// decompress string1
+// decompress string2: “a1c0b2c4” → “abbcccc”
