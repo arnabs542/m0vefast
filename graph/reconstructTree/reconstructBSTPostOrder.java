@@ -1,3 +1,14 @@
+https://piazza.com/class/j0eqhhdregb3i?cid=1343
+public TreeNode reconstruct(int[] post) {
+    // Write your solution here.
+
+    return null;
+  }
+
+
+https://piazza.com/class/j0eqhhdregb3i?cid=2862
+https://piazza.com/class/j0eqhhdregb3i?cid=2661
+
 public TreeNode reconstruct(int[] in, int[] post){
   int[] index = new int[]{post.length-1};
   return helper(post, index, Integer.MIN_VALUE);

@@ -28,6 +28,12 @@
 
 
 
+//================4) string replaceLonger
+//string replacement
+
+
+
+
 //========5) string encoding and decoding
 //Q5: encodeSpace
 //Q6: decodeSpace
