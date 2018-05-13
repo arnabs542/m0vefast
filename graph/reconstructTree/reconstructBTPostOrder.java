@@ -15,12 +15,13 @@ private TreeNode helper(int[] postorder, Map<Integer, Integer> inIndex,
         }
 
         TreeNode root = new TreeNode(postorder[postRight]);
+        //leftSize = inMid-inLeft
         int inMid = inIndex.get(root.key);
         root.left = helper(postorder, inIndex,
-                           inLeft, inMid - 1,
-                           postLeft, postLeft + inMid - inLeft - 1);
+                          inLeft, inMid - 1,
+                          postLeft, postLeft + inMid - inLeft - 1);
         root.right = helper(postorder, inIndex,
-                            inMid + 1, inRight,
-                           postLeft + inMid - inLeft + 1, postRight - 1);
+                          inMid + 1, inRight,
+                          postLeft + inMid - inLeft, postRight - 1);
         return root;
     }

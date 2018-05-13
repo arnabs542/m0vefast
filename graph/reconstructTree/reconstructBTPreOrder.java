@@ -18,6 +18,7 @@ private TreeNode helper(int[] pre, Map<Integer, Integer> inIndex,
   TreeNode root = new TreeNode(pre[preLeft]);
   //get the position of the root in inorder sequence,
   //so we know the size of the left/right tree
+  //leftSize = inMid-inLeft
   int inMid = inIndex.get(root.key);
   root.left = helper(pre, inIndex,
                     inLeft, inMid-1,

@@ -1,7 +1,7 @@
-public TreeNode reconstruct(int[] int, int[] level){
+public TreeNode reconstruct(int[] in, int[] level){
   Map<Integer, Integer> map = new HashMap<>();
   for(int i = 0; i < in.length; i++){
-    map.put(inp[i], i);
+    map.put(in[i], i);
   }
   List<Integer> list = new ArrayList<>();
   for(int num : level){
@@ -13,10 +13,11 @@ public TreeNode reconstruct(int[] int, int[] level){
 private TreeNode helper(List<Integer> level, Map<Integer, Integer> map){
   if(level.isEmpty())
     return null;
-  TreeNode root = new TreeNode(level.remove(0));
+  int root_value = level.get(0);
+  TreeNode root = new TreeNode(root_value);
   List<Integer> left = new ArrayList<>();
   List<Integer> right = new ARrayList<>();
-  for(int num : level){
+  for(int i = 1; i < level.size(); i++){
     //if in left subtree
     if(map.get(num) < map.get(root.key)){
       left.add(num);
