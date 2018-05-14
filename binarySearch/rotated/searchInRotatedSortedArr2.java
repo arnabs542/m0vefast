@@ -1,36 +1,42 @@
-//A = {3, 4, 5, 1, 2}, T = 4, return 1
-//with duplicate element
-public boolean search(int[] nums, int target) {
-        if (nums == null || nums.length == 0) return false;
-        int left = 0, right = nums.length - 1;
-        while (left <= right) {
-            int mid = left + (right - left) / 2;
-            if (nums[mid] == target) return true;
-            else if (nums[mid] == nums[left]) {
-                left++;
-            } else if (nums[mid] > nums[left]) {
-                if (nums[mid] >= target && target >= nums[left]) {
-                    right = mid - 1;
+public int search(int[] A, int target) {
+        if (A == null || A.length == 0) {
+            return -1;
+        }
+
+        int start = 0;
+        int end = A.length - 1;
+        int mid;
+
+        while (start + 1 < end) {
+            mid = start + (end - start) / 2;
+            if (A[mid] == target) {
+                return mid;
+            }
+            //for duplicate element
+            if(A[mid] == A[start]){
+              start++;
+            }
+            // situation 1: left is sorted
+            else if (A[start] < A[mid]) {
+                if (A[start] <= target && target <= A[mid]) {
+                    end = mid;
                 } else {
-                    left = mid + 1;
+                    start = mid;
                 }
+            // situation 2: right is sorted
             } else {
-                if (nums[mid] <= target && target <= nums[right]) {
-                    left = mid + 1;
+                if (A[mid] <= target && target <= A[end]) {
+                    start = mid;
                 } else {
-                    right = mid - 1;
+                    end = mid;
                 }
             }
+        } // while
+        if (A[start] == target) {
+            return start;
         }
-        return false;
+        if (A[end] == target) {
+            return end;
+        }
+        return -1;
     }
-
-
-    public boolean search(int[] A, int target) {
-            for (int i = 0; i < A.length; i ++) {
-                if (A[i] == target) {
-                    return true;
-                }
-            }
-            return false;
-        }

@@ -12,15 +12,15 @@ public int search(int[] A, int target) {
             if (A[mid] == target) {
                 return mid;
             }
+            // situation 1: left is sorted
             if (A[start] < A[mid]) {
-                // situation 1, red line
                 if (A[start] <= target && target <= A[mid]) {
                     end = mid;
                 } else {
                     start = mid;
                 }
+            // situation 2: right is sorted
             } else {
-                // situation 2, green line
                 if (A[mid] <= target && target <= A[end]) {
                     start = mid;
                 } else {
