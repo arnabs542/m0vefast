@@ -13,13 +13,11 @@ public boolean hasCycle(ListNode head){
 	}
 
 //Return the node where the cycle starts. Return null if there is no cycle.
-if (head == null || head.next==null) {
+		if (head == null || head.next==null) {
             return null;
         }
-
-        ListNode fast, slow;
-        fast = head.next;
-        slow = head;
+        ListNode fast = head.next;
+				ListNode slow = head;
         while (fast != slow) {
             if(fast==null || fast.next==null)
                 return null;
@@ -32,3 +30,5 @@ if (head == null || head.next==null) {
             slow = slow.next;
         }
         return head;
+			}
+		}
