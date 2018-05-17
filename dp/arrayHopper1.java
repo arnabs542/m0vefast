@@ -1,3 +1,4 @@
+//Determine if you are able to reach the last index.
 //solution1: dp, arr[i] = from index 0 can jump to index i
 public boolean canJump(int[] array){
 	boolean[] arr = new boolean[array.length];
