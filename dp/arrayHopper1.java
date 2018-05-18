@@ -14,6 +14,9 @@ public boolean canJump(int[] array){
 	}
 	return arr[array.length-1];
 }
+{1, 3, 2, 0, 3}, we are able to reach the end of array(jump to index 1 then reach the end of the array)
+
+{2, 1, 1, 0, 2}, we are not able to reach the end of array
 //solution2: dp, arr[i] = from index i can jump to last element/target
 public boolean canJump(int[] arr){
 	//basecase
