@@ -1,5 +1,5 @@
 //version2: n^3 time
-  public int largest(int[][] matrix) {
+  public int largestSubmatrixSum(int[][] matrix) {
       // Write your solution here
       int row = matrix.length;
       int col = matrix[0].length;
@@ -14,11 +14,13 @@
       }
       return globalMax;
    }
+   //cumlative add in the 2nd for-loop 
    private void add(int[] cur, int[] add){
      for(int i = 0; i < cur.length; i++){
        cur[i] = cur[i] + add[i];
      }
    }
+   //降维
     private int subArrSum(int[] arr){
       int globalMax = arr[0];
       int localMax = arr[0];
@@ -28,7 +30,7 @@
       }
       return globalMax;
     }
-    //verison1: unfinished, n^4 time
+//verison1: unfinished, n^4 time
     public int largestSubmatrixSum(int[][] matrix) {
         // Write your solution here
         int row = matrix.length;

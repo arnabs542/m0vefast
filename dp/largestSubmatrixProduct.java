@@ -1,39 +1,46 @@
-public double largest(double[][] matrix) {
-    // Write your solution here
-    int row = matrix.length;
-    int col = matrix[0].length;
-    double[][][] columns = new double[row][row][col]; //dp for all the combinations of top edge, bottom edge, and rightmost column
-    double globalMax = matrix[0][0]; //dp matrix for implementing the largest subarray product for each bottom edge
-    double[] max = new double[col]; //for each bottom edge, from the 0th column to ith column, the maximum product
-    double[] min = new double[col]; //for each bottom edge, from the 0th column to ith column, the minimum product
-    for (int i = 0; i < row; i++) {// all the bottom edge
-    	for (int j = i; j >= 0; j--) {// all the top edge
-      	for (int k = 0; k < col; k++) {// all the rightmost column
-          if (i == j) {
-          	columns[j][i][k] = matrix[i][k];
-          } else {
-        	columns[j][i][k] = matrix[i][k] * columns[j][i - 1][k]; // for the kth column, the product from jth row to ith row
-          }
-          if (k == 0) {
-          	max[k] = columns[j][i][k];
-            	min[k] = columns[j][i][k];
-          } else {// implementing the largest subarray product for each bottom edge
-          	max[k] = max(max[k - 1] * columns[j][i][k], min[k - 1] * columns[j][i][k], columns[j][i][k]);
-            	min[k] = min(max[k - 1] * columns[j][i][k], min[k - 1] * columns[j][i][k], columns[j][i][k]);
-          }
-          globalMax = Math.max(globalMax, max[k]);
+//another
+  //其实这个题目和从largest subarray sum扩展到largest submatrix sum一样，
+  //我们也可以从largest subarray product扩展到largest submatrix product。
+  //我们还是可以用同样的方法把submatrix每一个column拍扁来做。
+  //如果你还没学到largest submatrix sum的话，可以先等等再做这个题，后面会讲到
+  //https://piazza.com/class/j0eqhhdregb3i?cid=712
+  public double largest(double[][] matrix) {
+      // Write your solution here
+      double globalMax = matrix[0][0];
+      for (int i = 0; i < matrix.length; i++) {
+        double[] cur = new double[matrix[0].length];
+        for (int j = i; j < matrix.length; j++) {
+          getArr(cur, matrix[j], j - i);
+          globalMax = Math.max(largestProduct(cur), globalMax);
         }
       }
+      return globalMax;
     }
-    return globalMax;
-  }
-  
-  private double min(double a, double b, double c) {
-  	double temp = Math.min(a, b);
-    	return Math.min(temp, c);
-  }
-
-  private double max(double a, double b, double c) {
-  	double temp = Math.max(a, b);
-    	return Math.max(temp, c);
-  }
+    //idx here is different from submatrix sum!
+    private double[] getArr(double[] cur, double[] source, int idx) {
+      for (int i = 0; i < cur.length; i++) {
+        cur[i] = idx == 0 ? source[i] : source[i] * cur[i];
+      }
+      return cur;
+    }
+    public double largestProduct(double[] array) {
+      if (array.length == 1) return array[0];
+      double pos = Math.max(array[0], 0);
+      double neg = Math.min(array[0], 0);
+      double globalMax = array[0];
+      for (int i = 1; i < array.length; i++) {
+        if (array[i] > 0) {
+          pos = Math.max(pos * array[i], array[i]);
+          neg = neg * array[i];
+        } else if (array[i] < 0) {
+          double prev = pos;
+          pos = neg * array[i];
+          neg = Math.min(prev * array[i], array[i]);
+        } else {
+          pos = 0;
+          neg = 0;
+        }
+        globalMax = Math.max(globalMax, pos);
+      }
+      return globalMax;
+    }

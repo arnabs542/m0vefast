@@ -5,17 +5,17 @@
 //                       m[i] = input[i]          otherwise
 
 //optimize space to O(1)
-public int getMax(int[] arr){
+public int subArrSum(int[] arr){
   if(arr == null || arr.length < 1){
     return 0;
   }
-  int max = Integer.MIN_VALUE;
-  int lastMax = arr[0];
+  int gloablMax = Integer.MIN_VALUE;
+  int localMax = arr[0];
   for(int i = 1; i < arr.length; i++){
-    lastMax = Math.max(arr[i], arr[i] + lastMax);
-    max = Math.max(max, lastMax);
+    localMax = Math.max(arr[i], arr[i] + localMax);
+    gloablMax = Math.max(gloablMax, localMax);
   }
-  return max;
+  return gloablMax;
 }
 //how to return the left-right border of the solution
 public int[] largestSum(int[] arr){
