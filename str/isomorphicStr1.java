@@ -1,3 +1,4 @@
+//follow up: https://www.youtube.com/watch?v=MNDOsYgVRyY
 //mapping is 'a' <-> 'x', 'b' <-> 'y', 'c' <-> 'z'.
 public boolean isomorphic(String s, String t) {
     // Write your solution here
