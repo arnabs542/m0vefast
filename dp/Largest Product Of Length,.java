@@ -1,13 +1,17 @@
+//max length product && no common char in 2 strings
+// bit mask
 public int largestProduct(String[] words) {
     // Write your solution here.
    if(words==null || words.length==0)
         return 0;
 
-    int[] arr = new int[words.length];
+    int[] bitMask = new int[words.length];
     for(int i=0; i<words.length; i++){
         for(int j=0; j<words[i].length(); j++){
+            //note0
             char c = words[i].charAt(j);
-            arr[i] |= (1<< (c-'a'));
+            //note1!
+            bitMask[i] |= (1 << (c-'a'));
         }
     }
 
@@ -15,7 +19,8 @@ public int largestProduct(String[] words) {
 
     for(int i=0; i<words.length; i++){
         for(int j=i+1; j<words.length; j++){
-            if((arr[i] & arr[j]) == 0){
+          //note2!: bracket
+            if((bitMask[i] & bitMask[j]) == 0){
                 result = Math.max(result, words[i].length()*words[j].length());
             }
         }
@@ -24,7 +29,7 @@ public int largestProduct(String[] words) {
     return result;
   }
 
-  //antoehr solution :
+//antoehr solution :
 public class LargestProductOfLength {
     static class Pair {
         int first;
@@ -54,9 +59,9 @@ public class LargestProductOfLength {
     }
     public int largestProduct(String[] dict) {
         // Write your solution here.
-        // sort array by length
+        // sort bitMaskay by length
         Map<String, Integer> map = getBitMasks(dict);
-        Arrays.sort(dict, new Comparator<String>() {
+        bitMaskays.sort(dict, new Comparator<String>() {
             @Override
             public int compare(String o1, String o2) {
                 if (o1.length() == o2.length()) {

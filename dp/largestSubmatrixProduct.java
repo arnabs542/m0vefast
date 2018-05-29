@@ -16,7 +16,7 @@
       }
       return globalMax;
     }
-    //idx here is different from submatrix sum!
+    //idx here is different from submatrix sum: cur initialize as all 0
     private double[] getArr(double[] cur, double[] source, int idx) {
       for (int i = 0; i < cur.length; i++) {
         cur[i] = idx == 0 ? source[i] : source[i] * cur[i];

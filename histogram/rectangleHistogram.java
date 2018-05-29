@@ -5,9 +5,9 @@ public int histogram(int[] arr){
   for(int i = 0; i <= arr.length; i++){
     //need to pop out, add a bar in the end of height 0
     int cur = i == arr.length ? 0 : arr[i];
-    //not accending order, pop
-    while(!stack.isEmpty() && arr[stack.peekFirst()] >= cur){
-      //vertical height = height of lowest col
+    //accending order, calculate and offer
+    while(!stack.isEmpty() && cur <= arr[stack.peekFirst()]){
+      //vertical height = height of lowest col (left/bottom of stack)
       int height = arr[stack.pollFirst()];
       //determine the left boundary
       int left = stack.isEmpty() ? 0: stack.peekFirst()+1;
