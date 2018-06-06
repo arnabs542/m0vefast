@@ -41,12 +41,12 @@ public int longest(int[] arr){
 			cur++;
 			global_max = Math.max(global_max, cur);
 		}else{
-			cur = 1
+			cur = 1;
 		}
 	}
 	return global_max;
 }
-//solution4: sliding window O(n), O(1)
+//solution4: sliding window O(n), O(1) with bound information
 public int longest(int[] arr){
 	//corner case
 	if(arr == null)

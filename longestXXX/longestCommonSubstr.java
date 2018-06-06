@@ -1,6 +1,6 @@
 public String longestCommonSubstr(String a, String b){
-  char[] aa = s.toCharArray();
-  char[] bb = s.toCharArray();
+  char[] aa = a.toCharArray();
+  char[] bb = b.toCharArray();
   int start = 0;
   int len = 0;
   int[][] common = new int[aa.length][bb.length];

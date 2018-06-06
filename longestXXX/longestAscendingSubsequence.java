@@ -2,7 +2,7 @@
 public int longestAcesdingSubSequence(int[] arr){
   if(arr.length == 0)
     return 0;
-  int[] long = new int[arr.length];
+  int[] long = new int[arr.length]; //till cur index, the result length
   int gloablMax = 1;
   for(int i = 0; i < arr.length; i++){
     long[i] = 1;  //+1 and then compare
