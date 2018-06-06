@@ -5,14 +5,17 @@ public int histogram(int[] arr){
   for(int i = 0; i <= arr.length; i++){
     //need to pop out, add a bar in the end of height 0
     int cur = i == arr.length ? 0 : arr[i];
-    //accending order, calculate and offer
+    //accending order, calculate
+    //meet first non-assending? poll previous assending ones
     while(!stack.isEmpty() && cur <= arr[stack.peekFirst()]){
       //vertical height = height of lowest col (left/bottom of stack)
       int height = arr[stack.pollFirst()];
       //determine the left boundary
       int left = stack.isEmpty() ? 0: stack.peekFirst()+1;
       //update rectangle
-      res = Math.max(res, height*(i-left));
+      //right = i = stack.peekLast() - 1 before poll
+      //i is still in assending trend index
+      res = Math.max(res, height*(i - left));
     }
     stack.offerFirst(i);
   }
