@@ -1,7 +1,7 @@
 //https://www.programcreek.com/2013/12/leetcode-solution-of-longest-palindromic-substring-java/
 //solution1: O(n^2), O(1)??
 public String longestPalindrome(String s) {
-	if(s == null || s.lengtg() == 1){
+	if(s == null || s.length() == 1){
 		return s;
 	}
 	String res = s.substring(0,1);

@@ -29,6 +29,6 @@ private void merge(int[] arr, int[] temp, int left, int mid, int right){
 	while(leftIndex <= mid)
 		arr[left++] = temp[leftIndex++];
 	}
-	//if still have some elements on the left side, we dont need to copy them
+	//if still have some elements on the right side, we dont need to copy them
 	//since they are already there in the first for-loop
 }

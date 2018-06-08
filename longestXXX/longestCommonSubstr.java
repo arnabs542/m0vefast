@@ -7,6 +7,7 @@ public String longestCommonSubstr(String a, String b){
   for(int i = 0; i < aa.length; i++){
     for(int j = 0; j < bb.length; j++){
       if(aa[i] == bb[j]){
+        //matrix base case
         if(i == 0 || j == 0){
           common[i][j] = 1;
         }else{

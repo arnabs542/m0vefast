@@ -1,5 +1,5 @@
 //k numbers
-//soluiton1
+//soluiton1 //https://aaronice.gitbooks.io/lintcode/content/high_frequency/sort_colors_ii.html
 public void sortColors2(int[] array, int k) {
         int left = 0;
         int right = array.length - 1;
@@ -41,12 +41,10 @@ public int[] rainbow(int[] array, int k) {
             int rightColor = k + 1 - round;
             for (int i = left; i <= right; i++) {
                 if (array[i] == leftColor) {
-                    swap(array, i, left);
-                    left++;
+                    swap(array, i, left++);
                 } else if (array[i] == rightColor) {
-                    swap(array, i, right);
-                    i--;
-                    right--;
+                    //i-- here since this is a for-loop, will increment automatically
+                    swap(array, i--, right--);
                 }
             }
         }

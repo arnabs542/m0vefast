@@ -8,7 +8,7 @@
 public void stackSorting2(Stack<Integer> stack) {
   Stack<Integer> helperStack = new Stack<Integer>();
   while(!stack.isEmpty()){
-    int cur = stack.pol();
+    int cur = stack.poll();
     while(!helperStack.isEmpty() && helperStack.peek() < cur){
       stack.push(helperStack.pop())
     }

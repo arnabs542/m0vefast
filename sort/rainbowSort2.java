@@ -1,30 +1,4 @@
 //4 numbers: -2, i, -1, j, 0, i, 1, l
-
-//solution1:
-//https://aaronice.gitbooks.io/lintcode/content/high_frequency/sort_colors_ii.html
-public void sortColors2(int[] array, int k) {
-        int left = 0;
-        int right = array.length - 1;
-        int i = 0;   //moving
-        int min = 1;
-        int max = k;
-        while (min < max) {
-            while (i <= right) {
-                if (array[i] == min) {
-                    swap(array, left++, i++);
-                } else if (array[i] == max) {
-                    swap(array, right--, i);
-                } else {
-                    i++;
-                }
-            }
-            i = left;
-            min++;
-            max--;
-        }
-    }
-
-
 //4 numbers: 0, j, 1, j, 2, k, 3
 // 四种颜色的情况下可以有多种分法，根据不同的分发他们的思路也略有不同。
 // aaaa | bbbb | xxxx | cccc | dddd
