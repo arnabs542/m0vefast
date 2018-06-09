@@ -19,6 +19,4 @@ public void stackSorting2(Stack<Integer> stack) {
   }
 }
 
-//helper stack: (bottom) small -> big (top)
-//original stak: (bottom) big -> small (top)
 //https://aaronice.gitbooks.io/lintcode/content/data_structure/stack_sorting.html

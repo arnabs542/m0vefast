@@ -5,7 +5,7 @@ public int[] quickSort(int[] arr){
 	return arr;
 }
 private void helper(int[] arr, int left, int right){
-	if(left >= right)
+	if(left >= right)  //only one element left in left/right part
 		return;
 	//pivot in right place
 	int pivot = partition(arr, left, right);

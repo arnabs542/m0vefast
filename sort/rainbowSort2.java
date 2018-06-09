@@ -1,5 +1,5 @@
-//4 numbers: -2, i, -1, j, 0, i, 1, l
-//4 numbers: 0, j, 1, j, 2, k, 3
+
+//4 numbers: 0, i, 1, j, 2, k, 3
 // 四种颜色的情况下可以有多种分法，根据不同的分发他们的思路也略有不同。
 // aaaa | bbbb | xxxx | cccc | dddd
 //       i       j   k      l
