@@ -11,12 +11,12 @@ public List<List<Integer>> allTriples(int[] arr, int target) {
 			continue;
 		int left = i + 1;   //choosing j, left from index = 1, 2nd element
 		int right = arr.length - 1;  //choosing k, right from the last index
-		//notice! dont go ouside left and right bound 
+		//notice! dont go ouside left and right bound
 		while(left < right){
 			int temp = arr[left] + arr[right];
 			if(temp + arr[i] == target){
 				res.add(Arrays.asList(arr[i], arr[left], arr[right]));
-				left++;
+				left++;   //will return a lot, not just one (boolean)
 				//choosing j: ignore all posssible duplicate j as well
 				while(left < right && arr[left] == arr[left-1])
 					left++;

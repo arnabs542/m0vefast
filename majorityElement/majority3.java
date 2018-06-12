@@ -22,6 +22,7 @@ public List<Integer> majority(int[] array, int k) {
         }
 
     }
+    //since the real occurance has been reduced a couple times
     setZero(map);  //case 2.1
     return getResults(map, array, k);
 }
