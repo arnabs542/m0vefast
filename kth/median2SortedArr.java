@@ -1,4 +1,5 @@
-//lgn
+//lgk
+//finding kth element, k is (A's length + B' Length)/2.
 public double median2SortedArr(int[] a, int[] b){
   int alength = a.length;
   int blength = b.length;
@@ -10,7 +11,7 @@ public double median2SortedArr(int[] a, int[] b){
     return helper(a, 0, b, 0, (alength+blength)/2);
   }
 }
-
+//search space from Xleft -> kth
 private int helper(int[] a, int aleft, int[] b, int bleft, int k){
   //base case
   if(aleft >= a.length)
@@ -26,3 +27,5 @@ private int helper(int[] a, int aleft, int[] b, int bleft, int k){
   }
   return helper(a, aleft, b, bleft+k/2, k-k/2);
 }
+
+https://www.programcreek.com/2012/12/leetcode-median-of-two-sorted-arrays-java/

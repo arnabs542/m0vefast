@@ -3,6 +3,7 @@ public int[] kSmallest(int[] arr, int k) {
     if(arr.length == 0 || k == 0)
     	return new int[0];
     PriorityQueue<Integer> maxHeap = new PriorityQueue<>(k, new Comparator<Integer>(){
+    //smallhalf = new PriorityQueue<>(11, Collections.reverseOrder());  //maxheap
     	@Override
     	public int compare(Integer o1, Integer o2){
     		if(o1.equals(o2))
@@ -10,7 +11,7 @@ public int[] kSmallest(int[] arr, int k) {
     		return o1 > o2? -1 : 1;
     	}
     });
-    for(int i = 0; i < arr.legnth; i++){
+    for(int i = 0; i < arr.length; i++){
     	if(i < k)
     		maxHeap.offer(arr[i]);
     	else if(array[i] < maxHeap.peek()){

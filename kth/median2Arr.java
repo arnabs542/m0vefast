@@ -64,29 +64,7 @@ public double median(int[] a, int[] b) {
     return helper(a, aleft, b, bleft+k/2, k-k/2);
   }
 
-  public double findMedian(int[] a, int[] b) {
-    // Write your solution here
-   	int alen = a.length;
-    int blen = b.length;
-    if((alen+blen)%2==0){
-    	int r1 = helper(a, 0, b, 0, (alen+blen)/2);
-      int r2 = helper(a, 0, b, 0, (alen+blen)/2+1);
-      return (r1 + r2)/2.0;
-    }
-    return (double)helper(a, 0, b, 0, (alen+blen)/2+1);
-  }
-  private int helper(int[] a, int aleft, int[] b, int bleft, int k){
-  	//basecase
-    if(aleft >= a.length) return b[bleft+k-1];
-    if(bleft >= b.length) return a[aleft+k-1];
-    if(k == 1) return Math.min(a[aleft], b[bleft]);
-    int ak = aleft + k/2 - 1 < a.length ? a[aleft+k/2-1] : Integer.MAX_VALUE;
-    int bk = bleft + k/2 - 1 < b.length ? b[bleft+k/2-1] : Integer.MAX_VALUE;
-    if (ak < bk){
-    	return helper(a, aleft+k/2, b, bleft, k-k/2);
-    }
-    return helper(a, aleft, b, bleft+k/2, k-k/2);
-  }
+
 
 //solution2: alternative using quickselect
 public double median(int[] a, int[] b) {

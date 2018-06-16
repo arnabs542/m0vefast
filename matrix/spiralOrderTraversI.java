@@ -4,9 +4,9 @@ public List<Integer> spiralI(int[][] matrix) {
     // Write your solution here.
     List<Integer> res = new ArrayList<>();
     traverse(matrix, 0, matrix.length, res);
-    return res;;
+    return res;
 }
-private void helper(int[][] matrix, int offset, int size, List<Integer> res){
+private void traverse(int[][] matrix, int offset, int size, List<Integer> res){
 	//base case when onely 1 or 0 element left
 	if(size == 0)
 		return;
@@ -29,7 +29,7 @@ private void helper(int[][] matrix, int offset, int size, List<Integer> res){
 	}
 	//inner circle traverse
 	//rule: size-2(bound), offset+1
-	helper(matrix, offset+1, size-2, res);
+	traverse(matrix, offset+1, size-2, res);
 }
 //solution2: iterative
 public List<Integer> spiral(int[][] matrix) {
