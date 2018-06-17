@@ -1,4 +1,4 @@
-//{1, 2, 2, 3, 3, 3} → {1}
+//{1, 2, 2, 3, 3, 3} → {1}    //keep no copy
 //同向运动
 //solution1: slow(including slow) are final results to return
 public int[] arrDup3(int[] arr) {
@@ -11,15 +11,14 @@ public int[] arrDup3(int[] arr) {
     for(fast = 1; fast < arr.length; fast++){
     	if(arr[slow] == arr[fast])
     		flag = true;
-    	else if(flag == true){  //overlap with new element
-    		arr[slow] = arr[fast];
+    	else if(flag == true){  //arr[fast]!=arr[slow] and flag is true
+    		arr[slow] = arr[fast];   //override the duplicate slow one
     		flag = false;
-    	}else{
+    	}else{                 //arr[fast]!=arr[slow] and flag is false
     		arr[++slow] = arr[fast];
     	}
     }
-    return flag? slow : slow+1;
-    //return Arrays.copyOf(arr, slow+1);
+    return Arrays.copyOf(arr, flag? slow : slow+1);
 }
 public int[] arrDup3(int[] arr){
   if(arr == null || arr.length<= 1){
@@ -29,7 +28,7 @@ public int[] arrDup3(int[] arr){
   int slow = 0;
   while(fast < arr.length){
     int begin = fast;
-    while(fast < arr.length && arr[fast] == arr[begin]){
+    while(fast < arr.length && arr[fast] == arr[begin]){arraaa
       fast++;
     }
     //if no duplicate, didnt skip the memeber

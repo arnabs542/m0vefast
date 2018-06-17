@@ -18,6 +18,7 @@ public String[] topKFrequent(String[] combo, int k) {
 		public int compare(Map.Entry<String, Integer> a, Map.Entry<String, Integer> b){
 			//to use compareTo inside for object
 			return a.getValue().compareTo(b.getValue());
+            //https://www.javacodegeeks.com/2013/03/difference-between-comparator-and-comparable-in-java.html
 		}
 	});
 	//notice countMap.entrySet()

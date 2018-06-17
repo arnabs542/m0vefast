@@ -3,21 +3,28 @@ public int waterTrap(int[] arr){
   int res =0;
   int left = 0;
   int right = arr.length-1;
-  int leftMax = 0;  //scan from left
-  int rightMax = 0;   //scan from right
+  int leftMaxHeight = 0;  //scan from left
+  int rightMaxHeight = 0;   //scan from right
   while(left <= right){
-    leftMax = Math.max(leftMax, arr[left]);
-    rightMax = Math.max(rightMax, arr[right]);
-    if(leftMax < rightMax){
-      res += (leftMax - arr[left]);
+    leftMaxHeight = Math.max(leftMaxHeight, arr[left]);
+    rightMaxHeight = Math.max(rightMaxHeight, arr[right]);
+    if(leftMaxHeight < rightMaxHeight){
+      res += (leftMaxHeightftMax - arr[left]);
       left++;
     }else{
-      res += (rightMax - arr[right]);
+      res += (rightMaxHeight - arr[right]);
       right--;
     }
   }
   return res;
 }
+//solution2
+//can also use dp to keep 2 arr
+// [m1] from left to right, the height number in arr
+// [m1] from right to left, the height number in arr
+// input:
+// loop: res = Math.max(Math.min(m1, m2) - input[i])
+
 //https://www.programcreek.com/2014/03/leetcode-container-with-most-water-java/
 public int maxArea(int[] height) {
 	if (height == null || height.length < 2) {

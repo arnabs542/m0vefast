@@ -1,4 +1,4 @@
-//{1, 2, 2, 3, 3, 3} → {1, 2, 2, 3, 3}
+//{1, 2, 2, 3, 3, 3} → {1, 2, 2, 3, 3}   //keep two copy
 //同向运动
 //solution1: slow(including slow) are final results to return
 public int[] arrDup2(int[] arr) {

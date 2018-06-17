@@ -1,4 +1,4 @@
-//{1, 2, 2, 3, 3, 3} → {1, 2, 3}
+//{1, 2, 2, 3, 3, 3} → {1, 2, 3}    //keep one copy
 //同向运动
 //solution1: slow(including slow) are final results to return
 public int[] arrDup1(int[] arr) {
@@ -11,8 +11,8 @@ public int[] arrDup1(int[] arr) {
     	if(arr[fast] != arr[slow])
     		arr[++slow] = arr[fast];
     }
-    return slow+1;  //length of the after arr
-    //return Arrays.copyOf(arr, slow+1);
+    //Arrays.copyof(array, length)
+    return Arrays.copyOf(arr, slow+1);
 }
 
 //solution2: slow(not including slow) are final results to return

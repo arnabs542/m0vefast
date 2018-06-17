@@ -1,12 +1,12 @@
-//{1, 2, 3, 3, 3, 2, 2} → {1, 2, 2, 2} → {1}, return {1}
+//{1, 2, 3, 3, 3, 2, 2} → {1, 2, 2, 2} → {1}, return {1}    //zuma
 //同向运动
 //solution1: slow(including slow) are final results to return
 public int[] arrDup4(int[] arr) {
     //stack: push the stack if stack is empty or element is != stack top(slow)
     //stack: otherwise, ignore consecutive element and remove top stack element
-    int slow = -1;
-    int fast = 0;
-    for(fast = 0; fast < arr.length; fast++){
+    int slow = 0;
+    int fast = 1;
+    for(fast = 1; fast < arr.length; fast++){
     	if(slow == -1 || arr[slow] != arr[fast])
     		arr[++slow] = arr[fast];
     	else{
@@ -42,3 +42,6 @@ public String deDup(String input) {
 	}
 	return new String(arr, 0, slow+1);
 }
+
+
+

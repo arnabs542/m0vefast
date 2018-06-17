@@ -24,15 +24,15 @@ public List<Integer> closest(int[] a, int[] b, int[] c, int k) {
 		List<Integer> temp = Arrays.asList(cur.get(0)+1, cur.get(1), cur.get(2));
 		if(temp.get(0)<a.length && visited.add(temp))
 			minHeap.offer(temp);
-		n = Arrays.asList(cur.get(0), cur.get(1)+1, cur.get(2));
-		if(temp.get(0)<b.length && visited.add(temp))
+		temp = Arrays.asList(cur.get(0), cur.get(1)+1, cur.get(2));
+		if(temp.get(1)<b.length && visited.add(temp))
 			minHeap.offer(temp);
-		n = Arrays.asList(cur.get(0), cur.get(1), cur.get(2)+1);
-		if(temp.get(0)<c.length && visited.add(temp))
+		temp = Arrays.asList(cur.get(0), cur.get(1), cur.get(2)+1);
+		if(temp.get(2)<c.length && visited.add(temp))
 			minHeap.offer(temp);
 		k--;
 	}
-	//replace index with actual values in a,b,c
+	//replace index with actual values in a,b,c, cur is the kth
 	cur.set(0, a[cur.get(0)]);
 	cur.set(1, b[cur.get(1)]);
 	cur.set(2, c[cur.get(2)]);

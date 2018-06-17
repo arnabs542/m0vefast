@@ -1,4 +1,6 @@
-//similar to 2, plus 1) not sorted, 2) maintain relative order (so dont use sort)
+// {1, 2, 2, 3, 3, 3} --> {1, 2, 2, 3, 3}
+// {2, 1, 2, 2, 2, 3} --> {2, 1, 2, 2, 3}   //consecutive deduplicate, keep two
+//arrDuplicate2 + a) not sorted + b) maintain relative order (so dont use sort)
 public int[] dedup(int[] array) {
     // Write your solution here
   }
@@ -6,3 +8,4 @@ public int[] dedup(int[] array) {
 
 //similar with string dedupt3
 https://piazza.com/class/j0eqhhdregb3i?cid=2842
+https://code.laioffer.com/ui/#/app/problem/315
