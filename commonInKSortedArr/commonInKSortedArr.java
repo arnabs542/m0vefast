@@ -15,7 +15,7 @@ public int[] firstKCommonElements(int[][] arr, int k) {
     int counter = 1;
     for(int j = 1; j < n; i++){
       //if pivot > cur number, move cur to tht right
-      while(ptr[j] < arr[j].length ||pivot > arr[j][ptr[j]]){
+      while(ptr[j] < arr[j].length && pivot > arr[j][ptr[j]]){
         ptr[j]++;
       }
       //reach the end of row || not equal (cur > pivot => no common in this row), go to next row

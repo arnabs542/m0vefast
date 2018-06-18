@@ -45,6 +45,7 @@ public int[] rainbow(int[] array, int k) {
                 } else if (array[i] == rightColor) {
                     //i-- here since this is a for-loop, will increment automatically
                     swap(array, i--, right--);
+                    //i-- to avoid autoincrement to missing a target
                 }
             }
         }
