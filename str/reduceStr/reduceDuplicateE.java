@@ -1,4 +1,4 @@
-//Q3: reduct all e to one e
+//Q3: reduct all e to one e, keep one copy
 public String reduceDuplicateE(String s){
 	if(s == null || s.length() == 0)
 		return null;

@@ -12,7 +12,7 @@ public int[] arrDup1(int[] arr) {
     		arr[++slow] = arr[fast];
     }
     //Arrays.copyof(array, length)
-    return Arrays.copyOf(arr, slow+1);
+    return Arrays.copyOf(arr, slow);
 }
 
 //solution2: slow(not including slow) are final results to return

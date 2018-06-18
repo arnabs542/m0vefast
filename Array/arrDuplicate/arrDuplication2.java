@@ -7,7 +7,7 @@ public int[] arrDup2(int[] arr) {
     	return arr;
     int slow = 0;
     int fast;
-    int counter = 0;
+    int counter = 1;
     for(fast = 1; fast < arr.length; fast++){
     	//fast = slow
     	if(arr[fast] == arr[slow]){
@@ -21,7 +21,7 @@ public int[] arrDup2(int[] arr) {
     		arr[++slow] = arr[fast];
     	}
     //return slow+1;  //length of the after arr
-    return Arrays.copyOf(arr, slow+1);
+    return Arrays.copyOf(arr, slow);
 }
 
 //solution2: slow(not including slow) are final results to return

@@ -1,4 +1,7 @@
-//solution1:
+//{1} --> {1}
+//{1, 0, 3, 0, 1} --> {1, 3, 1, 0, 0}
+反向而行, 不需要keep element order, quicksort
+//solution1:   relative order
 public int[] moveZero(int[] arr){
 	if(arr == null || arr.length <= 1)
 		return arr;
@@ -10,19 +13,6 @@ public int[] moveZero(int[] arr){
 		else if(arr[right] == 0)
 			right--;
 		else
-			swap(arr, left, right--);
-	}
-	return arr;
-}
-//solution2:
-public int[] moveZero(int[] arr){
-	int n = arr.length;
-	int count = 0;
-	for(int i = 0; i < n; i++){
-		if(arr[i] != 0)
-			arr[count++] = a[i];
-	}
-	while(count < n)
-		arr[count++] = 0;
+			swap(arr, left++, right--);
 	return arr;
 }

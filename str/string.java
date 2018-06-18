@@ -2,7 +2,6 @@
 //Q0: remove duplicate white space: " I   love TV" -> "I love TV"
 //removeSpaces
 
-
 //Q1: remove certain char: "abcdefg","af" -> "bcdeg"
 //removeCertainChar
 
@@ -21,6 +20,7 @@
 //reduceDuplicateE
 
 //================3) string reverse
+// reverseString
 // reverseVowls
 // reverseWordsInScentence1 "i   love google" -> "google love i"
 // reverseWordsInScentence2: "   i love    google" ->"google love i"

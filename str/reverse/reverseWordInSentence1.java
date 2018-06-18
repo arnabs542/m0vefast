@@ -19,22 +19,24 @@ public String reverseWords(String s) {
 		//cant use sb.toString()
     }
 
-//soluwion2: O(n), O(1)
+//solution2: O(n), O(1)
 //can handle heading and ending whitespace, but not duplciate space
-public void reverseWords(String input) {
+//similar to remove duplicate white space
+public Stirng reverseWords(String input) {
 if(input == null || input.length <= 1)
       return input;
     char[] arr = input.toCharArray();
     int start = 0;
+    //int fast = 0;
     //reverse each word=> i evol     oohay
     //reverse(arr, 0, arr.length -1);
-   	for(int i = 0; i < arr.length; i++){
-    //start index of a word
-      if(arr[i] != ' ' && (i == 0 || arr[i-1]== ' '))
-         start = i;
+   	for(int fast = 0; fast < arr.length; fast++){
+      //start index of a word
+      if(arr[fast] != ' ' && (fast == 0 || arr[fast-1]== ' '))
+         start = fast;
       //end index of a word
-      if(arr[i] != ' ' && (i == arr.length -1 || arr[i+1] == ' '))
-        reverse(arr, start, i);
+      if(arr[fast] != ' ' && (fast == arr.length -1 || arr[fast+1] == ' '))
+        reverse(arr, start, fast);
     }
     //reverse the senctence => i yahoo     love i
     reverse(arr, 0, arr.length -1);
@@ -56,7 +58,7 @@ if(input == null || input.length <= 1)
   // i   evol   yahoo
   // i   evol   yahoo
   // i   evol   oohay
-  // yahoo   love   i%
+  // yahoo   love   i
 
   private static void reverse(char[] arr, int left, int right){
     if(left > right){
