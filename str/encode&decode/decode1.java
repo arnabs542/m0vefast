@@ -2,9 +2,6 @@
 //char number char number...
 //“acb2c4” → “acbbcccc” 1
 //char char char number....
-
-
-
 https://www.programcreek.com/2014/09/leetcode-decode-string-java/
 follow up question:
 https://piazza.com/class/j0eqhhdregb3i?cid=29
@@ -69,28 +66,16 @@ public String decompress(String input) {
 
       //Q4: string decoding inplace version
       public String decode(String input){
-      	if(input.isEmpty())
-      		return input;
       	char[] arr = input.toCharArray();
-      	return decodeLong(arr, decodeShort(arr));
-      }
-      //for the decoded string is shorter: a1, a0, a2
-      private int decodeShort(char[] arr){
-      	int end = 0;
-      	//res is shorter, do from left to right
-      	for(int i = 0; i < arr.length; i += 2){
-      		int digit = getDigit(arr[i+1]);
-      		if(digit >= 0 && digit <=2 ){
-      			for(int j = 0; j < digit; j++){
-      				arr[end++] = arr[i];
-      			}
-      		}else{
-      			//dont handle longer decoded string here
-      			arr[end++] = arr[i];
-      			arr[end++] = arr[i+1];
-      		}
-      	}
-      	return end;
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < arr.length; i++){
+          char ch = arr[i++];
+          int count = arr[i] - '0';
+          for(int c = 0; c < count; c++){
+            sb.append(ch);
+          }
+        }
+        return sb.toString();
       }
       //for the decoded string is longer: a3, a4, a5
       private int decodeLong(char[] arr, int length){

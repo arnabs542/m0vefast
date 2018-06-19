@@ -1,3 +1,6 @@
+//"3[a2[c]]", return "accaccacc".
+//alwasy a [ after a number
+//laioffer solution using sb
 public String decodeString(String s) {
         // sanity check
         if (s == null || s.length() == 0) {
@@ -13,15 +16,14 @@ public String decodeString(String s) {
         int n = s.length();
         while (index[0] < n && s.charAt(index[0]) != ']') {
             char cur = s.charAt(index[0]);
-            if (cur < '0' || cur > '9') { // not a digit;
+            if (cur < '0' || cur > '9') { // not a digit:a;
                 sb.append(cur);
                 index[0]++;
-            } else { // it’s a digit; calculate the digits;
+            } else { // it’s a digit; calculate the digits:2;
                 int cnt = 0;
-                while (index[0] < n && s.charAt(index[0]) >= '0'
-                        && s.charAt(index[0]) <= '9') {
+                while (index[0] < n && s.charAt(index[0]) >= '0' && s.charAt(index[0]) <= '9') {
                     cnt = 10 * cnt + (s.charAt(index[0]) - '0');
-                    index[0]++;
+                    index[0]++;  //keep changing in the loop
                 }
                 index[0]++; // skip '[';
                 // get the decoded string from its sub-problem;
@@ -37,6 +39,48 @@ public String decodeString(String s) {
         return sb.toString();
     }
 
+//laioffer solution: didnt pass for :
+// 因为 Java 是传 value 的啊！
+// 假设一开始 index = 0;
+// index += 1; // index --> 1;
+// String t = decode(s, index); // --> 我们本来期待这句能修改 index 的值，但是这儿index 并没有改变；
+// index += 1; // --> index --> 2;
+// 而要使用 int[] index 的话，因为 array 是放在 heap 上的，
+// String t = decode(s, index);  // --> 这儿的 index 只是 copy 了一个 array 的 reference 而已，
+// 主体内容还在 heap 上， 所以recursion call 可以通过 reference 对它进行修改。
+// 因为array 是一个object, 所以 只要是object, 都会传一个参数，那么都会进行改变。
+// 所以map, set, .....如果作为参数的话，也都会改变的。
+public class Solution {
+    public String decodeString(String s) {
+        return decode(s, 0);
+    }
+    public String decode(String s, int index) {
+        String res = "";
+        int n = s.length();
+        while (index < n && s.charAt(index) != ']') {
+            char curr = s.charAt(index);
+            if (!Character.isDigit(curr)) {
+                res += curr;
+                index += 1;
+                //System.out.println(curr);
+            } else {
+                int count = 0;
+                while (index < n && Character.isDigit(s.charAt(index))) {
+                    count += count * 10 + (s.charAt(index) - '0');
+                    index += 1;
+                }
+                index += 1; //meet '['
+                String t = decode(s, index);
+                index += 1; //jump ']'
+                while (count > 0) {
+                    res += t; //repreat
+                    count -= 1;
+                }
+            }
+        }
+        return res;
+    }
+}
     https://piazza.com/class/j0eqhhdregb3i?cid=491
 
     //Q4: string decoding inplace version
@@ -106,3 +150,4 @@ public String decodeString(String s) {
     	}
     	return sb.toString();
     }
+

@@ -1,26 +1,19 @@
 //“a1c0b2c4” <- “abbcccc” 2
 //Q3: string encoding
-public String encode(String str) {
-    // Write your solution here
-    String res = "";
-    if (str.length() == 0) return res;
-
-    int count = 0;
-    char currChar = str.CharAt(0);
-		char prevChar = str.CharAt(0);
-    for (int i = 0; i < str.length(); i++) {
-        if (i == 0) {
-            currChar = prevChar = str.charAt(i);
+public int compress(char[] chars) {
+        int slow = 0;
+        int fast = 0;
+        while(fast < chars.length){
+            char currentChar = chars[fast];
+            int count = 0;
+            while(fast < chars.length && chars[fast] == currentChar){
+                fast++;
+                count++;
+            }
+            chars[slow++] = currentChar;  //only use last occurance
+            if(count != 1)
+                for(char c : Integer.toString(count).toCharArray())
+                    chars[slow++] = c;
         }
-        currChar = str.charAt(i);
-        if (currChar != prevChar) { //update result
-            res = res + prevChar + count;
-            count = 1; //for the occurance of the current char
-        } else {
-            count++;
-        }
-        prevChar = currChar;
+        return slow;
     }
-    res = res + prevChar + count;
-    return res;
-}

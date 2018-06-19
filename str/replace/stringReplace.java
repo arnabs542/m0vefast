@@ -10,27 +10,15 @@ public String replace(String input, String s, String t) {
     	return replaceLonger(arr, s, t);
 }
 private String replaceShorter(char[] arr, String s, String t){
-	int slow = 0; //left not including slow is res
-	int fast = 0;  //used to traverse
+	int slow = 0;  //tracking resulting string , slow not included
+	int fast = 0;  //traverse arr
 	while(fast < arr.length){
+    //fast index goes to the last starting position of s && need to replace
 		if(fast <= arr.length - s.length() && equalSubStr(arr, fast, s)){
 			copySubStr(arr, slow, t);
 			slow += t.length();
 			fast += s.length();
-		}else{
-			arr[slow++] = arr[fast++];
-		}
-	}
-	return new String(arr, 0, slow);
-}
-private String replaceShorter(char[] arr, String s, String t){
-	int slow = 0; //left not including slow is res
-	int fast = 0;  //used to traverse
-	while(fast < arr.length){
-		if(fast <= arr.length - s.length() && equalSubStr(arr, fast, s)){
-			copySubStr(arr, slow, t);
-			slow += t.length();
-			fast += s.length();
+    //no need to replace
 		}else{
 			arr[slow++] = arr[fast++];
 		}
@@ -40,17 +28,16 @@ private String replaceShorter(char[] arr, String s, String t){
 private String replaceLonger(char[] arr, String s, String t){
     //get all ending index match s in arr
     List<Integer> matches = getAllMathces(arr, s);
-  	char[] res = new char[arr.length + matches.size()
-                          * (t.length() - s.length())];
+  	char[] res = new char[arr.length + matches.size() * (t.length() - s.length())];
   	int lastIndex = matches.size()-1;
-    int fast = arr.length -1;
-    int slow = res.length -1;
+    int fast = arr.length -1;   //traverse arr
+    int slow = res.length -1;   //tracking resulting string
 
     while(fast >= 0){
     	if(lastIndex >= 0 && fast == matches.get(lastIndex)){
       	copySubStr(res, slow - t.length() + 1, t);
-        slow -= t.length();  //next coplied spot to be
-        fast -= s.length();  //
+        slow -= t.length();  
+        fast -= s.length();
         lastIndex--;
       }else{
       	res[slow--] = arr[fast--];
@@ -59,18 +46,19 @@ private String replaceLonger(char[] arr, String s, String t){
     return new String(res);
   }
   private List<Integer> getAllMathces(char[] arr, String s){
+    //all ending matching index of s in arr
   	List<Integer> matches = new ArrayList<>();
-    int i = 0;
-    while(i <= arr.length - s.length()){
-    	if(equalSubStr(arr, i, s)){
-      	matches.add(i+s.length() - 1);
-        i += s.length();
+    int cur_index = 0;
+    //for all possible starting index
+    while(start_index <= arr.length - s.length()){
+    	if(equalSubStr(arr, start_index, s)){
+      	matches.add(start_index + s.length() - 1);  //record the end index
+        start_index += s.length(); //check next possible starting index
       }else{
-      	i++;
+      	start_index++;
       }
     }
     return matches;
-
   }
 
   private boolean equalSubStr(char[] arr, int fromIndex, String s){
