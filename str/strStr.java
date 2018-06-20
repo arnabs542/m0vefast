@@ -5,6 +5,7 @@ public int strstr(String large, String small) {
 		return -1;
 	if(small.length() == 0)
 		return 0;
+	//all possible starting/matching index
 	for(int i = 0; i < large.length() - small.length() + 1; i++){
 		int j = 0;
 		for(int j = 0; j < small.length(); j++){

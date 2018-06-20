@@ -10,8 +10,8 @@ public int compress(char[] chars) {
                 fast++;
                 count++;
             }
-            chars[slow++] = currentChar;  //only use last occurance
-            if(count != 1)
+            chars[slow++] = currentChar;
+            if(count != 1)  //?
                 for(char c : Integer.toString(count).toCharArray())
                     chars[slow++] = c;
         }

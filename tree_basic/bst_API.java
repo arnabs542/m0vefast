@@ -21,7 +21,7 @@ public boolean isBalanced(TreeNode root) {
         }
 
         return new ResultType(true, Math.max(left.maxDepth, right.maxDepth) + 1);
-    }}
+    }
 
 
 // Version 2: without ResultType, preorder
