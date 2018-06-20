@@ -6,7 +6,7 @@ public List<Integer> getRange(TreeNode root, int min, int max) {
 private void helper(TreeNode root, int min, int max, List<Integer> res){
 	if(root == null)
 		return;
-	//1. determine if left subtree should be traversed, only thwn root.key > min
+	//1. determine if left subtree should be traversed, only when root.key > min
 	if(root.key > min)
 		helper(root.left, min, max, res);
 	//2. determind if root should be traversed

@@ -1,49 +1,3 @@
-public boolean isBalanced(TreeNode root) {
-        return helper(root).isBalanced;
-    }
-
-    private ResultType helper(TreeNode root) {
-        if (root == null) {
-            return new ResultType(true, 0);
-        }
-
-        ResultType left = helper(root.left);
-        ResultType right = helper(root.right);
-
-        // subtree not balance
-        if (!left.isBalanced || !right.isBalanced) {
-            return new ResultType(false, -1);
-        }
-
-        // root not balance
-        if (Math.abs(left.maxDepth - right.maxDepth) > 1) {
-            return new ResultType(false, -1);
-        }
-
-        return new ResultType(true, Math.max(left.maxDepth, right.maxDepth) + 1);
-    }
-
-
-// Version 2: without ResultType, preorder
-
-    public boolean isBalanced(TreeNode root) {
-        return getHeight(root) != -1;
-    }
-
-    private int getHeight(TreeNode root) {
-        if (root == null) {
-            return 0;   //null.height == 0
-        }
-
-        int left = getHeight(root.left);
-        int right = getHeight(root.right);
-        if (left == -1 || right == -1 || Math.abs(left-right) > 1) {
-            return -1;
-        }
-        return Math.max(left, right) + 1;
-    }
-
-
 //insert a node in bst
 //resurcion
 public TreeNode insertNode(TreeNode root, int target) {
@@ -141,30 +95,4 @@ public TreeNode search(TreeNode root, int target){
         }
     }
     return null;
-}
-//kth smallest elemtn in bst
-public int kthSmallest(TreeNode root, int k){
-    int leftSize = count(root.left);
-    if(k <= leftSize)
-        return kthSmallest(root.left, k);
-    else if(k == leftSize + 1)
-        return root.val;
-    else
-        return kthSmallest(root.right, k-leftSize-1);
-}
-private int count(TreeNode root){
-    if(root == null)
-        return 0;
-    return 1 + count(root.left) + count(root.right);
-}
-//given bst and an integer sum, determind if the tree has a root-to-left-path,
-//such that path sum = the given sum
-public boolean hasPathSum(TreeNode root, int sum){
-    if(root == null)
-        return false;
-    if(root.left == null && root.right == null && root.val == sum)
-        return true;
-    boolean left = root.left != null ? hasPathSum(root.left, sum - root.val) : false;
-    boolean right = root.right != null ? hasPathSum(root.right, sum-root.val) : false;
-    return left || right;
 }

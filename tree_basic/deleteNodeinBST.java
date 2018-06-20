@@ -32,7 +32,7 @@ public TreeNode inorderPredecessor(TreeNode root, TreeNode p){
 //iteration solution
 http://www.jiuzhang.com/solution/inorder-successor-in-binary-search-tree/
 
-//solution1: iteration 
+//solution1: iteration
 public TreeNode insertNode(TreeNode root, TreeNode node) {
         if (root == null) {
             root = node;
@@ -57,7 +57,7 @@ public TreeNode insertNode(TreeNode root, TreeNode node) {
         }
         return root;
     }
-//solution2: recursion 
+//solution2: recursion
 public TreeNode insertNode(TreeNode root, TreeNode node) {
         if (root == null) {
             return node;
@@ -69,21 +69,21 @@ public TreeNode insertNode(TreeNode root, TreeNode node) {
         }
         return root;
     }
-    public TreeNode sortedArrayToBST(int[] A) {  
+    public TreeNode sortedArrayToBST(int[] A) {
         // write your code here
         int len = A.length-1;
-        TreeNode root = null;  
+        TreeNode root = null;
         root = recursion(A, 1, len, root);
         A = null;
-        return root;  
-    }  
-    public TreeNode recursion(int[] array, int lhs, int rhs, TreeNode root){  
-        if(lhs <= rhs){  
+        return root;
+    }
+    public TreeNode recursion(int[] array, int lhs, int rhs, TreeNode root){
+        if(lhs <= rhs){
             int mid = lhs + (rhs - lhs)/2;
-            root = new TreeNode(array[mid]);  
-            root.left = recursion(array, lhs, mid - 1, root.left);  
-            root.right = recursion(array, mid + 1, rhs, root.right);  
-        }  
-        return root;  
-    }  
+            root = new TreeNode(array[mid]);
+            root.left = recursion(array, lhs, mid - 1, root.left);
+            root.right = recursion(array, mid + 1, rhs, root.right);
+        }
+        return root;
+    }
 
