@@ -4,6 +4,7 @@ public List<Integer> inOrderTraversal(TreeNode root){
 	List<Integer> res = new ArrayList<>();
 	TreeNode cur = root;
 	while(cur != null ||!stack.empty()){
+		//go till the very left
 		while(cur != null){
 			stack.push(cur);
 			cur = cur.left;
@@ -30,37 +31,25 @@ public List<Integer> preOrderTraversal(TreeNode root){
 	}
 	return res;
 }
-public List<Integer> postOrderTraversal(TreeNode root){
-	Stack<TreeNode> stack = new Stack<TreeNode>();
-	List<Integer> res = new ArrayList<>();
-	TreeNode prev = null;  //previouly traversed node(left->right->root)
-	TreeNode curr = root;
-	if(root == null)
-		return res;
-	stack.push(root);
-	while(!stack.isEmpty()){
-		curr = stack.peek();
-		//have traversed anything, // traverse down the tree
-		if(prev == null || prev.left == curr || prev.right == curr){
-			if(curr.left != null)
-				stack.push(curr.left);
-			else if(curr.right != null)
-				stack.push(curr.right);
-		// traverse up the tree from the left
-		}else if(curr.left == prev){
-			if(curr.right != null)
-				stack.push(curr.right);
-		// traverse up the tree from the right
-		}else{
-			res.add(curr.val);
-			stack.pop();
+
+public List<Integer> postorderTraversal(TreeNode root) {
+		if(root==null){
+				return res;
 		}
-		prev = curr;
-	}
-	return res;
+		Stack<TreeNode> stack=new Stack<TreeNode>();
+		stack.push(root);
+		while(!stack.isEmpty()){
+				TreeNode node=stack.pop();x
+				res.add(0, node.key); //插在第一个位置，使得满足“左右根”
+				if(node.left!=null){
+						stack.push(node.left);
+				}
+				if(node.right!=null){
+						stack.push(node.right);
+				}
+		}
+		return res;
 }
-
-
 
 //solution: traverse
 public ArrayList<Integer> inorderTraversal(TreeNode root){
@@ -108,12 +97,3 @@ public ArrayList<Integer> inorderTraversal(TreeNode root){
 	}
 	return res;
 }
-
-
-
-
-
-
-
-
-
