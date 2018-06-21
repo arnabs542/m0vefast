@@ -1,4 +1,7 @@
 https://blog.csdn.net/whuwangyi/article/details/43186045
+//go to the deep left
+//root.left = parent.right
+//root.right = parent
 public TreeNode reverseTree(TreeNode root){
   if(root == null || root.left == null)
     return root;
