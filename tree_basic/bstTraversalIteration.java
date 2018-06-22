@@ -1,6 +1,6 @@
 
 public List<Integer> inOrderTraversal(TreeNode root){
-	Stack<TreeNode> stack = new Stack<TreeNode>();
+	Stack<TreeNode> stack = new Stack<TreeNode>();   //record for direction
 	List<Integer> res = new ArrayList<>();
 	TreeNode cur = root;
 	while(cur != null ||!stack.empty()){
@@ -33,13 +33,15 @@ public List<Integer> preOrderTraversal(TreeNode root){
 }
 
 public List<Integer> postorderTraversal(TreeNode root) {
+	Stack<TreeNode> stack=new Stack<TreeNode>();
+	List<Integer> res = new ArrayList<>();
 		if(root==null){
-				return res;
+			return res;
 		}
-		Stack<TreeNode> stack=new Stack<TreeNode>();
 		stack.push(root);
 		while(!stack.isEmpty()){
-				TreeNode node=stack.pop();x
+				TreeNode node=stack.pop();
+				//Shifts the element currently at that position (if any) and any subsequent elements to the right (increases their indices)
 				res.add(0, node.key); //插在第一个位置，使得满足“左右根”
 				if(node.left!=null){
 						stack.push(node.left);
@@ -79,21 +81,5 @@ public ArrayList<Integer> inorderTraversal(TreeNode root){
 	res.addAll(left);
 	res.add(root.val);
 	res.addAll(right);
-	return res;
-}
-//solution2: iteration
-public ArrayList<Integer> inorderTraversal(TreeNode root){
-	Stack<TreeNode> stack = new Stack<>();
-	List<Integer> res = new ArrayList<>();
-	TreeNode cur = root;
-	while(cur != null || !stack.isEmpty()){
-		while(cur != null){
-			stack.push(cur);
-			cur = cur.left;
-		}
-		cur = stack.pop();
-		res.add(cur.val);
-		cur = cur.right;
-	}
 	return res;
 }

@@ -1,4 +1,4 @@
-//from node to node
+//subroot node on one path
 public int maxPathSum(TreeNode root){
     int[] max = new int[] {Integer.MIN_VALUE};
     helper(root, max);
@@ -12,6 +12,7 @@ private int helper(TreeNode root, int[] max){
     int right = helper(root.right, max);
     left = left < 0 ? 0 : left;
     right = right < 0 ? 0 : right;
-    max[0] = Math.max(root.key + left + right, max[0]);
-    return root.key + Math.max(left, right);
+    int sin = Math.max(Math.max(left, right), 0) + root.key;
+    max[0] = Math.max(max[0], sin);
+    return sin;
 }

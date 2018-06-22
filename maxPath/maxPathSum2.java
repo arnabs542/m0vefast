@@ -1,23 +1,22 @@
-//maxPathSum1: any - any
-
-//from any node to any node
-public int maxPathSum2(TreeNode root){
-	//max store global maximun path sum, updated during recursion
-	int[] max = new int[]{Integer.MIN_VALUE};
-	helper(root, max);
-	return max[0];
+//from leaf to leaf
+public int maxPathSum(TreeNode root){
+    int[] max = new int[] {Integer.MIN_VALUE};
+    helper(root, max);
+    return max[0];
 }
-//return the max path sum of a single path
+//return the value is the max path sum from root to any leaf node in its subtree
 private int helper(TreeNode root, int[] max){
-	if(root == null)
-		return 0;
-	//step1:
-	int left = helper(root.left, max);
-	int right = helper(root.right, max);
-	left = left < 0 ? 0 : left;
-	right = right < 0 ? 0 : right;
-	//step2:
-	max[0] = Math.max(root.key + left + right, max[0]);
-	//step3:
-	return root.key + Math.max(left, right);
+    if (root == null)
+        return 0;
+    int left = helper(root.left, max);
+    int right = helper(root.right, max);
+    //only when root node has both child, we might update max path sum
+    if(root.left != null && root.right != null){
+        max[0]=Math.max(max[0], left+right+root.key);
+        return Math.max(left, right) +  root.key;
+    }
+    if(root.left == null)
+        return right+root.key;
+    else
+        return left+root.key
 }
