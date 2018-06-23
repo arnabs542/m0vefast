@@ -16,9 +16,12 @@ public ListNode reverseInPairs(ListNode head) {
     ListNode cur = dummy;
     while(cur.next != null && cur.next.next != null){
     	ListNode next = cur.next.next;  //=> 2 newhead
-    	cur.next = cur.next.next.next;  //<= 2.next = 1
-    	next.next = next; //=> 0.next = 3
+    	cur.next.next = cur.next.next.next;  //<= 2.next = 1
+    	next.next = cur.next; //=> 0.next = 3
+      cur.next = next;
     	cur = cur.next.next;  //move
     }
     return dummy.next;
 }
+1->2->3->4->5
+2->1->4->3-

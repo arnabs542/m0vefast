@@ -1,4 +1,5 @@
-//from left to root != null
+//from left to root
+//root != null
 //solution1:
 public int maxPathSum(TreeNode root){
     return helper(root, 0)
@@ -17,7 +18,7 @@ private int helper(TreeNode root, int[] max){
 }
 //solution2
 private int maxPathSum(TreeNode root){
-    prefixSum += root.key;
+    //prefixSum += root.key;
     if(root.left == null && root.right == null)
         return root.key;
     else if(root.left == null)
