@@ -16,7 +16,7 @@ private TreeNode helper(List<Integer> level, Map<Integer, Integer> map){
   int root_value = level.get(0);
   TreeNode root = new TreeNode(root_value);
   List<Integer> left = new ArrayList<>();
-  List<Integer> right = new ARrayList<>();
+  List<Integer> right = new ArrayList<>();
   for(int i = 1; i < level.size(); i++){
     //if in left subtree
     if(map.get(num) < map.get(root.key)){

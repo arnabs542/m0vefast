@@ -17,7 +17,7 @@ private void dfs(char[] input, StringBuilder sb, int index, List<String> res){
   }
   //case1: pick the char at index
   sb.append(input[index]);
-  dfs(input, sb, index+1, res);
+  dfs(input, sb.append(input[index]), index+1, res);
   sb.deleteCharAt(sb.length()-1);
   //case2: not pick the char at index
   dfs(input, sb, index+1, res);

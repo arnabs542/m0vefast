@@ -1,0 +1,287 @@
+1. Investment 2012. 1point3acres
+2. Unique path 就是机器人从格子左上角走到右下角有多少种走法，可以往左，往下，往右下
+3. Timeseries data aggregation       对我是用treemap做的。
+  比如Timeseries data aggregation中起始月份是包含在结果中的，但是截至月份不包含。希望今年有个好结果)
+  timeseries data aggregation这题 和end date相同月份的是不是应该不包含进去的？ 不包含end date的月份的内容。
+
+
+1 orders
+3 Hacking time
+
+1. parent children node
+2. twitter recommend
+
+
+
+1. student && aprtment
+给了两个数据库，一个是学生，一个是公寓楼，要输出每一个公寓楼有几个学生。用到LEFT JOIN，代码如下. 牛人云集,一亩三分地
+
+SELECT d.DEPT_NAME, COUNT(s.DEPT_ID) as ID_COUNT
+FROM DEPARTMENTS d
+LEFT JOIN STUDENTS s
+on s.DEPT_ID = d.DEPT_ID
+GROUP BY d.DEPT_NAME
+ORDER BY ID_COUNT DESC, DEPT_NAME;
+
+楼主SQL不熟，也是靠着地理的面经半蒙半猜写的，最后test case都过了，很水的SQL
+
+
+2. kraken，就是给一个类似棋盘的，从左上角走到右下角，返回有几种走的方式。之前的oa test7还是其他test都有看到过，然而没有好好理解kraken是什么意思。
+不过很简单，用DFS直接写，两下就写完了。代码也很简单
+
+
+3. information mask
+给一个人的信息，有邮箱和电话，邮箱的话，就留下第一个和最后一个名字的char,剩下的@...全部copy，比如abcd@twitter.com --> a*****d@twitter.com,没有那么困难，就是注意看题目，
+楼主还以为有多少个画多少个*,其实都是画5个=。=
+电话的话，就是有分几种格式，比如 +(1)123 456 7890 --> +*-***-***-7890
++(86) 123 456 7890 --> +**-***-***-7890 这种
+有10digts 到13digits几种情况，都进行mask，然后输出
+基本套路看这里
+http://www.1point3acres.com/bbs/ ... adio%26sortid%3D311
+
+
+
+第一道题是sql，department跟student，left join, group by, order by这些
+第二道题是Ways to complete Kraken，左上到右下有多少种走法，LC上面有类似题目（忘记题号了），多了考虑对角线走法，
+第三道题LC433，用例卡时间，比leetcode上严格，需要尽量最优解
+
+
+1 Investment in 2012
+
+第一题是找出ORDERS表中下了最多订单的顾客，leetcode原题。
+第二题是密码解码，给一个全是数字的key，每一位相当于一个位移，将这个位移量循环往复的作用在源字符串的每一个字母上（包括大小写，非字母的字符跳过）。题目相当于是对这一过程求反，给你一个已经加密的字符串，返回未加密的源字符串。
+第三题是求一个整型数组中，元素和小于等于k且长度最长的子数组的长度。
+另外第二题涉及STDIN、STDOUT，虽然很简单，但是平时刷题没接触过，如果能提前准备一下就更好啦。
+
+1. Parent Child and Tree
+SELECT N, IF(
+    P IS NULL,'Root',
+    IF((SELECT COUNT(*) FROM BST WHERE P=T.N)>0,'Inner','Leaf'))
+FROM BST AS T
+ORDER BY N;
+
+
+2. Timeseries Data Aggregation
+class Main {
+    public static void main(String args[] ) throws Exception {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+        int i = 0;
+        String startDate = "", endDate = "";
+        TreeMap<String, TreeMap<String, Integer>> map = new TreeMap<>(Collections.reverseOrder());
+
+        String[] inputs = new String[]{"2015-08, 2016-04", "", "2015-08-15, clicks, 635", "2016-03-24, app_installs, 683", "2015-04-05, favorites, 763", "2016-01-22, favorites, 788", "2015-12-26, clicks, 525", "2016-06-03, retweets, 101", "2015-12-02, app_installs, 982", "2016-09-17, app_installs, 770", "2015-11-07, impressions, 245", "2016-10-16, impressions, 567"};
+
+        for (String line : inputs) {
+            if(i == 0){
+                String[] interval = line.trim().split(",");
+                startDate = interval[0].trim();-google 1point3acres
+                endDate = interval[1].trim();
+                i++;
+            }else if(i == 1){
+                 i++;
+                 continue;
+            }else{
+                String[] arr = line.trim().split(",");
+                String date = arr[0].trim();
+                date = date.substring(0, date.length()-3);. 一亩-三分-地，独家发布
+                if (date.compareTo(startDate) < 0 || date.compareTo(endDate) >= 0) continue;
+                String category = arr[1].trim();
+                int cnt = Integer.parseInt(arr[2].trim());
+                if (!map.containsKey(date)) {
+                    map.put(date, new TreeMap<String, Integer>());
+                }
+                TreeMap<String, Integer> dataMap = map.get(date);. Waral 博客有更多文章,
+                dataMap.put(category, dataMap.getOrDefault(category, 0) + cnt);
+            }
+        }
+
+        for (String date : map.keySet()) {
+            StringBuilder str = new StringBuilder();
+            str.append(date);
+            for (String category : map.get(date).keySet()) {
+                str.append(", ").append(category);
+                str.append(", ").append(map.get(date).get(category));. 1point 3acres 论坛
+            }
+            System.out.println(str.toString());
+        }
+    }
+}
+
+3. Genetic Mutation
+class Solution {
+    public int minMutation(String start, String end, String[] bank) {
+        HashSet<String> wordSet = new HashSet();
+        for (String word : bank)
+            wordSet.add(word);
+        if (!wordSet.remove(end)) return -1;.留学论坛-一亩-三分地
+        HashSet<String> beginSet = new HashSet();. From 1point 3acres bbs
+        HashSet<String> endSet = new HashSet();. more info on 1point3acres
+        beginSet.add(start);
+        endSet.add(end);
+        int length = 0;
+        while (true) {
+            length++;. 牛人云集,一亩三分地
+            boolean state;
+            if (beginSet.size()<=endSet.size())
+                state = climb(beginSet, endSet, wordSet);.本文原创自1point3acres论坛
+            else
+                state = climb(endSet, beginSet, wordSet);
+            if (state) return length;
+            if (beginSet.size()==0 || endSet.size()==0) return -1;
+        }
+    }
+
+    private boolean climb(HashSet<String> source, HashSet<String> target, HashSet<String> pool) {
+        //return true when find
+        String a_z_str = "ACGT";
+        char[] a_z = a_z_str.toCharArray();. visit 1point3acres for more.
+        HashSet<String> newSet = new HashSet();
+        for(Iterator it=source.iterator();it.hasNext();) {
+            String str0 = it.next().toString();
+            for (int i=0;i<str0.length();i++) {
+                char[] str = str0.toCharArray();
+                for (char c:a_z) {
+                    str[i] = c;
+                    String newWord = new String(str);. more info on 1point3acres
+                    if (target.contains(newWord))
+                        return true;
+                    if (pool.remove(newWord))
+                        newSet.add(newWord);
+                }. more info on 1point3acres
+            }
+        }
+        source.clear();. Waral 博客有更多文章,
+        for(Iterator it=newSet.iterator();it.hasNext();)
+            source.add(it.next().toString());
+        return false;. from: 1point3acres
+    }
+}
+
+
+- SQL- Parent, Child and Tree
+- SQL-Investments in 2012
+- SQL- employees per department
+- SQL-student and department
+- longest phrases in a tweet
+- Information Mask . 1point3acres
+- Ways to complete Kraken
+- hacking time
+- Tweet Recommendation
+- Minimum Genetic Mutation
+- time series aggregation
+
+
+
+给你一堆串，判断每一个是否是IPv4/IPv6地址。
+第二题：
+给你一堆邮箱和电话，让你把中间的内容换成*号。不是新题，LC 468
+
+1. Parent, Child, Inner Node. 用的MySQL，还是比较简单的。
+2. Time Data Series Aggregation. Data IO确实不是很熟，花了一点时间做这个题。
+3. Generic Mutation. 这个题一开始用了一个特别简单的BFS，结果倒数第二、三个超时了？？于是改用了bidirectional BFS，过了。如果大家遇到这题还是直接用bidirectional吧，能节省一点时间。
+
+import java.util.*;.
+
+/**
+ * Created by jingjingy on 17/11/4.
+ */
+public class GenericMutation {
+    public static int findMutationDistance(String start, String end, String[] bank) {. Waral 博客有更多文章,
+        if (bank == null) {
+            return -1;. 围观我们@1point 3 acres
+        }
+-google 1point3acres
+        if (!Arrays.asList(bank).contains(end)) {
+            return -1;
+        }
+
+        if (start == end) {
+            return 0;
+        }. 1point3acres
+
+        int size = 0;
+        HashSet<String> s1 = new HashSet<>();. 牛人云集,一亩三分地
+        HashSet<String> s2 = new HashSet<>();
+        s1.add(start);
+        s2.add(end);
+
+        return getMutation(s1, s2, bank, 0);
+    }.
+
+    private static int getMutation (Set<String> s1, Set<String> s2, String[] bank, int step) {. 留学申请论坛-一亩三分地
+        if (s1.isEmpty() || s2.isEmpty()) {
+            return -1;
+        }
+
+        Set<String> s = new HashSet<>();
+        Set<String> hash = new HashSet<>();
+        char[] DNAstrand = {'A', 'C', 'G', 'T'};
+
+        for (String word: s1) {.
+            char[] words = word.toCharArray();
+            for (int i = 0; i <words.length; i++) {
+                char replace = words[i];. from: 1point3acres
+                for (int j = 0; j < 4; j++) {
+                    words[i] = DNAstrand[j];
+                    String nextWord = String.valueOf(words);
+                    if (s2.contains(nextWord)) {
+                        return step + 1;
+                    } else if (!hash.contains(nextWord)){
+                        s.add(nextWord);
+                        hash.add(nextWord);
+                    }
+                }
+                words[i] = replace;
+            }
+        }
+
+        if (s.size() > s2.size()) {
+            return getMutation(s2, s, bank, ++step);
+      } else {
+            return getMutation(s, s2, bank, ++step);
+        }
+    }
+
+    public static void main(String[] args) {
+        String start = "AAAAAAAA";
+        String end = "AAAAAATT";
+. 围观我们@1point 3 acres        String[] bank = {"AAAAAAAA", "AAAAAAAT", "AAAAAATT", "AAAAATTT"};
+        int step = findMutationDistance(start, end, bank);
+        System.out.println(step);
+    }
+}
+
+
+
+刚做完oa7.三道题。推特好像实习跟全职用一样的题？貌似我是内推的。但是感觉他们家是群发oa1. SQL的department 俺的 employee
+2. DNA 利口斯散散
+3. maxLength.
+
+第二题用了BFS，但是后四个case没过。我用的方法是匹配到一个中间点之后就把这点的value改成false, 意思就是已经访问过了，下个循环不再访问。然后又单写了一个函数来判定两个字符串是不是只差一个字母。但是后四个测试用例死活过不了。一开始我用的是把字符串的每个字母挨个改成ATGC，这样速度很肯定很慢。后来用hashmap存储了bank并把每个值设为true 访问过了就改成false, 如果是false就不再判定是不是差一个字母。反正就是改来改去也没过后四个测试用例。地理有人说是把bank全部放入set里，然后遇到中间节点就删掉。但是这样我发现循环就没办法进行了。我也没想到解决方法，可能是我比较菜。后来实在想不出来就把oa交了。
+
+
+3. Genetic mutations， 一开始用bfs发现会tle，改用two pointer就pass了
+
+Kraken 一维DP秒掉
+Longest Phrase in a tweet 用 two pointer做 时间O(n)，空间O(1)
+employee & department, 地里有很多，就不多说了
+
+1. SQL, student and department. 地里有很多答案，很容易搜到。
+第二题吗？我就是用的BFS，因为只求step，在遇到每个中间态的时候在字典set中拿掉这个中间态，可以避免重复。至少TwitterOA里给的test example里全通过了。
+2. Genetic mutation. 和LC里的 word ladder I 基本一模一样，附上我在LC论坛里写的 word ladder I 的解法：
+https://discuss.leetcode.com/topic/110912/java-bfs-ac-solution
+
+3. Longest phrase in a tweet.
+static int maxLength(int[] a, int k) {
+    Queue<Integer> queue = new LinkedList<>();.
+    int sum = 0;
+    int maxLen = 0;
+    for(int i = 0; i < a.length; i++) {
+        sum += a[i];
+        queue.add(a[i]);
+        while(sum > k)
+            sum -= queue.poll();.
+        maxLen = Math.max(maxLen, queue.size());
+    }
+    return maxLen;. more info on 1point3acres
+}

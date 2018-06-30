@@ -1,3 +1,39 @@
+//lai solution using deque
+public List<Integer> zigZag(TreeNode root) {
+    if(root == null)
+        return new LinkedList<Integer>();
+
+    Deque<TreeNode> deque = new LinkedList<>();
+    List<Integer> list = new LinkedList<>();
+
+    deque.offerLast(root);
+    int layer = 0;
+
+    while(!deque.isEmpty()){
+        //the size is changing, size of each level
+        int size = deque.size();
+        for(int i = 0; i < size; i++){
+            if(layer == 0){  //even level, right->left
+                TreeNode temp = deque.pollLast();
+                list.add(temp.key);
+                if(temp.right != null)
+                    deque.offerFirst(temp.right);
+                if(temp.left != null)
+                    deque.offerFirst(temp.left);
+            }else{ //odd level, left->right
+                TreeNode temp = deque.pollFirst();
+                list.add(temp.key);
+                if(temp.left != null)
+                    deque.offerLast(temp.left);
+                if(temp.right != null)
+                    deque.offerLast(temp.right);
+            }
+        }
+        layer = 1 - layer;
+    }
+    return list;
+}
+//the other solution j
 public ArrayList<ArrayList<Integer>> zigzagLevelOrder(TreeNode root){
     ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
 
@@ -36,51 +72,3 @@ public ArrayList<ArrayList<Integer>> zigzagLevelOrder(TreeNode root){
     }
     return res;
 }
-//lai solution using deque
-public List<Integer> zigZag(TreeNode root) {
-    if(root == null)
-        return new LinkedList<Integer>();
-
-    Deque<TreeNode> deque = new LinkedList<>();
-    List<Integer> list = new LinkedList<>();
-
-    deque.offerFirst(root);
-    int layer = 0;
-
-    while(!deque.isEmpty()){
-        //the size is changing, size of each level
-        int size = deque.size(); 
-        for(int i = 0; i < size; i++){
-            if(layer == 0){  //even level, right->left
-                TreeNode temp = deque.pollLast();
-                list.add(temp.key);
-                if(temp.right != null)
-                    deque.offerFirst(temp.right);
-                if(temp.left != null)
-                    deque.offerFirst(temp.left);
-            }else{ //odd level, left->right; root is level1
-                TreeNode temp = deque.pollFirst();
-                list.add(temp.key);
-                if(temp.left != null)
-                    deque.offerLast(temp.left);
-                if(temp.right != null)
-                    deque.offerLast(temp.right);
-            }
-        }
-        layer = 1 - layer;
-    }
-    return list;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-

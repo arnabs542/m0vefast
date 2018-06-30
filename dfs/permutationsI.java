@@ -46,11 +46,13 @@ private void dfs(char[] input, List<String> res, StringBuilder path){
     }
 }
 //lai version: use boolean[] visited for extra space, but less time compared with above
+//maintain relative order
 public List<String> permutations(String set){
 	List<String> res = new ArrayList<>();
 	if(set == null)
 		return res;
 	char[] arr = set.toCharArray();
+	Arrays.sort(arr);
 	StringBuilder path = new StringBuilder();
 	boolean[] visited = new boolean[arr.length];
 	dfs(arr, res, path, visited);
@@ -59,6 +61,7 @@ public List<String> permutations(String set){
 private void dfs(char[] arr, List<String> res, StringBuilder path, boolean[] visited){
 	if(path.length() == arr.length){ //termination
 		res.add(path.toString());
+		return;
 	}else{
 		for(int i = 0; i < arr.length; i++){
 			if(visited[i])

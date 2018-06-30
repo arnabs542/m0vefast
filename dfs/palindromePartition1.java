@@ -1,9 +1,12 @@
-public List<List<String>> partition(String s) {
+//http://bangbingsyb.blogspot.com/2014/11/leetcode-palindrome-partitioning-i-ii.html
+http://bangbingsyb.blogspot.com/2014/11/leetcode-palindrome-partitioning-i-ii.html
+//Given a string s, partition s such that every substring of the partition is a palindrome.
+public List<List<String>> palindromePartition1(String s) {
 	List<List<String>> res = new ArrayList<>();
 	dfs(res, new ArrayList<String>(), s, 0);
 	return res;
 }
-public void dfs(List<List<String>> res, 
+public void dfs(List<List<String>> res,
 				List<String> path,
 				String s,
 				int start){
@@ -33,6 +36,6 @@ public boolean isPalindrome(String s, int low, int high){
 //   		if (s.charAt(i) != s.charAt(j)) {
 //    			return false;
 //   		}
-//  	}	
+//  	}
 //  	return true;
 // }

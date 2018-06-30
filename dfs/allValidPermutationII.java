@@ -1,9 +1,9 @@
 private static final char[] ps = new char[]{'(',')','[',']','{','}'};
-public List<String> validParenthesesII(int l, int m, int n){
+public List<String> ValidPermutationsOfParentheses2(int l, int m, int n){
   int[] remain = new int[]{l,l,m,m,n,n};
   int targetlen = 2*(m+l+n);
   StringBuilder path = new StringBuilder();
-  Deque<Character> stack = new LinkedList<>();
+  Deque<Character> stack = new LinkedList<>();  //to maintain palindrom
   List<String> res = new ArrayList<>();
   dfs(path, stack, remain, targetlen, res);
   return res;
@@ -31,7 +31,7 @@ private void dfs(StringBuilder path,
           stack.pollFirst();
           remain[i]++;
         }
-      }else{ //ready for right
+      }else{ //ready for right 1) has a left 2) last is a left bracket
         if(!stack.isEmpty() && stack.peekFirst() == ps[i-1]){
           path.append(ps[i]);
           stack.pollFirst();

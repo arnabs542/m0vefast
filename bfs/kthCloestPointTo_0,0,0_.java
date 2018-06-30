@@ -20,14 +20,14 @@ public List<Integer> closest(int[] a, int[] b, int[] c, int k) {
 	//got to check the length, so k > 0 not k>1
 	//o1, o2, cur, temp are sme object type
 	while(k > 0){
-		cur = minHeap.poll();
+		cur = minHeap.poll();  //base index: 000 100 010 001
 		List<Integer> temp = Arrays.asList(cur.get(0)+1, cur.get(1), cur.get(2));
 		if(temp.get(0)<a.length && visited.add(temp))
 			minHeap.offer(temp);
-		n = Arrays.asList(cur.get(0), cur.get(1)+1, cur.get(2));
+		temp = Arrays.asList(cur.get(0), cur.get(1)+1, cur.get(2));
 		if(temp.get(0)<b.length && visited.add(temp))
 			minHeap.offer(temp);
-		n = Arrays.asList(cur.get(0), cur.get(1), cur.get(2)+1);
+		temp = Arrays.asList(cur.get(0), cur.get(1), cur.get(2)+1);
 		if(temp.get(0)<c.length && visited.add(temp))
 			minHeap.offer(temp);
 		k--;

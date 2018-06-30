@@ -6,10 +6,10 @@ public List<List<Integer>> permutation(int[] arr){
     dfs(res, new ArrayList<Integer>(), arr, new boolean[arr.length]);
     return res;
 }
-private void dfs(List<List<Integer>> res, 
-                 ArrayList<Integer> path, 
+private void dfs(List<List<Integer>> res,
+                 ArrayList<Integer> path,
                  int[] arr
-                 boolean[] visited){ 
+                 boolean[] visited){
     if(path.size() == arr.length)
         res.add(new ArrayList<>(path));
     else{
@@ -40,7 +40,7 @@ private void dfs(List<List<Integer>> res,
 
  public List<String> permutations(String set) {
     List<String> res = new ArrayList<>();
-    if(set == null) 
+    if(set == null)
         return res;
     char[] arr = set.toCharArray();
     Arrays.sort(arr);
@@ -52,24 +52,32 @@ private void dfs(List<List<Integer>> res,
  private void dfs(List<String> res, char[] arr, StringBuilder path, boolean[] visited){
     if(path.length() == arr.length)
         res.add(path.toString());
+        return;
     else{
         for(int i = 0; i < arr.length; i++){
-            if(visited[i] || (i > 0 && arr[i] == arr[i-1] && !visited[i-1])){
-                //System.out.println(arr[i]);
-                continue;
-            }
+            // if(visited[i] || (i > 0 && arr[i] == arr[i-1] && !visited[i-1])){
+            //     //System.out.println(arr[i]);
+            //     continue;
+            // }
+          if(!visited[i] && (i == 0 || arr[i] != arr[i-1] || visited[i-1])){
             visited[i] = true;
             path.append(arr[i]);
-            dfs(res, path, arr);
+            dfs(res, arr, path, visited);
             visited[i] = false;
             path.deleteCharAt(path.length()-1);
         }
     }
  }
+ //if not including visited[i-1]:
+ //【122】-122， 122本应该是同一种方案。所以强制要求原来排在前面的，在结果当中也应该在排在前面 前面的没用 后面的也不该被用
+// input: set: abba
+// output(sorted): []
+// expected:<[aabb, abab, abba, baab, baba, bbaa]> but was:<[]>
+
   //lai version using swap
  public List<String> permutations(String set) {
     List<String> res = new ArrayList<>();
-    if(set == null) 
+    if(set == null)
         return res;
     char[] arr = set.toCharArray();
     Arrays.sort(arr);
@@ -90,6 +98,3 @@ private void dfs(List<List<Integer>> res,
         }
     }
  }
-
-
-
