@@ -12,7 +12,6 @@ public List<GraphNode> copy(List<GraphNode> graph){
 	}
 	return new ArrayList<GraphNode>(map.values());
 }
-//node the input is Map not hashMap!!!!!
 private void dfs(GraphNode seed, Map<GraphNode, GraphNode> map){
 	GraphNode copy = map.get(seed);
 	for(GraphNode nei : seed.neighbours){

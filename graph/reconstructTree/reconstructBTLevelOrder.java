@@ -3,26 +3,26 @@ public TreeNode reconstruct(int[] in, int[] level){
   for(int i = 0; i < in.length; i++){
     map.put(in[i], i);
   }
-  List<Integer> list = new ArrayList<>();
+  List<Integer> levelList = new ArrayList<>();
   for(int num : level){
-    list.add(num);
+    levelList.add(num);
   }
-  return helper(list, map);
+  return helper(levelList, map);
 }
 
-private TreeNode helper(List<Integer> level, Map<Integer, Integer> map){
-  if(level.isEmpty())
+private TreeNode helper(List<Integer> levelList, Map<Integer, Integer> map){
+  if(levelList.isEmpty())
     return null;
-  int root_value = level.get(0);
+  int root_value = levelList.get(0);
   TreeNode root = new TreeNode(root_value);
   List<Integer> left = new ArrayList<>();
   List<Integer> right = new ArrayList<>();
-  for(int i = 1; i < level.size(); i++){
-    //if in left subtree
-    if(map.get(num) < map.get(root.key)){
-      left.add(num);
+  for(int i = 1; i < levelList.size(); i++){
+    int cur = levelList.get(i);
+    if(map.get(cur) < map.get(root.key)){
+      left.add(cur);
     }else{  //if in left subtree
-      right.add(num);
+      right.add(cur);
     }
   }
   root.left = helper(left, map);

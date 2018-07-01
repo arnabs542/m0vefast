@@ -1,10 +1,11 @@
+//bt, the node with max diff n total number of descendents of left and right child
 public class MaxDiffNode{
 	public TreeNode maxDiffNode(TreeNode root){
 		if(root == null)
 			return null;
 		TreeNode[] node = new TreeNode[1];
-		int[] diff = new int[1];
-		diff[0] = -1;
+		int[] diff = new int[]{-1};
+		//diff[0] = -1;
 		numNodes(root, node, diff);
 		return node[0];
 	}

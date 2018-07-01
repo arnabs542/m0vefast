@@ -10,7 +10,7 @@ private TreeNode helper(int[] pre, int[] index, int max){
   }
   TreeNode root = new TreeNode(pre[index[0]]);
   //order matter
-  root.right = helper(pre, index, root.key);
-  root.left = helper(pre, index, max);
+  root.right = helper(pre, index, max);
+  root.left = helper(pre, index, root.key);
   return root;
 }

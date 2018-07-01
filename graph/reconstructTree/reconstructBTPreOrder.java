@@ -25,6 +25,6 @@ private TreeNode helper(int[] pre, Map<Integer, Integer> inIndex,
                     preLeft+1, preLeft+inMid-inLeft);
   root.right = helper(pre, inIndex,
                     inMid+1, inRight,
-                    preRight+1+inMid-inRight, preRight);
+                    preRight+1+inMid-inLeft, preRight);
   return root;
 }

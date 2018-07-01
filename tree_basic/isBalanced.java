@@ -2,10 +2,8 @@
 public boolean isBalanced(TreeNode root){
 	if(root == null)
 		return true;
-	int res = height(root);
-	// if(res == 0){
-	// 	return true;
-	//else res = -1
+	//use -1 to denote the Tree is not balanced
+	//>= 0 means tree is balanced and is the hgiht of the tree
 	return height(root) != -1;
 }
 private int height(TreeNode root){
@@ -22,6 +20,8 @@ private int height(TreeNode root){
 	//step3:
 	return Math.max(leftHeight, rightHeight) + 1;
 }
+
+
 //solution2: O(nlgn)
 public boolean isBalanced(TreeNode root){
 	//base case
@@ -66,5 +66,3 @@ public boolean isBalanced(TreeNode root) {
 
         return new ResultType(true, Math.max(left.maxDepth, right.maxDepth) + 1);
     }
-
-

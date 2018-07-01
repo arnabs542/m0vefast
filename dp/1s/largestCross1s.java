@@ -25,7 +25,7 @@ private int leftUp(int[][] matrix, int row, int col){
           up[i][j] = 1;
         }else if(j == 0){
           left[i][j] = 1;
-          up[i][j] = up[i-1][j];
+          up[i][j] = up[i-1][j] + 1;
         }else{
           left[i][j] = left[i][j-1]+1;
           up[i][j] = up[i-1][j]+1;

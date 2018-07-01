@@ -11,7 +11,7 @@
 public class Solution {
   public boolean isBipartite(List<GraphNode> graph) {
   	//map to record which group the node belongs to(0 or 1)
-    HashMap<GraphNode, Integer> visited = new HashMap<GraphNode, Integer>();
+    Map<GraphNode, Integer> visited = new HashMap<GraphNode, Integer>();
     for(GraphNode node : graph){
     	//use bfs to check it all nodes are connected
     	if(!bfs(node, visited))
@@ -19,7 +19,7 @@ public class Solution {
     }
     return true;
   }
-  private boolean bfs(GraphNode node, HashMap<GraphNode, Integer> visited){
+  private boolean bfs(GraphNode node, Map<GraphNode, Integer> visited){
   	if(visited.containsKey(node))
   		return true;
   	Queue<GraphNode> queue = new LinkedList<>();
