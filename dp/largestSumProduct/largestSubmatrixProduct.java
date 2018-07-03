@@ -8,6 +8,7 @@
       // Write your solution here
       double globalMax = matrix[0][0];
       for (int i = 0; i < matrix.length; i++) {
+        //cur (column) will be filled out by getArr helper function
         double[] cur = new double[matrix[0].length];
         for (int j = i; j < matrix.length; j++) {
           getArr(cur, matrix[j], j - i);
