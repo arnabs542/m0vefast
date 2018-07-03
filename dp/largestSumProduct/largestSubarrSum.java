@@ -19,22 +19,22 @@ public int subArrSum(int[] arr){
 }
 //how to return the left-right border of the solution
 public int[] largestSum(int[] arr){
-  int res = arr[0];
-  int globalMax = arr[0];
+  int localMax = arr[0];
+  int globalMax = Integer.MIN_VALUE;
   int start = 0;
   int end = 0;
   int[] sol = new int[2];
   for(int i = 1; i < arr.length; i++){
-    if(res > 0){
-      res = res+arr[i];
+    if(localMax > 0){
+      localMax = localMax+arr[i];
       end++;
     }else{
-      res = arr[i];
+      localMax = arr[i];
       start = i;
       end = i;
     }
-    if(res > globalMax){
-      globalMax = res;
+    if(localMax > globalMax){
+      globalMax = localMax;
       sol[0] = start;
       sol[1] = end;
     }

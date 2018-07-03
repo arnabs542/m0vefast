@@ -13,7 +13,6 @@ public int largestCross1s(int[][] matrix){
 private int leftUp(int[][] matrix, int row, int col){
   int[][] left = new int[row][col];
   int[][] up = new int[row][col];
-  int globalMax = 0;
   for(int i = 0; i < row; i++){
     for(int j = 0; j < col; j++){
       if(matrix[i][j] == 1){
@@ -53,8 +52,8 @@ private int rightDown(int[][] matrix, int row, int col){
           down[i][j] = down[i+1][j]+1;
           right[i][j] = 1;
         }else{
-          down[i][j] = down[i-1][j-1]+1;
-          right[i][j] = right[i-1][j-1]+1;
+          down[i][j] = down[i+1][j+1]+1;
+          right[i][j] = right[i+1][j+1]+1;
         }
       }
     }
@@ -68,7 +67,6 @@ private int merge(int[][] leftUp, int[][] rightDown, int row, int col){
     for(int j = 0; j < col; j++){
       leftUp[i][j] = Math.min(leftUp[i][j], rightDown[i][j]);
       globalMax = Math.max(globalMax, leftUp[i][j]);
-
     }
   }
   return globalMax;
