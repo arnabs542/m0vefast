@@ -55,3 +55,58 @@ public int minReplacements(String input) {
     }
     return Math.min(allA, preB);
   }
+
+//O(n) O(n)
+  public int minReplacements(String input) {
+    // Write your solution here
+    if(input.length() == 0)
+      return 0;
+    char[] arr = input.toCharArray();
+    int n = arr.length;
+	// Sa[i] is the intermediate result where size = (i + 1) and  replacedAOrMaintainB = false. It means that we have decided the previous value (input[n - i - 2] should be ‘a’ (either it’s originally ‘a’ or we replaced ‘b’ with ‘a’).
+	int[] Sa = new int[n];
+	// Sb[i] is the intermediate result where size = (i + 1) and  replacedAOrMaintainB = true. It means that we have decided the previous value (input[n - i - 2] should be ‘b’ (either it’s originally ‘b’ or we replaced ‘a’ with ‘b’).
+	int[] Sb = new int[n];
+
+	// init Sb
+	// The value of Sb[i] should be the count of As in input.substring(i+1, n), which we want to replace with b.
+	// Sb[i] can be calculated from the value of Sb[i-1].
+	Sb[0] = (arr[n - 1] == 'a') ? 1 : 0;
+	for (int i = 1; i < n; i ++)
+		Sb[i] = Sb[i-1] + ((arr[n - i - 1] == 'a') ? 1 : 0);
+
+	// Init Sa
+	// Sa[i] depends on both Sa[i-1] and Sb[i-1], so we initiated Sb first.
+	Sa[0] = 0;
+	for (int i = 1; i < n; i ++){
+		// Sa[i] should be the minimum of the two decisions — make the current character to be either ‘a’ or ‘b’.
+		Sa[i] = Math.min(Sa[i-1] + ((arr[n - i - 1] == 'a') ? 0 : 1), Sb[i-1] + ((arr[n - i - 1] == 'a') ? 1 : 0));
+    // Decide to make the current character to be ‘a’. no replacement needed if it’s already ‘a’, otherwise replacement + 1.
+    // Decide to make the current character to be ‘b’. no replacement needed if it’s already ‘b’, otherwise replacement + 1.
+	}
+	return Sa[n - 1];
+    // We should return the min of Sa and Sb here, but Sa is definitely no greater than Sb since assuming the previous character to be ‘a’ is more relaxed than ‘b’.
+
+  }
+  //O(n^2) O(1)
+  private int minReplacement(String str){
+    char[] arr = str.toCharArray();
+    int global_min = Integer.MAX_VALUE;
+    //int count = Integer.MAX_VALUE;
+    //i: space pointer, make sure all left replace to a, all right replace to b
+    for(int i = 0; i <= arr.length; i++){
+
+      int count = countChar(arr, 0, i, 'b')+ countChar(arr, i, arr.length - i, 'a');
+
+      global_min = Math.min(global_min, count);
+    }
+    return global_min;
+  }
+  private int countChar(char[] arr, int index, int length, char c){
+    int res = 0;
+    for(int i = index; i <= index+length; i++){
+      if(arr[i] == c)
+        res++;
+    }
+    return res;
+  }
