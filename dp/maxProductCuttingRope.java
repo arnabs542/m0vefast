@@ -47,8 +47,8 @@ public int maxProduct(int length){
 		//at least one of the partition is <= i/2
 		for(int j = 1; j <= i/2; j++){
 			//we have choice: not cut(arr[i]) and cut:
-												//LHS_length: max(not_not: i-j and cut(arr[i-j])
-												//RHS_length: j
+												//da_length: max(not_cut: i-j and cut(arr[i-j])
+												//xiao_length: j
 			arr[i] = Math.max(arr[i], j * Math.max(i - j, arr[i-j]));
 		}
 	}
