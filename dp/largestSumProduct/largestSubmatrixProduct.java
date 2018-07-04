@@ -8,7 +8,7 @@
       // Write your solution here
       double globalMax = matrix[0][0];
       for (int i = 0; i < matrix.length; i++) {
-        //cur (column) will be filled out by getArr helper function
+        //cumulated column-wise product from row[i->row_bottom]
         double[] cur = new double[matrix[0].length];
         for (int j = i; j < matrix.length; j++) {
           getArr(cur, matrix[j], j - i);
@@ -18,9 +18,10 @@
       return globalMax;
     }
     //idx here is different from submatrix sum: cur initialize as all 0
-    private double[] getArr(double[] cur, double[] source, int idx) {
+    //idx: row count
+    private double[] getArr(double[] cur, double[] source, int rowCount) {
       for (int i = 0; i < cur.length; i++) {
-        cur[i] = idx == 0 ? source[i] : source[i] * cur[i];
+        cur[i] = rowCount == 0 ? source[i] : source[i] * cur[i];
       }
       return cur;
     }
