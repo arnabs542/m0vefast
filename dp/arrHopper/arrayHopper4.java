@@ -22,17 +22,18 @@ public int minJump(int[] array, int index) {
     	int curr_index = queue.poll();
       int step = map.get(curr_index);
       //for each left and right distance we could reach
+      // i : how many steps we could move
       for (int i = 1; i <= array[curr_index]; i++) {
 
       	if (curr_index + i >= array.length - 1) {
       		return step + 1; //step of curretn index + one more step from current index to the end
       	}
-        //to right
+        //need more steps: go to right
       	if (curr_index + i < array.length && !map.containsKey(curr_index + i)){
         	map.put(curr_index + i, step + 1);
           queue.offer(curr_index + i);
         }
-        //to left
+        //need more steps: goto left
         if (curr_index - i >= 0 && !map.containsKey(curr_index - i)){
         	map.put(curr_index - i, step + 1);
           queue.offer(curr_index - i);

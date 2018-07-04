@@ -6,18 +6,18 @@ arrayhopper4: left/right, min to jump to the end?
 //Determine if you are able to reach the last index.
 //solution1: dp, arr[i] = from index 0 can jump to index i
 public boolean canJump(int[] array){
-	boolean[] arr = new boolean[array.length];
-	arr[0] = true;
+	boolean[] dp = new boolean[array.length];
+	dp[0] = true;
 	for(int i = 1; i < array.length; i++){
 		for(int j = 0; j < i; j++){
 			//if j is reachable from 0, and from j it is possibel to jump to i
-			if(arr[j] && array[j] + j >= i){
-				arr[i] = true;
+			if(dp[j] && array[j] + j >= i){
+				dp[i] = true;
 				break;
 			}
 		}
 	}
-	return arr[array.length-1];
+	return dp[array.length-1];
 }
 {1, 3, 2, 0, 3}, we are able to reach the end of array(jump to index 1 then reach the end of the array)
 {2, 1, 1, 0, 2}, we are not able to reach the end of array

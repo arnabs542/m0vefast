@@ -1,3 +1,5 @@
+//determin if a word can be composed by concatenating words from the given dictionary.
+//solution1: dp: O(string length * dict size). similar to array hopper1
 public boolean canBreak(String input String[] dict){
 	Set<String> set = buildSet(dict);
 	//arr[i]: input[i-1] or input.substring(0,i)
@@ -19,3 +21,4 @@ private Set<String> buildSet(String[] dict){
 		set.add(s);
 	return set;
 }
+//solution2: O(n^2)
