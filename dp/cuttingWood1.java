@@ -1,0 +1,1 @@
+//same as merging stone

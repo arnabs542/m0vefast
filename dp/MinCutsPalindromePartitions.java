@@ -1,5 +1,5 @@
 //assumption: input is not null
-public int minCuts(Stinrg input){
+public int minCutsPalindromePartitions(Stinrg input){
 	char[] arr = input.toCharArray();
 
 	int n = arr.length;
@@ -21,5 +21,3 @@ public int minCuts(Stinrg input){
 	}
 	return res[n]-1;
 }
-
-

@@ -1,5 +1,5 @@
 //solution1: DP O(s.length*t.length)
-public int LCS(String s, String t){
+public int LongestCommonSubsequence(String s, String t){
 	int slength = s.length();
 	int tlength = t.length();
 	int m[][] = new int[slength+1][tlength+1];
@@ -12,4 +12,3 @@ public int LCS(String s, String t){
 	}
 	return m[slength][tlength];
 }
-
