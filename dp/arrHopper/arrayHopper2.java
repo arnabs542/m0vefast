@@ -20,5 +20,4 @@ public int canJump(int[] array){
 }
 
 {3, 3, 1, 0, 4}, the minimum jumps needed is 2 (jump to index 1 then to the end of array)
-
 {2, 1, 1, 0, 2}, you are not able to reach the end of array, return -1 in this case.

@@ -1,4 +1,5 @@
 //Determine the minimum number of jumps you need to jump OUT OF the array.
+//https://piazza.com/class/j0eqhhdregb3i?cid=2399
 // method 1 DP
 public int minJump(int[] array) {
     if (array == null || array.length < 1 || array[0] == 0) {
@@ -45,5 +46,4 @@ public int minJump(int[] array) {
 
 }
 {1, 3, 2, 0, 2}, the minimum number of jumps needed is 3 (jump to index 1 then to the end of array, then jump out)
-
 {3, 2, 1, 1, 0}, you are not able to jump out of array, return -1 in this case.

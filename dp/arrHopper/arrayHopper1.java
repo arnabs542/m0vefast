@@ -1,3 +1,8 @@
+arrayhopper1: can jump to the end?
+arrayhopper2: min to jump to the end?
+arrayhopper3: min to jump out of array?
+arrayhopper4: left/right, min to jump to the end?
+
 //Determine if you are able to reach the last index.
 //solution1: dp, arr[i] = from index 0 can jump to index i
 public boolean canJump(int[] array){
@@ -15,7 +20,6 @@ public boolean canJump(int[] array){
 	return arr[array.length-1];
 }
 {1, 3, 2, 0, 3}, we are able to reach the end of array(jump to index 1 then reach the end of the array)
-
 {2, 1, 1, 0, 2}, we are not able to reach the end of array
 //solution2: dp, arr[i] = from index i can jump to last element/target
 public boolean canJump(int[] arr){
