@@ -35,17 +35,19 @@ public int minCut(String s) {
 		    // Induction rule: M[i] = 0 if substring[0, i) isP
 		    // M[i] = Math.min(M[j]) + 1, when substring[0, j] && substring[j + 1, m] isP
 		    // where j < i
+				__ __ __
+		  	 0  1  2
 				int[] min = new int[input.length()];
 				min[0] = 0;
 				for (int i = 1; i < min.length; i++) {
 					// first check the case 1
 					if (isPalindrome(input.substring(0, i + 1))) {
-						min[i] = 0;
+						min[i] = 0;  //such string no need to cut
 						continue;
 					}
 					// case 2
 					min[i] = i; // worst case, we may need i cut for (i + 1) long array
-					for (int j = 0; j <= i - 1; j++) {
+					for (int j = 0; j < i; j++) {
 						String sub = input.substring(j + 1, i + 1);
 						if (isPalindrome(sub)) {
 							min[i] = Math.min(min[i], min[j] + 1);

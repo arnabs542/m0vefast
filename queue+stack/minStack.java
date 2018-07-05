@@ -3,27 +3,32 @@ public class minStack{
 	private Stack<Integer> minStack;
 
 	public minStack(){
-		stack = new Stack<Integer>();
-		minStack = new Stack<Integer>();
+		stack = new LinkedList<Integer>();
+    minStack = new LinkedList<Integer>();
 	}
 	public void push(int number){
 		stack.push(number);
-		if(minStack.empty())
+		if(minStack.empty() || minStack.peek() >= number)
 			minStack.push(number);
-		else
-			if(minStack.peek() >= number)
-				minStack.push(number);
 	}
 	public int pop(){
-		if(stack.peek().equals(minStack.peek()))
-			minStack.pop();
-		return stack.pop();
+		if(stack.isEmpty())
+    	return -1;
+    int res = stack.poll();
+    if(minStack.peek().equals(res)){
+      minStack.poll();
+    }
+    return res;
 	}
 	public int top(){
-		retrun stack.top();
+		if(stack.isEmpty())
+    	return -1;
+		return stack.peek();
 	}
 	public int min(){
-		return minStack.pop();
+		if(minStack.isEmpty())
+   	 return -1;
+		return minStack.peek();
 	}
 }
 

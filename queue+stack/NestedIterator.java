@@ -1,20 +1,22 @@
 //http://www.lintcode.com/problem/flatten-nested-list-iterator/
+//Flatten Nested List Iterator
 public class NestedIterator implements Iterator<Integer> {
-
+    //TODO
     private Stack<NestedInteger> stack;
-
+    //TODO
     private void pushListToStack(List<NestedInteger> nestedList) {
-        Stack<NestedInteger> temp = new Stack<>();
+        Stack<NestedInteger> tempStack = new Stack<>();
         for (NestedInteger nested : nestedList) {
-            temp.push(nested);
+            tempStack.push(nested);
         }
 
-        while (!temp.isEmpty()) {
-            stack.push(temp.pop());
+        while (!tempStack.isEmpty()) {
+            stack.push(tempStack.pop());
         }
     }
 
     public NestedIterator(List<NestedInteger> nestedList) {
+      //TODO
         stack = new Stack<>();
         pushListToStack(nestedList);
     }
@@ -22,6 +24,7 @@ public class NestedIterator implements Iterator<Integer> {
     // @return {int} the next element in the iteration
     @Override
     public Integer next() {
+      //TODO
         if (!hasNext()) {
             return null;
         }
@@ -31,6 +34,7 @@ public class NestedIterator implements Iterator<Integer> {
     // @return {boolean} true if the iteration has more element or false
     @Override
     public boolean hasNext() {
+      //TODO
         while (!stack.isEmpty() && !stack.peek().isInteger()) {
             pushListToStack(stack.pop().getList());
         }

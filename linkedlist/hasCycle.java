@@ -1,11 +1,12 @@
 //钟表的指针，一个走得快一个走得慢，走得快的一定会在某个时刻追上走得慢的指针
 public boolean hasCycle(ListNode head){
+	//make sure slow and fast can be initialized
 		if (head == null || head.next == null)
 			return false;
 		ListNode fast = head.next;
 		ListNode slow = head;
 		while (fast != slow) {
-			//cur jump fast is null || next jump slow is null
+			//make sure slow.next and slow.next.next is jumpable
 				if(fast==null || fast.next==null)
 						return false;
 				fast = fast.next.next;
