@@ -34,9 +34,9 @@ private String replaceLonger(char[] arr, String s, String t){
     int slow = res.length -1;   //tracking resulting string
 
     while(fast >= 0){
-    	if(lastIndex >= 0 && fast == matches.get(lastIndex)){
+    	if(lastIndex >= 0 && fast == matches  .get(lastIndex)){
       	copySubStr(res, slow - t.length() + 1, t);
-        slow -= t.length();  
+        slow -= t.length();
         fast -= s.length();
         lastIndex--;
       }else{

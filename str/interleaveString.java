@@ -28,3 +28,14 @@ public boolean interleave(String a, String b, String c){
   }
   return res[alen][blen];
 }
+
+4种情况啊
+当前C 不等于A 且 不等于 B， gg 思密达
+当前C 等于A 而不等于B， 比较A C
+当前C 等于B 而不等于A， 比较B C
+当前C 等于B 且等于A， 比较AC || BC
+state：dp[i][j] 表示前i个A的substring 和 前j个B的substring 可以merge成为C的前（i+j）的substring
+induction rule:
+dp[i][j] = (A[i]  == C[i + j]) && dp[i - 1][j]   C的当前位 和 A的第i位一样
+
+         or  (B[j] == C[i + j]) && dp[i][j - 1]    C的当前位 和 B的第j位一样
