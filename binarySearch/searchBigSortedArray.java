@@ -4,7 +4,7 @@ public int searchBigSortedArray(ArrayReaer reader, int target){
 	int i = 1;
 	while(reader.get(i-1) != null && reader.get(i-1) < target)
 		i = i * 2;
-	int left = 0; 
+	int left = 0;
 	int right = i-1;
 	while(left + 1 < right){
 		int mid = left + (right - left)/2;

@@ -5,7 +5,7 @@ public int longestCommonSubSequence(String a, String b){
 
   for(int i = 1; i <= alen; i++){
     for(int j = 1; j <= blen; j++){
-      if(a.charAt(i) != b.charAt(j)){
+      if(a.charAt(i-1) != b.charAt(j-1)){
         res[i][j] = Math.max(res[i-1][j], res[i][j-1]);
       }else{
         res[i][j] = res[i-1][j-1]+1;

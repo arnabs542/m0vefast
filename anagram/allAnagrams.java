@@ -45,3 +45,54 @@ private Map<Character, Integer> countMap(String s){
     }
     return map;
 }
+
+//Sliding window
+// Then we modify its element and restore it as we scan through s.
+
+// If we find a match, decrease that matched character's apperance times by 1.
+
+// To simulate the queue used in solution 1, we introduce a new variable matched that keeps track
+
+// of how many characters we've matched so far.  This matched variable also saves us from
+
+// the O(26) anagram check each time we've found a substring of length m in solution 1.
+
+public List<Integer> allAnagrams(String p, String s) {
+       // Write your code here
+        List<Integer> ans = new ArrayList <Integer>();
+
+        if (s.length() < p.length()) {
+            return ans;
+        }
+        int[] sum = new int[26];
+        int plength = p.length(), slength = s.length();
+        //store all characters' frequencies from p
+        for(char c : p.toCharArray()){
+            sum[c - 'a']++;
+        }
+        int start = 0, end = 0, matched = 0;
+        for(end = 0; end < slength; end++) {
+            //find a character match
+            if(sum[s.charAt(end) - 'a'] > 0){
+                matched++;
+            }
+            sum[s.charAt(end) - 'a']--;
+            //if find all needed matches, add index start to final result
+            if(matched == plength) {
+                ans.add(start);
+            }
+            //sliding window principle
+            if(end - start  + 1 == plength){
+                //restore the frequency of character s.charAt(start) for later check
+                sum[s.charAt(start) - 'a']++;
+                //found a match at index start before; need to decrease matched
+                //by 1 as s.charAt(start) will be out of the sliding window
+                //if before there is a match, previous sum[s.charAt(start) - 'a'] = 0
+                if(sum[s.charAt(start) - 'a'] > 0){
+                    matched--;
+                }
+                start++;
+            }
+        }
+        return ans;
+    }

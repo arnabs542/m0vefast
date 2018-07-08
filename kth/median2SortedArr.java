@@ -15,9 +15,9 @@ public double median2SortedArr(int[] a, int[] b){
 private int helper(int[] a, int aleft, int[] b, int bleft, int k){
   //base case
   if(aleft >= a.length)
-    return b[bleft+k/2-1];
+    return b[bleft+k-1];
   if(bleft >= b.length)
-    return a[aleft+k/2-1];
+    return a[aleft+k-1];
   if(k == 1)
     return Math.min(a[aleft], b[bleft]);
   int ak = aleft+k/2-1 < a.length ? a[aleft+k/2-1]:Integer.MAX_VALUE;

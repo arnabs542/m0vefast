@@ -19,13 +19,13 @@ public int[] firstKCommonElements(int[][] arr, int k) {
         ptr[j]++;
       }
       //reach the end of row || not equal (cur > pivot => no common in this row), go to next row
-      if(ptr[j] == arr[0].length || pivot != arr[0][ptr[j]]){
+      if(ptr[j] == arr[0].length || pivot != arr[j][ptr[j]]){
         break;
       }
       //there is a match for jth row
       counter++;
       if(counter == n){
-        res[index++] = arr[0][ptr[j]];
+        res[index++] = pivot;
       }
       if(index == k){
         return res;

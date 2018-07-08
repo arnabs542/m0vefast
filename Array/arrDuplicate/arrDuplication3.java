@@ -28,7 +28,7 @@ public int[] arrDup3(int[] arr){
   int slow = 0;
   while(fast < arr.length){
     int begin = fast;
-    while(fast < arr.length && arr[fast] == arr[begin]){arraaa
+    while(fast < arr.length && arr[fast] == arr[begin]){
       fast++;
     }
     //if no duplicate, didnt skip the memeber

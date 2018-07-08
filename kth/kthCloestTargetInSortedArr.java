@@ -2,7 +2,7 @@
 //logn+logk+k
 //先用logn找到closest element, closest两侧和target的差值刚好是两个sorted array，
 //可以用找kth smallest in two sorted array的方法来O(lgk)做
-public int[] kthCloest(int[] arr, int target){
+public int[] kCloest(int[] arr, int target){
   //closet in sorted arr lgn
   if(arr == null || arr.length <= 1)
     return arr;

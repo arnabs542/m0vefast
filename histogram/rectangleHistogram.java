@@ -11,7 +11,7 @@ public int histogram(int[] arr){
       //vertical height = height of lowest col (left/bottom of stack)
       int height = arr[stack.pollFirst()];
       //determine the left boundary
-      int left = stack.isEmpty() ? 0: stack.peekFirst()+1;  //just polled out index
+      int left = stack.isEmpty() ? 0: stack.peekFirst()+1;  //peek index is the previous index that form incending, not necesary the last poped index
       //update rectangle
       //right = i (new maybe assending index)
       res = Math.max(res, height*(i - left));
