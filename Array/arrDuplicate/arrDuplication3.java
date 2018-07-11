@@ -11,7 +11,7 @@ public int[] arrDup3(int[] arr) {
     for(fast = 1; fast < arr.length; fast++){
     	if(arr[slow] == arr[fast])
     		flag = true;
-    	else if(flag == true){  //arr[fast]!=arr[slow] and flag is true
+    	else if(flag){  //arr[fast]!=arr[slow] and flag is true
     		arr[slow] = arr[fast];   //override the duplicate slow one
     		flag = false;
     	}else{                 //arr[fast]!=arr[slow] and flag is false

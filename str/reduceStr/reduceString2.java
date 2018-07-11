@@ -9,11 +9,11 @@ public String reduceString2(String s){
     for(fast = 1; fast< arr.length; fast++){
         if(arr[fast] != arr[slow]){
             counter++;
-            arr[slow++] = arr[fast];
+            arr[++slow] = arr[fast];
         }else{
             if(counter < 2){
                 counter++;
-                arr[slow++] = arr[fast];
+                arr[++slow] = arr[fast];
             }
         }
     }

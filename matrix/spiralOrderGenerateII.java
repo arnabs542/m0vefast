@@ -2,7 +2,7 @@
 //soluiton: iterative
 public int[][] spiralGenerateII(int m, int n) {
 	int[][] matrix = new int[m][n];
-	if(n == 0 || m == 0) 
+	if(n == 0 || m == 0)
 		return matrix;
 	int num = 1;
 	int left = 0;
@@ -22,10 +22,12 @@ public int[][] spiralGenerateII(int m, int n) {
 		right--;
 		up++;
 		down--;
-	}
+	}/
+	//dont forget about this base case
 	if(left > right || up > down)
 		return matrix;
 	if(left == right){
+		//should be <=, since the return statement is <, reach the actual index
 		for(int i = up; i <= down; i++)
 			matrix[i][left] = num++;
 	}else{

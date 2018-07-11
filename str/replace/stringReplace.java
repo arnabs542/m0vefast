@@ -12,6 +12,7 @@ public String replace(String input, String s, String t) {
 private String replaceShorter(char[] arr, String s, String t){
 	int slow = 0;  //tracking resulting string , slow not included
 	int fast = 0;  //traverse arr
+  //make sure we going outside after finish the last replacement
 	while(fast < arr.length){
     //fast index goes to the last starting position of s && need to replace
 		if(fast <= arr.length - s.length() && equalSubStr(arr, fast, s)){
@@ -34,7 +35,7 @@ private String replaceLonger(char[] arr, String s, String t){
     int slow = res.length -1;   //tracking resulting string
 
     while(fast >= 0){
-    	if(lastIndex >= 0 && fast == matches  .get(lastIndex)){
+    	if(lastIndex >= 0 && fast == matches.get(lastIndex)){
       	copySubStr(res, slow - t.length() + 1, t);
         slow -= t.length();
         fast -= s.length();
