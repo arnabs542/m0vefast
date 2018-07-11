@@ -16,9 +16,10 @@ public TreeNode LCA2(TreeNode root, TreeNode node1, TreeNode node2){
 
     ParentTreeNode lowestAncestor = null;
     while(indexA >= 0 && indexB >= 0){
-        if(pathA.get(indexA) != pathB.get(indexB))
+        if(pathA.get(indexA) == pathB.get(indexB))
+            //break;
+            lowestAncestor = pathA.get(indexA);
             break;
-        lowestAncestor = pathA.get(indexA);
         indexA--;
         indexB--;
     }
@@ -66,7 +67,7 @@ private int length(TreeNode node){
     }
     return length;
 }
-//another soluiton 
+//another soluiton
 class ResultType{
      public int max_length;
      public int max_down;

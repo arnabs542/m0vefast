@@ -4,7 +4,7 @@ public List<Integer> zigZag(TreeNode root) {
         return new LinkedList<Integer>();
 
     Deque<TreeNode> deque = new LinkedList<>();
-    List<Integer> list = new LinkedList<>();
+    List<Integer> list = new ArrayList<>();
 
     deque.offerLast(root);
     int layer = 0;
