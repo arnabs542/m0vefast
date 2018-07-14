@@ -1,5 +1,5 @@
 private static final char[] ps = new char[]{'(',')','[',']','{','}'};
-public List<String> ValidPermutationsOfParentheses2(int l, int m, int n){
+public List<String> vaidParenthesis3(int l, int m, int n){
   int[] remain = new int[]{l,l,m,m,n,n};
   int targetlen = 2*(m+l+n);
   StringBuilder path = new StringBuilder();
