@@ -1,5 +1,5 @@
 //[((()))", "(()())", "(())()", "()(())", "()()()"]
-public List<String> ValidPermutationsOfParentheses1_validIfBlocks(int n) {  // n pairs of
+public List<String> vaidParenthesis1(int n) {  // n pairs of
 	List<String> res = new ArrayList<>();
 	if(n <= 0)
 		return res;
