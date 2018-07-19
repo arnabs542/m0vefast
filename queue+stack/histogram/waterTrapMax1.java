@@ -26,6 +26,11 @@ public int waterTrap(int[] arr){
 // loop: res = Math.max(Math.min(m1, m2) - input[i])
 
 //https://www.programcreek.com/2014/03/leetcode-container-with-most-water-java/
+// Initially we can assume the result is 0. Then we scan from both sides.
+// If leftHeight < rightHeight, move left and find a value that is greater than leftHeight.
+// if leftHeight > rightHeight, move right and find a value that is greater than rightHeight.
+// Additionally, keep tracking the max value.
+
 public int maxArea(int[] height) {
 	if (height == null || height.length < 2) {
 		return 0;
