@@ -25,6 +25,5 @@ public int longestValidParentheses(String input){
 			}
 		}
 	}
-
 	return result;
 }
