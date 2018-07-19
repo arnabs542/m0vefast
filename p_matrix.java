@@ -32,17 +32,39 @@ public double[][] multiply(double[][] one, double[][] two){
     int row2 = two.length;
     int col2 = two[0].length;
     if(row1 != col2)   //col1 should == row1
-        return new RuntimeException("illegal input matrix demension")
+        return new RuntimeException("illegal input matrix demension");
     double[][] res = new double[row1][col2];
     for(int i = 0; i < row1; i++){
         for(int j = 0; j < col2; j++){
-            for(int k = 0; k < col1; k=+){
+            for(int k = 0; k < col1; k++){
                 res[i][j] = one[i][k] * two[k][j];
             }
         }
     }
     return res;
 }
+//sparse matrix multiplication
+//what is the effiecnt way or data structure to store data for sparse matrix
+public int[][] multiply(int[][] A, int[][] B) {
+    // Write your solution her
+    int row1 = A.length,;
+    int col1 = A[0].length;
+    int col2 = B[0].length;
+    int[][] res = new int[row1][col2];
+
+        for(int i = 0; i < row1; i++) {
+            for(int k = 0; k < col1; k++) {
+                if (A[i][k] != 0) {
+                    for (int j = 0; j < col2; j++) {
+                        if (B[k][j] != 0)
+                          res[i][j] += A[i][k] * B[k][j];
+                    }
+                }
+            }
+        }
+        return res;
+
+  }
 //generator
 //iterative nn
 public int[][] generator(int n){
@@ -158,4 +180,3 @@ public List<Integer> traversal2(int[][] matrix){
         res.add(matrix[left][up++]);
     return res;
 }
-
