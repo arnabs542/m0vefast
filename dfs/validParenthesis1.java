@@ -13,6 +13,7 @@ public List<String> vaidParenthesis1(int n) {  // n pairs of
 //index: the current position in cur we want to fill in with etiehr ()
 private void dfs(List<String> res, char[] path, int left, int right, int index){
 	//terminate condition: when no () left
+	//path.length() == 2*n
 	if(left == 0 && right == 0){
 		res.add(new String(path));  //NOTICE
 		return;

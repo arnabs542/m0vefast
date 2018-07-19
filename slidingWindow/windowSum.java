@@ -1,4 +1,4 @@
-public int[] winSum(int[] nums, int k) {
+public int[] allKWinSum(int[] nums, int k) {
 	if(nums == null || nums.length < k || k <= 0)
 		return new int[0];
 	int[] res = new int[nums.length - k + 1];

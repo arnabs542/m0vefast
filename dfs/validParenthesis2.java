@@ -6,7 +6,7 @@ public boolean vaidParenthesis2(String s){
 	map.put('[', ']');
 	map.put('{', '}');
 
-	Stack<Character> stack = new Stack<Character>();
+	Stack<Character> stack = new Stack<Character>(); //to maintain palindrom
 
 	for (int i = 0; i < s.length(); i++) {
 		char curr = s.charAt(i);
