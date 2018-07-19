@@ -1,8 +1,7 @@
-//non-distinct, index_pairs
-
+//duplicate, index_pairs
 public List<List<Integer>> 2SumPairs(int[] array, int target){
 	List<List<Integer>> res = new ArrayList<>();
-	//map(target-array[i], value: i, j, k..... the index that + array[i] = target
+	//map(arrayi], value: i, j, k.....
 	Map<Integer, List<Integer>> map = new HashMap<>();
 	for(int i = 0; i < array.length; i++){
 		List<Integer> indexs = map.get(target - array[i]);

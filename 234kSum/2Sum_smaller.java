@@ -11,7 +11,7 @@ public int smallerPairs(int[] array, int target) {
         // 如果三个数的和小于目标数，那将头指针向右移
         } else {
             // right - left个组合都是小于目标数的
-            cnt += right - left;
+            count += right - left;
             left++;
         }
     }

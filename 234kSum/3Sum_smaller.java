@@ -1,4 +1,4 @@
-public int threeSumSmaller(int[] nums, int target) {
+public int 3SumSmaller(int[] nums, int target) {
         // 先将数组排序
         Arrays.sort(nums);
         int res = 0;

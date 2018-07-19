@@ -1,0 +1,203 @@
+//second max in a array : O(lgn)
+public class Solution{
+	static class Element{
+    	int value;
+    	List<Integer> compareValues;
+    	Element(int value){
+    		this.value = value;
+    		this.compareValues = new ArrayList<>();
+   	 	}
+	}
+	public int[] largestAndSecond(int[] arr) {
+    // Write your solution here.
+    // The first element is the largest number,
+    // the second element is the second largest number.
+	  //1) construct strcture
+    	Element[] helper = convert(arr);
+		//2) compare and swap
+    	int larger_length = arr.length;
+    	while(larger_length > 1){
+    		compareAndSwap(helper, larger_length);
+				//since compare one time, so tobedetection length is reduced
+    		larger_length = (larger_length + 1)/2;
+    		//keep modifying the left larger partition,
+    		//so the largest one will be on the leftmost index
+    	}
+		return new int[]{helper[0].value,
+					largest(helper[0].compareValues)};
+	}
+
+	private Element[] convert(int[] arr){
+		Element[] helper = new Element[arr.length];
+		for(int i = 0; i < arr.length; i++){
+			helper[i] = new Element(arr[i]);  //construct Element!!!!
+		}
+		return helper;
+	}
+	private void compareAndSwap(Element[] helper, int larger_length){
+		for(int i = 0; i < larger_length/2; i++){
+			if(helper[i].value < helper[larger_length - 1 - i].value)
+				swap(helper, i, larger_length-1-i);
+			helper[i].compareValues.add(helper[larger_length - 1 - i].value);
+		}
+	}
+	private void swap(Element[] helper, int left, int right){
+		Element temp = helper[left];
+		helper[left] = helper[right];
+		helper[right] = temp;
+	}
+	//O(1)
+	private int largest(List<Integer> list){
+		int max = list.get(0);
+		for(int each : list){
+			max = Math.max(max, each);
+		}
+		return max;
+	}
+}
+
+//practice
+static class Element{
+	int value;
+	List<Integer> list;
+	public Element(int value){
+		this.value = value;
+		this.lsit = new ArrayList<>();
+	}
+}
+public int secondLargest(int[] arr){
+	Element[] res = convert(arr);
+	int len = arr.length;
+	while(len > 1){
+		reduce(res, len);
+		len = (len+1)/2;
+	}
+	return findBig(res[0].list);
+}
+private void reduce(Element[] res, int len){
+	for(int i = 0; i < len/2; i++){
+		if(res[i] < res[len - 1 - i]){
+			swap(res, i, len-1-i);
+		}
+		res[i].list.add(res[len-1-i].vakue);
+	}
+}
+private Element[] convert(int[] arr){
+	Element[] res = new Element[arr.length];
+	for(int i = 0; i < arr.length; i++){
+		res[i] = new Element(arr[i]);
+	}
+	return res;
+}
+private int findBig(List<Integer> arr){
+	int res = Integer.MIN_VALUE;
+	for(int each : arr){
+		res = Math.max(res, eac);
+	}
+	return res;
+}
+
+
+
+
+
+
+
+
+//tree how to find the longest branch: maxpath
+//K lettered words from a string
+//string kth unique char
+public Character reduce(String str){
+	int count = 0;
+	int slow = 0;
+	int fast = 1;
+	boolean flag;
+	char[] arr = str.toCharArray();
+	for(fast = 1; fast < arr.length; fast++){
+		if(arr[slow] == arr[fast])
+			flag = true;
+		if(flag)
+			arr[slow] == arr[fast];
+		else{
+			arr[++slow] == arr[fast];
+			flag = false;
+			count++;
+			if(count == k)
+				break;
+		}
+	}
+	return arr[slow];
+	//return new String(arr, 0, flag? slow-1 : slow);
+}
+//Return second largest number in a binary tree.
+//traverse bianry tree and recored first and seocnd
+public int secondLargest(TreeNode root){
+	if(root == null)
+		return -1;
+		int first = Intger.MIN_VLAUE;
+		int second = first;
+	Deque<Integer> deque = new LinekdList<>();
+	//deque.offer(root);
+	TreeNode cur = root;
+	while(!deque.isEmpty() || cur != null){
+		while(cur != null){
+			deque.offer(cur);
+			cur = cur.left;
+		}
+		cur = deque.poll();
+		//res.add(cur);
+		if(cur > first){
+			first = cur.value;
+		}else if (cur > second && cur < first){
+			second = cur.value;
+		}
+		cur = cur.right;
+	}
+	return second;
+}
+//Count the "islands" on a binary matrix of 0's and 1's
+//Given a binary matrix (0's and 1's), how many groups of connected 1's are there?
+public int numberIslands(int[][] matrix){
+	if(matrix == null || matrix.length == 0 || matrix[0] == null || matrix[0].length == 0)
+		return 0;
+	int n = matrix.length;
+	int m = matrix[0].length;
+	int res = 0;
+	for(int i = 0; i < n; i++){
+		for(int j = 0; j < m; j++){
+			if(matrix[i][k] == 1){
+				dfs(matrix, i, j);
+				res++;
+			}
+		}
+	}
+	return res;
+}
+private void dfs(int[][] matrix, int row, int col){
+	int[] dx = new int[]{0,1,-1,0};
+	int[] dy = new int[]{1,0,0,-1};
+	Queue<Integer> queue = new LinekdList<>();
+	queue.offer(new Element(row, col));
+	matrix[row][col] = 0;
+
+	while(!queue.isEmpty()){
+		Element cur = queue.poll();
+		//matrix[x][y] = false;
+
+		for(int i= 0; i < 4; i++){
+			Element next = new Element(cur.x + dx[i], cur.y + dy[i]);
+			if(!isInBound(matrix, next)){
+				continue;
+			}
+			if(matrix[next.x][next.y] == 1){
+				matrix[next.x][next.y] = 1;
+				queue.offer(new Element(next.x, next.y));
+			}
+		}
+	}
+}
+private boolean isInBound(int[][] matrix, Element cur){
+	if(x >= 0  && x < matrix.length && cur.y >= 0 && cur.y < matrix[0].length)
+		return true;
+	return false;
+}

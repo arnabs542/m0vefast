@@ -1,3 +1,4 @@
+//with duplicate
 //solution1: O(nlgn)
 public List<List<Integer>> allTriples(int[] arr, int target) {
 	//assume length >= 3
@@ -17,7 +18,7 @@ public List<List<Integer>> allTriples(int[] arr, int target) {
 			if(temp + arr[i] == target){
 				res.add(Arrays.asList(arr[i], arr[left], arr[right]));
 				left++;
-				right--;   //?!
+				//right--;
 				//choosing j: ignore all posssible duplicate j as well
 				while(left < right && arr[left] == arr[left-1])
 					left++;
@@ -29,5 +30,3 @@ public List<List<Integer>> allTriples(int[] arr, int target) {
 		}
 		return res;
 }
-
-

@@ -6,7 +6,8 @@ public String removeCertainChar(String input, String t){
 		set.add(t.charAt(i));
 
 	int slow = 0;
-	for(int fast = 0; fast < arr.length; fast++){
+	int fast = 0;
+	for(fast = 0; fast < arr.length; fast++){
 		if(!set.contains(arr[fast]))
 			arr[slow++] = arr[fast];
 	}
