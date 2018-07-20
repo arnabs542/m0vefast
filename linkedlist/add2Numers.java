@@ -17,9 +17,8 @@ public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
       p3.next = new ListNode(carry % 10);
       p3 = p3.next;
       carry / 10;
-      if(carry == 1)
-        p3.next = new ListNode(1);
-
-      return dummy.next;
     }
+    if(carry == 1)
+      p3.next = new ListNode(1);
+    return dummy.next;
   }

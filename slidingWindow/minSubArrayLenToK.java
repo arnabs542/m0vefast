@@ -1,4 +1,4 @@
-A simple sliding window solution.
+//A simple sliding window solution.
 
 public int minSubArrayLen(int s, int[] nums) {
     if(nums==null || nums.length==1)

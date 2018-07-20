@@ -1,3 +1,5 @@
+// The fast pointer is n steps ahead of the slow pointer.
+// When the fast reaches the end, the slow pointer points at the previous element of the target element.
 public ListNode removeNthFromEnd(ListNode head, int n) {
     if(head == null)
         return null;
@@ -5,7 +7,7 @@ public ListNode removeNthFromEnd(ListNode head, int n) {
     ListNode fast = head;
     ListNode slow = head;
 
-    for(int i=0; i<n; i++){
+    for(int i = 0; i < n; i++){
         fast = fast.next;
     }
 
@@ -13,14 +15,12 @@ public ListNode removeNthFromEnd(ListNode head, int n) {
     if(fast == null){
         head = head.next;
         return head;
+    }else{
+      while(fast.next != null){
+          fast = fast.next;
+          slow = slow.next;
+      }
+      slow.next = slow.next.next;
+      return head;
     }
-
-    while(fast.next != null){
-        fast = fast.next;
-        slow = slow.next;
-    }
-
-    slow.next = slow.next.next;
-
-    return head;
 }
