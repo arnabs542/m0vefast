@@ -30,7 +30,7 @@ public list<Interval> mergeIntervals(List<Interval> list, Interval toAdd){
   }
   return res;
 }
-https://www.jiuzhang.com/solution/merge-intervals/
+https://www.jiuzhang.com/solution/merge-intervals/ merge the overlap intervals
 public List<Interval> merge(List<Interval> intervals) {
        if (intervals == null || intervals.size() <= 1) {
            return intervals;
