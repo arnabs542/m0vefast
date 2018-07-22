@@ -9,6 +9,7 @@ public void flatten(TreeNode root) {
             if(p.left != null){
                 p.right = p.left;
                 p.left = null;
+            //reach end, pop then
             }else if(!stack.empty()){
                 TreeNode temp = stack.pop();
                 p.right=temp;

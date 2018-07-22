@@ -1,4 +1,3 @@
-
 public List<Integer> inOrderTraversal(TreeNode root){
 	Stack<TreeNode> stack = new Stack<TreeNode>();   //record for direction
 	List<Integer> res = new ArrayList<>();
