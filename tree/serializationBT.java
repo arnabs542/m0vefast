@@ -1,96 +1,82 @@
-//serialization
-//covert bt to doubly linkedlist in in-order sequence1
-/**
- * Definition of TreeNode:
- * public class TreeNode {
- *     public int val;
- *     public TreeNode left, right;
- *     public TreeNode(int val) {
- *         this.val = val;
- *         this.left = this.right = null;
- *     }
- * }
- * Definition for Doubly-ListNode.
- * public class DoublyListNode {
- *     int val;
- *     DoublyListNode next, prev;
- *     DoublyListNode(int val) {
- *         this.val = val;
- *         this.next = this.prev = null;
- *     }
- * }
- */
-class ResultType {
-    DoublyListNode first, last;
+//serialization: https://www.programcreek.com/2014/05/leetcode-serialize-and-deserialize-binary-tree-java/
+//level oreder
+//preorder
+public String serialize(TreeNode root) {
+    if(root==null)
+        return null;
 
-    public ResultType(DoublyListNode first, DoublyListNode last) {
-        this.first = first;
-        this.last = last;
+    Stack<TreeNode> stack = new Stack<>();
+    stack.push(root);
+    StringBuilder sb = new StringBuilder();
+
+    while(!stack.isEmpty()){
+        TreeNode h = stack.pop();
+        if(h!=null){
+            sb.append(h.val+",");
+            stack.push(h.right);
+            stack.push(h.left);
+        }else{
+            sb.append("#,");
+        }
     }
+    //sb last char is #,
+    return sb.toString().substring(0, sb.length()-1);
 }
 
-public class Solution {
-    /**
-     * @param root: The root of tree
-     * @return: the head of doubly list node
-     */
-    public DoublyListNode bstToDoublyList(TreeNode root) {
-        if (root == null) {
-            return null;
-        }
+// Decodes your encoded data to tree.
+public TreeNode deserialize(String data) {
+    if(data == null)
+        return null;
 
-        ResultType result = helper(root);
-        return result.first;
-    }
+    int[] t = {0};
+    String[] arr = data.split(",");
 
-    public ResultType helper(TreeNode root) {
-        if (root == null) {
-            return null;
-        }
-
-        ResultType left = helper(root.left);
-        ResultType right = helper(root.right);
-        DoublyListNode node = new DoublyListNode(root.val);
-
-        ResultType result = new ResultType(null, null);
-
-        if (left == null) {
-            result.first = node;
-        } else {
-            result.first = left.first;
-            left.last.next = node;
-            node.prev = left.last;
-        }
-
-        if (right == null) {
-            result.last = node;
-        } else {
-            result.last = right.last;
-            right.first.prev = node;
-            node.next = right.first;
-        }
-
-        return result;
-    }
+    return helper(arr, t);
 }
 
+public TreeNode helper(String[] arr, int[] t){
+    if(arr[t[0]].equals("#")){
+        return null;
+    }
 
+    TreeNode root = new TreeNode(Integer.parseInt(arr[t[0]]));
 
+    t[0]=t[0]+1;
+    root.left = helper(arr, t);
+    t[0]=t[0]+1;
+    root.right = helper(arr, t);
 
-
-
-//keep tracking head and pre ptr
-public static TreeNode prev = null;
-public void convert(TreeNode root, TreeNode head){
-  if(root == null)
-    return;
-  convert(root.left, head);
-  if(prev == null){
-    head = root;
-  }else{
-    root.left = prev;
-    prev.right = root
-  }
-  prev = root;
-  convert(root.right, head);
+    return root;
 }
+
+//https://www.programcreek.com/2015/01/leetcode-verify-preorder-serialization-of-a-binary-tree-java/
+// "9,3,4,#,#,1,#,#,2,#,6,#,#",
+//We can keep removing the leaf node until there is no one to remove.
+// If a sequence is like "4 # #", change it to "#" and continue.
+//  We need a stack so that we can record previous removed nodes.
+public boolean isValidSerialization(String preorder) {
+   // Write your solution here
+   LinkedList<String> stack = new LinkedList<String>();
+    String[] arr = preorder.split(",");
+
+    for(int i=0; i<arr.length; i++){
+        stack.add(arr[i]);
+
+        while(stack.size()>=3
+            && stack.get(stack.size()-1).equals("#")
+            && stack.get(stack.size()-2).equals("#")
+            && !stack.get(stack.size()-3).equals("#")){
+
+            stack.remove(stack.size()-1);
+            stack.remove(stack.size()-1);
+            stack.remove(stack.size()-1);
+
+            stack.add("#");
+        }
+    }
+
+    if(stack.size()==1 && stack.get(0).equals("#"))
+        return true;
+    else
+        return false;
+ }

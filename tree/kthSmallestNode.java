@@ -1,5 +1,5 @@
 //kth smallest elemtn in bst
-public int kthSmallest(TreeNode root, int k){
+public int kthSmallestNode(TreeNode root, int k){
     int leftSize = count(root.left);
     if(k <= leftSize)
         return kthSmallest(root.left, k);
