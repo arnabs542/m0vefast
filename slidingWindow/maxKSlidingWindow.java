@@ -1,4 +1,3 @@
-//similar t amazon windowSum   n,k
 //Given an array and an integer k, find the maximum for each and every contiguous subarray of size k.
 //for max number's index in each window k
 https://www.programcreek.com/2014/05/leetcode-sliding-window-maximum-java/
@@ -6,7 +5,7 @@ public List<Integer> maxKWindows(int[] arr, int k) {
     List<Integer> res = new ArrayList<>();
     Deque<Integer> deque = new LinkedList<>();  //save index
     for(int i = 0; i < arr.length; i++){
-      // For every element, the previous smaller elements are useless so remove them from deque， keep big at leftside
+      // For every element, the previous smaller elements are useless so remove them from deque， keep bigIndex at leftside
       // Remove all elements smaller than the currently being added element (remove useless elements)
       while(!deque.isEmpty() && arr[deque.peekLast()] <= arr[i]){
         deque.pollLast();
