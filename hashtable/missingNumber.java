@@ -2,6 +2,7 @@
 //solution1: hashset
 public int missing(int[] array) {
 	int n = arr.length+1;
+	//use index of array as the hashKey, using hash will cause collision causing worst case n^2
 	HashSet<Integer> set = new HashSet<>();
 	for(int number : array)
 		set.add(number);
