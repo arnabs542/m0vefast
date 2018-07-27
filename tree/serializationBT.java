@@ -54,7 +54,7 @@ public TreeNode helper(String[] arr, int[] t){
 //We can keep removing the leaf node until there is no one to remove.
 // If a sequence is like "4 # #", change it to "#" and continue.
 //  We need a stack so that we can record previous removed nodes.
-public boolean isValidSerialization(String preorder) {
+public boolean isValidPreOrderBT(String preorder) {
    // Write your solution here
    LinkedList<String> stack = new LinkedList<String>();
     String[] arr = preorder.split(",");
@@ -80,3 +80,33 @@ public boolean isValidSerialization(String preorder) {
     else
         return false;
  }
+ //1. nodes in left sub-tree are less than root node (find the first cut-point node
+// 2. nodes in right sub-tree are greater than root node (You can return false if you have encountered any node that is less than the cut-point node value)
+// 3. Is left sub-tree a binary search tree? (recursion to left)
+// 4. Is right sub-tree a binary search tree? (recursion to right)
+// 5. return left && right.
+
+  private int end ;
+  public boolean isValidPostOrderBST(int[] post) {
+    if (post == null || post.length < 2)
+      return true;
+    end = post.length - 1;
+    return helper(post, Integer.MIN_VALUE, Integer.MAX_VALUE);
+  }
+ //leftbound, rightbound
+  private boolean helper(int[] post, int parentVal, int parentParentVal) { // parentParent's left child is the current's parent
+    if (end < 0)
+      return true;
+    if (post[end] >= parentParentVal)
+      return false; //shouldnt bigger than right
+    if (post[end] <= parentVal)
+      return true;  //smaller than right
+    // TreeNode node = new TreeNode(post[end--]);
+    int root = post[end];
+    end--;  //left, right, root     end-- is right, end-- -- is left
+    // node.right = helper(post, node.key);
+    // node.left = helper(post, parentVal);
+    // return node;
+    //recursive check right, and check left
+    return helper(post, root, parentParentVal) && helper(post, parentVal, root);
+  }
