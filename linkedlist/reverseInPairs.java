@@ -14,12 +14,12 @@ public ListNode reverseInPairs(ListNode head) {
    ListNode dummy = new ListNode(0);
    dummy.next = head;
    ListNode cur = dummy;
-   //node2 != null
+   //node1 and 2 != null
    while(cur.next != null && cur.next.next != null){ //2-1-3-4-5   0123
-   swap(cur);
-   cur = cur.next.next;
-   if(cur.next == null){
-     break;
+     swap(cur);  //swap node1 and node2 (2-1)
+     cur = cur.next.next;  //move to next pair
+     if(cur.next == null){
+       break;
    }
  }
    return dummy.next;
