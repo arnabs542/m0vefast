@@ -34,12 +34,13 @@ public int kthLargestElement(int k, int[] nums) {
         nums[b] = temp;
     }
 //solution using heap: O(nlogk) running time + O(k) memory
-在数字集合中寻找第k大，可以考虑用Max Heap，将数组遍历一遍，加入到一个容量为k的PriorityQueue，
+将数组遍历一遍，加入到一个容量为k的PriorityQueue，
 最后poll() k-1次，那么最后剩下在堆顶的就是kth largest的数字了。
 public int kthLargestElement(int k, int[] nums) {
         if (nums == null || nums.length == 0 || k == 0) {
             return -1;
         }
+        PriorityQueue<Integer> heap = new PriorityQueue<Integer>(k, Collecitons.reverseOrder());
         PriorityQueue<Integer> heap = new PriorityQueue<Integer>(k, new Comparator<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {
@@ -58,12 +59,15 @@ public int kthLargestElement(int k, int[] nums) {
 最后里面剩下k个最大的。头上这个就是第k大。
 public int kthLargestElement2(int[] nums, int k) {
        // Write your code here
-       PriorityQueue<Integer> q = new PriorityQueue<Integer>(k);
-       for (int num : nums) {
-           q.offer(num);
-           if (q.size() > k) {
-               q.poll();
-           }
+       PriorityQueue<Integer> minHeap = new PriorityQueue<Integer>(k);
+       for(int i = 0; i < k; i++){
+         minHeap.offer(arr[i]);
        }
-       return q.peek();
+       for(int i = k; i < arr.length; i++){
+         if(arr[i] > minHeap.peek()){
+           minHeap.poll();
+           minHeap.offer(arr[i]);
+         }
+       }
+       return minHeap.peek();
    }

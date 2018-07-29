@@ -34,7 +34,7 @@ public int minMeetingRooms(int[][] intervals) {
     });
     Stack<Integer> stack = new Stack<>();
     int count = 1;
-    stack(intervals[0][1]);
+    stack.push(intervals[0][1]);
     for(int i = 1; i < intervals.length; i++){
       if(intervals[i][0] < stack.peek()){
         count++;

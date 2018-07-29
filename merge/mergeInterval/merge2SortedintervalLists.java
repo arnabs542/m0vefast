@@ -1,9 +1,11 @@
+//O(n+m)
 public List<Interval> mergeTwoInterval(List<Interval> list1, List<Interval> list2) {
        List<Interval> results = new ArrayList<>();
        if (list1 == null || list2 == null) {
            return results;
        }
-       //toAdd 来记录最后一个还没有被放到 merge results 里的 Interval，用于和新加入的 interval 比较看看能不能合并到一起。
+       //toAdd: nextToAdd 来记录最后一个还没有被放到 merge results 里的 Interval，用于和新加入的 interval 比较看看能不能合并到一起。
+       //curt is the new added interval,
        Interval toAdd = null;
        Interval curt = null;
        int i = 0;

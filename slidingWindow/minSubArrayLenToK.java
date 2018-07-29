@@ -1,39 +1,26 @@
-//A simple sliding window solution.
-// given nums are all positive integer, fine min lenth which the sum ≥ target
-// left and right boundaries of the sliding window.
-// When the sum is greater than the target, shift the left pointer;
-// when the sum is less than the target, shift the right pointer
-public int minSubArrayLen(int target, int[] nums) {
-    if(nums==null||nums.length==0)
-        return 0;
-    int left = 0;
-    int right = 0;
-    int sum = 0;
-    int minLen = Integer.MAX_VALUE;
-    while(right < nums.length){
-        if(sum < target){
-            sum += nums[right];
-            right++;
-        }else{  //such subarr exist: sum >= target
-            minLen = Math.min(minLen, right-left);
-            if(left == right-1)
-                return 1;
-            sum -= nums[left];
-            left++;
-        }
+public int smallestSubWithSum(int arr[], int k){
+  int sum = 0;
+  int n = arr.length;
+  int min_len = Integer.MAX_VALUE;
+  int start = 0;
+  int end = 0;
+  while(end < n){
+    while(sun <= k && end < n){
+      // Ignore subarrays with negative sum if x is positive.
+      // if (curr_sum <= 0 && x > 0){
+      //     start = end;
+      //     curr_sum = 0;
+      // }
+      sum += arr[end++];
     }
-    //a[left1] + sum < target
-    //a[left1] + a[left2] + sum < target
-    //a[left1] + a[left2] + a[left3] + sum >= target
-    //a[left2] + a[left3] + sum + a[right1] < target
-    //a[left2] + a[left3] + sum + a[right1] + a[right2] < target
-    //a[left2] + a[left3] + sum + a[right1] + a[right2] + a[right3] >= target
-    //a[left3] + sum + a[right1] + a[right2] + a[right3] >= target  =>res = right3-left3
-    //sum + a[right1] + a[right2] + a[right3] < target
-    //this is useful for the last right number added is very big!, gotto minus lots of left compensate
-    while(sum >= target){
-        minLen = Math.min(minLen, right-left);
-        sum -= nums[left++];
+    while(sum > k && start < n){
+      // Update minimum length if needed
+      min_len = Math.min(min_len, end-start)
+      // if (end - start < min_len)
+      //     min_len = end - start;
+      // remove starting elements
+      sum -= arr[start++];
     }
-    return minLen == Integer.MAX_VALUE? 0: minLen;
+  }
+  return min_len;
 }

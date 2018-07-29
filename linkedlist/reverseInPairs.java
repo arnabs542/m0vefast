@@ -10,6 +10,33 @@ public ListNode reverseInPairs(ListNode head) {
 }
 //solution2: iteration
 public ListNode reverseInPairs(ListNode head) {
+   // Write your solution here.
+   ListNode dummy = new ListNode(0);
+   dummy.next = head;
+   ListNode cur = dummy;
+   //node2 != null
+   while(cur.next != null && cur.next.next != null){ //2-1-3-4-5   0123
+   swap(cur);
+   cur = cur.next.next;
+   if(cur.next == null){
+     break;
+   }
+ }
+   return dummy.next;
+}
+
+private void swap(ListNode cur){
+   ListNode node1 = cur.next;
+   ListNode node2 = node1.next;
+   ListNode node3 = node2.next;
+ //1. remove node1 from list
+   cur.next = node2;
+ //2. insert node1 after node2
+   node2.next = node1;
+   node1.next = node3;
+}
+
+public ListNode reverseInPairs(ListNode head) {
     // Write your solution here.
     ListNode dummy = new ListNode(0);
     dummy.next = head;
