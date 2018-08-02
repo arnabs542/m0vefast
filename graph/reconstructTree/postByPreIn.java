@@ -6,10 +6,8 @@ private int[] helper(int[] pre, int preIndex,
               int[] in, int inleft, int inright,
               int[] post, int postIndex){
   if(inleft > inright){
-
     return post;
   }
-
   int root = pre[preIndex];
   int i = inleft;
   for(; i <= inright; i++){

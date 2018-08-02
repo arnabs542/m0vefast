@@ -1,5 +1,5 @@
 //similar to isBST 时间复杂度为O(n2)，对于每一个节点，都来验证其是否是BST，如果是的话，我们就统计节点的个数即可
-public int largestBSTSubtree(TreeNode root) {
+public int largestBST(TreeNode root) {
     // Write your solution here
     if(root == null)
       return 0;

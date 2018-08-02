@@ -57,3 +57,16 @@ public boolean isCompleted(TreeNode root) {
     }
     return true;
   }
+
+
+//recursion:
+//if a tree is a complete tree lol
+private boolean isComplete(TreeNode root, int index, int amount_nodes){
+  if(root == null)
+    return true;
+    // If index assigned to current node is more than number of nodes in tree, then tree is not complete
+  if(index >= amount_nodes)
+    return false;
+  return isComplete(root.left, 2*index+1, amount_nodes) &&
+          isComplete(root.right, 2*index+2, amount_nodes);
+}

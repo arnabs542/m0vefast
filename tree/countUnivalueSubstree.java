@@ -16,7 +16,7 @@ public int countUnivalSubtrees(TreeNode root) {
     if(!helper(root.left, root.vlaue, res) | !helper(root.right, root.vaue, res))
       return false;
     //若上述条件均满足的话，说明当前节点也是相同值子树的根节点，返回值再加1
-    else
+    else  //at least one return true
       res++;
     //左子节点值需要和当前节点值相同，右子节点值要和当前节点值相同，
     return root.value == value;

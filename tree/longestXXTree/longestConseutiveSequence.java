@@ -1,8 +1,11 @@
-public int longestConsecutiveBT(TreeNode root) {
+//pre order:     3456789...
+//like max path sum
+public int longestConsecutiveSequenceBT(TreeNode root) {
         int[] max = new int[1];
         recur(root, max, null, 0);
         return max[0];
     }
+    //root to leaf longest consecuritve sequence
     public void recur(TreeNode root, int[] max, int prev, int len) {
         if (root == null)
             return;
