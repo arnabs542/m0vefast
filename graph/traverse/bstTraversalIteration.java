@@ -14,6 +14,37 @@ public List<Integer> inOrderTraversal(TreeNode root){
 	}
 	return res;
 }
+//kth smallest node in bst
+public int kthSmallest(TreeNode root, int k) {
+    Stack<TreeNode> stack = new Stack<TreeNode>();
+    TreeNode p = root;
+		//go to the deepest left
+    while(p!=null){
+        stack.push(p);
+        p=p.left;
+    }
+		//start poping k times
+    int i = 0;
+    while(!stack.isEmpty()){
+        TreeNode cur = stack.pop();
+        i++;
+
+        if(i == k)
+            return cur.val;
+ 				else{
+					TreeNode r = cur.right;
+	        while(cur!=null){
+	            stack.push(r);
+	            r=r.left;
+	        }
+				}
+    }
+    return -1;
+}
+//kth largest node in bst
+
+
+
 public List<Integer> preOrderTraversal(TreeNode root){
 	Stack<TreeNode> stack = new Stack<TreeNode>();
 	List<Integer> res = new ArrayList<>();

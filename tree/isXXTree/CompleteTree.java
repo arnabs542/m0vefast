@@ -70,3 +70,25 @@ private boolean isComplete(TreeNode root, int index, int amount_nodes){
   return isComplete(root.left, 2*index+1, amount_nodes) &&
           isComplete(root.right, 2*index+2, amount_nodes);
 }
+//count nodes o
+public int countNodesCompleteTree(TreeNode root) {
+    // Write your solution here
+		int hleft = getLeftHeight(root.left);
+		int hright = getRightHeight(root.right);
+		if(hleft == hright)
+			return pow(2, hleft-1)-1;  //2^h
+		return countNodesCompleteTree(root.left) + countNodesCompleteTree(root.right);
+}
+private int getLeftHeight(TreeNode root){
+	if(root == null)
+		return 0;
+	return 1 + getLeftHeight(root.left);
+}
+private int getRightHeight(TreeNode root){
+	if(root == null)
+		return 0;
+	return 1 + getRightHeight(root.right);
+}
+
+
+http://www.cnblogs.com/grandyang/p/4567827.html
