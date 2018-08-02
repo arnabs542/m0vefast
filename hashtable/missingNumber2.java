@@ -47,8 +47,12 @@ public int findMissing(int[] arr){
     if(arr[mid] <= mid){
       left = mid+1;
     }else{
-      right = mid;  
+      right = mid;
     }
   }
   return left;
 }
+
+//what is there is duplicate in the givne array ?
+sort: increment can be 0,1,or more  [11555][1123][1113]
+hashmap
