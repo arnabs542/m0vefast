@@ -42,7 +42,7 @@ public int kthSmallest(TreeNode root, int k) {
     return -1;
 }
 //kth largest node in bst
-
+https://www.geeksforgeeks.org/kth-largest-element-in-bst-when-modification-to-bst-is-not-allowed/
 
 
 public List<Integer> preOrderTraversal(TreeNode root){
