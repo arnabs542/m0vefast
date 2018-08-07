@@ -1,41 +1,46 @@
-// version 1: BFS
+// version 1: BFS map+queue
 public class Solution {
-    /**
-     * @param n an integer
-     * @param edges a list of undirected edges
+    /**no duplicate edge: [1,0] [0,1]
+     * @param n an integer: Given n nodes labeled from 0 to n - 1
+     * @param edges a list of undirected edges (each edge is a pair of nodes),
      * @return true if it's a valid tree, or false
      */
+    //1) all nodes connected 2)no cycle
+    //given edges: edge list
     public boolean validTree(int n, int[][] edges) {
         if (n == 0) {
             return false;
         }
-
+        //1) no cycle
         if (edges.length != n - 1) {
             return false;
         }
-
+        // 2) bfs traverse make sure all connected
         Map<Integer, Set<Integer>> graph = initializeGraph(n, edges);
-
-        // bfs
         Queue<Integer> queue = new LinkedList<>();
-        Set<Integer> hash = new HashSet<>();
+        Set<Integer> visited = new visitedSet<>();
 
         queue.offer(0);
-        hash.add(0);
+        visited.add(0);
         while (!queue.isEmpty()) {
             int node = queue.poll();
             for (Integer neighbor : graph.get(node)) {
-                if (hash.contains(neighbor)) {
+                if (visited.contains(neighbor)) {
                     continue;
                 }
-                hash.add(neighbor);
+                visited.add(neighbor);
                 queue.offer(neighbor);
             }
         }
-
-        return (hash.size() == n);
+        //make sure all connected
+        return (visited.size() == n);
     }
-
+    // [ [0,1], [0,6], [0,8],
+    //   [1,4], [1,6], [1,9],
+    //   [2,4], [2,6], [3,4], [3,5], [3,8],
+    //   [4,5], [4,9],
+    //   [7,8], [7,9] ]
+    //<node, node's neightbour>
     private Map<Integer, Set<Integer>> initializeGraph(int n, int[][] edges) {
         Map<Integer, Set<Integer>> graph = new HashMap<>();
         for (int i = 0; i < n; i++) {
@@ -43,7 +48,7 @@ public class Solution {
         }
 
         for (int i = 0; i < edges.length; i++) {
-            int u = edges[i][0];
+            int u = edges[i][0];   // edge[0][1] is an edge between edge[i][0] and edge[i][1]
             int v = edges[i][1];
             graph.get(u).add(v);
             graph.get(v).add(u);
@@ -57,7 +62,7 @@ public class Solution {
 // version 2: Union Find
 public class Solution {
       class UnionFind{
-        HashMap<Integer, Integer> father = new HashMap<Integer, Integer>();
+        visitedMap<Integer, Integer> father = new visitedMap<Integer, Integer>();
         UnionFind(int n){
             for(int i = 0 ; i < n; i++) {
                 father.put(i, i);

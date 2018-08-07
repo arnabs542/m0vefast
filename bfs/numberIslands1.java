@@ -39,7 +39,7 @@ public class Solution {
         int[] directionY = {1, 0, 0, -1};
 
         Queue<Coordinate> queue = new LinkedList<>();
-        
+
         queue.offer(new Coordinate(x, y));
         grid[x][y] = false;
 
@@ -50,12 +50,9 @@ public class Solution {
                     coor.x + directionX[i],
                     coor.y + directionY[i]
                 );
-                if (!inBound(adj, grid)) {
-                    continue;
-                }
-                if (grid[adj.x][adj.y]) {
-                    grid[adj.x][adj.y] = false;
-                    queue.offer(adj);
+                if (inBound(adj, grid) && grid[adj.x][adj.y]) {
+                  grid[adj.x][adj.y] = false;
+                  queue.offer(adj);
                 }
             }
         }
