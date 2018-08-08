@@ -1,35 +1,43 @@
-https://zxi.mytechroad.com/blog/graph/leetcode-207-course-schedule/
-//topological sort: directed graph, no cycle
-public boolean courseSchedule1(int numCourses, int[][] prerequisites) {
-    // Write your solution here
-  if(prerequisites == null || prerequisites.length == 0 || numCourses == 0)
-    return true;
-  //counter for numebr of prerequisites, degree
+public int[] findOrder(int numCourses, int[][] prerequisites) {
+  int len = prerequisites.length;
+  int[] res = new int[numCourses];
+
+  if(len == 0){
+    for(int i = 0; i < numCourses; i++)
+      res[i] = i;
+  }
+  return res;
+
+  //build graph: hashmap<node,indegree counter>
   int[] counter = new int[numCourses];
   for(int i = 0; i < prerequisites.length; i++)
-     //counter[target course] :  how many prerequrisites
      counter[prerequisites[i][0]]++;
-  //course that has no prerequeisite
+
+  //queue: node with no indegree
   Queue<Integer> queue = new LinkedList<>();
   for(int i = 0; i < numCourses; i++){
     if(counter[i] == 0)
       queue.add(i);
   }
-  //numebr of courses that has no prequeusite
-  int noPre = queue.size();
+  //remove node with indegree==0
+  int canTakeCourses = 0;  //course with no-indegree(prerequisit)
   while(!queue.isEmpty()){
     int top = queue.poll();
+    canTakeCourses++;
+    res[index++] = top;
     for(int i = 0; i < prerequisites.length; i++){
       //if a course's prerequisite can be satisfied by a course in queue
       if(prerequrisites[i][1] == top){
         counter[prerequrisites[i][0]]--;
         if(counter[prerequrisites[i][0]] == 0){
-          noPre--;
           //if a course dont has prerequeisite, then it can be a supported course for others
           queue.offer(prerequrisites[i][0]);
         }
       }
     }
   }
-  return noPre == numCourses;
+  if(canTakeCourses == numCourses)
+    return res;
+  else
+    return new int[0];
 }

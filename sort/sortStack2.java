@@ -1,8 +1,8 @@
 //assusming s1 is not null
 //from top to bottom sorted in acsding order
 public void sortArray3Stacks(LinkedList<Integer> s1){
-	LinkedList<Integer> s2 = new LinkedList<>();
-	LinkedList<Integer> s3 = new LinkedList<>();
+	LinkedList<Integer> s2 = new LinkedList<>();  //BUFFER
+	LinkedList<Integer> s3 = new LinkedList<>();  //RESULT 
 	sort(s1, s2, s3, s1.size());
 }
 //mergeSort 的思想
