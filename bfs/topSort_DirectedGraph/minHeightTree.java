@@ -30,41 +30,26 @@ public List<Integer> findMinHeightTrees(int n, int[][] edges) {
       queue.offer(i);
   }
   //remove node with indegree==1 for undirected graph
-while (n > 2) {
-
-  while(!queue.isEmpty()){
-     int leaf = queue.poll();
-     int subroot = graph.get(leaf)(0);
-     graph.get(subroot).remove(leaf);
-     n--;
-  }
-  if (graph.get(subroot).size() == 1)
-    queue.offer(subroot);
-}
-//Put remaining into rst
-for (int i = 0; i < graph.size(); i++) {
-    if (nodes[i]) {
-        res.add(i);
+  while(n > 2){  //stop when n <= 2
+    int size = queue.size();
+    n = n - size;
+    for(int i = 0; i < size; i++){
+      int leaf = queue.poll();
+      int subroot = graph.get(leaf);
+      graph.get(subroot).remove(leaf);
+      if(graph.get(neighbor).size()==1){
+          queue.offer(neighbor);
+      }
     }
+  }
+  while(!queue.isEmpty()){
+    res.add(queue.poll());
+  }
+  return res;
+  }
 
-}
-return res;
-https://www.jiuzhang.com/solution/minimum-height-trees/
-while(n>2){
-       n = n-leaves.size();
 
-       LinkedList<Integer> newLeaves = new LinkedList<Integer>();
 
-       for(int l: leaves){
-           int neighbor = graph.get(l).iterator().next();
-           graph.get(neighbor).remove(l);
-           if(graph.get(neighbor).size()==1){
-               newLeaves.add(neighbor);
-           }
-       }
 
-       leaves = newLeaves;
-   }
 
-   return leaves;
-}
+//https://www.jiuzhang.com/solution/minimum-height-trees/
