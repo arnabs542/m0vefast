@@ -3,12 +3,14 @@ public ListNode quickSort(ListNode head) {
     if(head == null || head.next == null) {
       return head;
     }
+    //use mid as pivotPoint
+    ListNode dummy1 = new ListNode(0);
+    ListNode dummy2 = new ListNode(0);
     ListNode mid = findMiddle(head);
-    ListNode dummy1 = new ListNode(-1);
-    ListNode dummy2 = new ListNode(-1);
     partition(head, mid, dummy1, dummy2);
     dummy1.next = quickSort(dummy1.next);
     dummy2.next = quickSort(dummy2.next);
+
     ListNode tail1 = findTail(dummy1.next);
     if(dummy1.next == null) {
       dummy1.next = mid;

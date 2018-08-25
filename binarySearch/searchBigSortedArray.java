@@ -2,11 +2,11 @@ public int searchBigSortedArray(ArrayReaer reader, int target){
 	if(reader == null)
 		return -1;
 	int i = 1;
-	while(reader.get(i-1) != null && reader.get(i-1) < target)
+	while(reader.get(i-1) != null && reader.get(i-1) < target)   //O(lgn)
 		i = i * 2;
-	int left = 0;
+	int left = i-2;
 	int right = i-1;
-	while(left + 1 < right){
+	while(left + 1 < right){   //O(lgn)
 		int mid = left + (right - left)/2;
 		if(reader.get(mid) == target)
 			right = mid;

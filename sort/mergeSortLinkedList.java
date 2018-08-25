@@ -1,61 +1,67 @@
 public ListNode mergeSort(ListNode head) {
-        //corner case
-        if (head == null || head.next == null) {
-            return head;
-        }
-
-//find middle node and divide into two list
-        ListNode mid = findMid(head);
-        ListNode l = head;
-        ListNode r = mid.next;
-        mid.next = null;
-
-//go into the mergeSort
-        ListNode h1 = mergeSort(l);
-        ListNode h2 = mergeSort(r);
-        ListNode result = merge(h1, h2);
-        return result;
+    //corner case
+    if (head == null || head.next == null) {
+        return head;
     }
 
-    private ListNode findMid(ListNode head) {
-        if (head == null || head.next == null) {
-            return head;
-        }
-        ListNode slow = head;
-        ListNode fast = head;
-        while (fast.next != null && fast.next.next != null) {
-            fast = fast.next.next;
-            slow = slow.next;
-        }
-        return slow;
-    }
+    //find middle node and divide into two list
+    ListNode mid = findMid(head);
+    ListNode l = head;
+    ListNode r = mid.next;
+    mid.next = null;
 
-    private ListNode merge(ListNode h1, ListNode h2) {
-        if(h1 == null) {
-	  return h2;
+    //go into the mergeSort
+    ListNode h1 = mergeSort(l);
+    ListNode h2 = mergeSort(r);
+    ListNode result = merge(h1, h2);
+    return result;
+}
+private ListNode findMid(ListNode head) {
+    if (head == null || head.next == null) {
+        return head;
+    }
+    ListNode slow = head;
+    ListNode fast = head;
+    //if 6 elemenet, 123456   if 5 elements, 12345
+    //                 s f                     s f
+    while (fast.next != null && fast.next.next != null) {
+        fast = fast.next.next;
+        slow = slow.next;
+    }
+    return slow;
+}
+
+public ListNode merge(ListNode one, ListNode two){
+	ListNode dummy = new ListNode(0);
+	ListNode cur = dummy;
+	while(one != null && two != null){
+		if(one.value <= two.value){
+			cur.next = one;
+			one = one.next;
+		}else{
+			cur.next = two;
+			two = two.next;
+		}
+		cur = cur.next;
 	}
-     	if(h2 == null) {
-	  return h1;
+	//lin the remaining possible nodes
+	if(one != null)
+		cur.next = one;
+	else
+		cur.next = two;
+	return dummy.next;
+}
+//O(n) time,  O(n) for call stack, recursion not good as iterative
+public ListNode merge(ListNode node1, ListNode node2){
+	if(node1 == null)
+		return node2;
+	if(node2 == null)
+		return node1;
+	if(node1.val <= node2.val){
+		node1.next = merge(node1.next, node2);
+		return node1;
+	}else{
+		node2.next = merge(node1, node2.next);
+		return node2;
 	}
-        ListNode dummyHead = new ListNode(0);
-        ListNode cur1 = h1;
-        ListNode cur2 = h2;
-        ListNode index = dummyHead;
-        while (cur1 != null && cur2 != null) {
-            if (h1.value <= h2.value) {  ???
-                index.next = cur1;
-                cur1 = cur1.next;
-                index = index.next;
-            } else {
-                index.next = cur2;
-                cur2 = cur2.next;
-                index = index.next;
-            }
-            if (cur1 == null) {
-                index.next = cur2;
-            } else if (cur2 == null) {
-                index.next = cur1;
-            }
-        }
-        return dummyHead.next;
-    }
+}

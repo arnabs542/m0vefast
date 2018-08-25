@@ -1,18 +1,39 @@
 [[1,1],2,[1,1]] -> 10
+//用一个stack里面存数的值和level，每次遇到］就把当前level的数弹出，加到result里面
 //iteration solution
 public int depthSum(String nestlists) {
   if(nestlists == null || nestlists.length() == 0)
     return Integer.MIN_VALUE;
-  char[] arr = nestlists.toCharArrary();
-  int mul = 0;
+  char[] arr = nestlists.toCharArray();
+  Deque<int[]> stack = new LinkedList<>();
+  Integer num = null;
+  int level = 0;
   int res = 0;
-  for(int k = arr.length-1; k >= 0; k--){
-    if(arr[k] == ']')
-      mul++;
-    else if(arr[k] == '[')
-      mul--;
-    else if(Character.isDigit(arr[k]))
-      res += mul * (arr[k] - '0')
+  for(int i = 0; i < arr.length; i++){
+    char c = arr[i];
+    if(Character.isDigit(c)){
+      if(num == null)
+        num = Character.getNumericValue(c);
+      else
+        num = num * 10 + Character.getNumericValue(c);
+    }else if(c == ','){
+      if(num != num){
+        stack.push(new int[]{num, level});
+        num = null;
+      }
+    }else if(c == '['){
+      level++;
+    }else{   //]
+      if(num != null){
+        stack.push(new int[]{num, level});
+        num =  null;
+      }
+      level--;
+      while(!stack.isEmpty() && stack.peek()[1] > level){
+        res += stack.peek()[0] * stack.peek()[1];
+        stack.pop();
+      }
+    }
   }
   return res;
 }
@@ -23,12 +44,12 @@ public int depthSum(List<NestedInteger> nestedList) {
       return 0;
     int sum = 0;
     char[] arr = nestlists.toCharArrary();
-    Queue<Integer> queue = new LinkedList<>();
+    Queue<NestedInteger> queue = new LinkedList<>();
     Queue<Integer> depth = new LinkedList<>();
 
     for(NestedInteger each : nestedList){
       queue.offer(each);
-      depth.offer(1);  //only if input is class is NestedInteger(list or integer)
+      depth.offer(1);
     }
     while(!queue.isEmpty()){
       NestedInteger top = queue.poll();

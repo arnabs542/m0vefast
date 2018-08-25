@@ -1,4 +1,4 @@
-public int findMin(int[] nums){
+public int minRotated(int[] nums){
     if(nums == null || nums.length == 0)
         return -1;
     int start = 0;
@@ -13,7 +13,7 @@ public int findMin(int[] nums){
         if(nums[mid] <= target)
             end = mid;
         //left side is sorted, check right side
-        else 
+        else
             start = mid;
     }
     //left+1=right:
@@ -23,3 +23,14 @@ public int findMin(int[] nums){
         return nums[start];
     return nums[end];
 }
+//another version:
+while(start < end){
+    int mid = start + (end - start)/2;
+    //right side is sorted, check left side
+    if(nums[mid] < target)
+        end = mid;
+    //left side is sorted, check right side
+    else  //nums[mid] >= target
+        start = mid+1;
+}
+return nums[start];

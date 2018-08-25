@@ -1,17 +1,17 @@
 public int[] quickSort(int[] arr){
 	if(arr == null)
 		return arr;
-	helper(arr, 0, arr.length-1);
+	quickSort(arr, 0, arr.length-1);
 	return arr;
 }
-private void helper(int[] arr, int left, int right){
+private void quickSort(int[] arr, int left, int right){
 	if(left >= right)  //only one element left in left/right part
 		return;
 	//pivot in right place
-	int pivot = partition(arr, left, right);
+	int pivotIndex = partition(arr, left, right);
 	//recursive call on left and right, not including pivot
-	helper(arr, left, pivot-1);
-	helper(arr, pivot+1, right);
+	quickSort(arr, left, pivotIndex-1);
+	quickSort(arr, pivotIndex+1, right);
 }
 private int partition(int[] arr, int left, int right){
 	int pivotIndex = randomIndex(left, right);

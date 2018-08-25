@@ -15,15 +15,13 @@ public int search(int[] A, int target) {
             //for duplicate element
             if(A[mid] == A[start]){
               start++;
-            }
-            // situation 1: left is sorted
-            else if (A[start] < A[mid]) {
+            }else if (A[start] < A[mid]) { // situation 1: left is sorted
                 if (A[start] <= target && target <= A[mid]) {
                     end = mid;
                 } else {
                     start = mid;
                 }
-            // situation 2: right is sorted
+            // situation 2: right is sorted A[start] > A[mid]
             } else {
                 if (A[mid] <= target && target <= A[end]) {
                     start = mid;

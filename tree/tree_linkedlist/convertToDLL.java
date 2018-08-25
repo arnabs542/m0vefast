@@ -1,6 +1,6 @@
 //一个简单的dfs，in order traverse this tree.
 // 然后每次返回一个数组，第一位放head of sub tree, 第二位放tail of sub tree
-// 然后注意双向链表的连接。
+// 然后注意双向链表的连接。 https://www.jianshu.com/p/f2eac0a35586
 public TreeNode toDoubleLinkedList(TreeNode root) {
     // Write your solution here.
         if (root == null)

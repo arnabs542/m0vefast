@@ -5,7 +5,7 @@
 // 最后，所有的元素已经按照descending order排序好（smallest on top）in helperstack，
 // 只需将其转移到origin stack，则origin stack即为所需排序
 // 时间复杂度为O(n^2)，空间复杂度为O(n)
-public void stackSorting2(Stack<Integer> stack) {
+public void sortArray2Stacks(Stack<Integer> stack) {
   Stack<Integer> helperStack = new Stack<Integer>();
   while(!stack.isEmpty()){
     int cur = stack.poll();

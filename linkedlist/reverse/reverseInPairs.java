@@ -1,23 +1,13 @@
-//solution1: recursion
-public ListNode reverseInPairs(ListNode head) {
-    // Write your solution here.
-    if(head == null || head.next == null)
-    	return head;
-    ListNode newHead = head.next;
-    head.next = reverseInPairs(head.next.next);
-    newHead.next = head;
-    return newHead;
-}
 //solution2: iteration
 public ListNode reverseInPairs(ListNode head) {
    // Write your solution here.
    ListNode dummy = new ListNode(0);
    dummy.next = head;
    ListNode cur = dummy;
-   //node1 and 2 != null
+   //old and even element case
    while(cur.next != null && cur.next.next != null){ //2-1-3-4-5   0123
      swap(cur);  //swap node1 and node2 (2-1)
-     cur = cur.next.next;  //move to next pair
+     cur = cur.next.next;  //move to next pair' prev
      if(cur.next == null){
        break;
    }
@@ -35,7 +25,17 @@ private void swap(ListNode cur){
    node2.next = node1;
    node1.next = node3;
 }
-
+//solution1: recursion
+public ListNode reverseInPairs(ListNode head) {
+    // Write your solution here.
+    if(head == null || head.next == null)
+    	return head;
+    ListNode newHead = head.next;
+    head.next = reverseInPairs(head.next.next);
+    newHead.next = head;
+    return newHead;
+}
+//iteration
 public ListNode reverseInPairs(ListNode head) {
     // Write your solution here.
     ListNode dummy = new ListNode(0);
