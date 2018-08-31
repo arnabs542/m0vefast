@@ -66,11 +66,9 @@ private TreeNode findSmallest(TreeNode root){
     while(root.left.left != null)
         root = root.left;
     TreeNode smallest = root.left;
-    root.left = root.left.right; //important
+    root.left = root.left.right; //important delete smallest by changing pointer
     return smallest;
 }
-
-
 //search a node in bst
 //solution1: tail recursive version O(height) O(height)
 public TreeNode search(TreeNode root, int target){
@@ -106,3 +104,39 @@ int getLeafCount(Node node)
         else
             return getLeafCount(node.left) + getLeafCount(node.right);
     }
+//inorder successor
+//recurvie solution
+public TreeNode inorderSuccessor(TreeNode root, TreeNode p){
+  if(root == null || p == null)
+    return null;
+  if(root.val <= p.val)
+    return inorderSuccessor(root.right, p);
+  else{
+    TreeNode res = inorderSuccessor(root.left, p);
+    if(res == null)
+      return root;
+    return res;
+    //return (left != null)? left : root;
+  }
+}
+//iteration solution
+http://www.jiuzhang.com/solution/inorder-successor-in-binary-search-tree/
+
+//sortedArrayToBST
+public TreeNode sortedArrayToBST(int[] A) {
+    // write your code here
+    int len = A.length-1;
+    TreeNode root = null;
+    root = recursion(A, 1, len, root);
+    A = null;
+    return root;
+}
+public TreeNode recursion(int[] array, int lhs, int rhs, TreeNode root){
+    if(lhs <= rhs){
+        int mid = lhs + (rhs - lhs)/2;
+        root = new TreeNode(array[mid]);
+        root.left = recursion(array, lhs, mid - 1, root.left);
+        root.right = recursion(array, mid + 1, rhs, root.right);
+    }
+    return root;
+}

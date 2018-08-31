@@ -1,5 +1,5 @@
 // Given [1, 3, 3, 3, 5, 5, 7], and target value 3,
-// return [1, 3].
+// return [1, 3]. , find the starting and ending position of a given target value.
 public int[] searchRange(int[] A, int target) {
         if (A.length == 0) {
             return new int[]{-1, -1};
@@ -13,13 +13,10 @@ public int[] searchRange(int[] A, int target) {
         end = A.length - 1;
         while (start + 1 < end) {
             mid = start + (end - start) / 2;
-            if (A[mid] == target) {
+            if (A[mid] >=  target) {
                 end = mid;
-            } else if (A[mid] < target) {
+            } else{
                 start = mid;
-            } else {
-                end = mid;
-            }
         }
         if (A[start] == target) {
             bound[0] = start;
@@ -47,10 +44,10 @@ public int[] searchRange(int[] A, int target) {
             bound[1] = end;
         } else if (A[start] == target) {
             bound[1] = start;
-        } else {
-            bound[0] = bound[1] = -1;
-            //return bound;
-        }
+        // } else {
+        //     bound[0] = bound[1] = -1;
+        //     return bound;
+        // }
 
         return bound;
     }

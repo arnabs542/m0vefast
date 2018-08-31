@@ -12,9 +12,9 @@ public int[] kSmallest(int[] arr, int k) {
     	}
     });
     for(int i = 0; i < arr.length; i++){
-    	if(i < k)
+    	if(i < k)     //O(k)
     		maxHeap.offer(arr[i]);
-    	else if(array[i] < maxHeap.peek()){
+    	else if(array[i] < maxHeap.peek()){    //O(k)+O((n-k)lgk)
     		maxHeap.poll();
     		maxHeap.offer(arr[i]);
     	}
@@ -27,3 +27,5 @@ public int[] kSmallest(int[] arr, int k) {
 
  queue: poll(), offer(), peek(), isEmpty()
  stack: remove(), add(), peek(), empty()
+//solution2: k size minheap
+//solution3: average O(n)  quickselect

@@ -1,5 +1,4 @@
 // A Bitonic Sequence is a sequence of numbers which is first strictly increasing then after a point strictly decreasing.
-// A Bitonic Point ( maximum element in the given bitonic array)is a point in bitonic sequence before which elements are strictly increasing and after which elements are strictly decreasing.
 https://www.geeksforgeeks.org/find-element-bitonic-array/
 public int search(int[] arr, int target) {
     // Write your solution here

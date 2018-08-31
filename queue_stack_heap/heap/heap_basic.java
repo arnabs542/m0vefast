@@ -68,3 +68,10 @@ private void percolationUp(int[] arr, int index){
 public int[] updateHeap(int[] array, int index, int ele) {
     // Write your solution here
 }
+//delete node in heap
+public int[] deleteHeap(int[] array, int ele) {
+    // Write your solution here
+  array[array.length - 1] = ele;
+  percolationUp(array, array.length-1);
+  return array;
+}

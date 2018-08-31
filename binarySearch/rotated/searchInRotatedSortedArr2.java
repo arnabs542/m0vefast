@@ -13,7 +13,7 @@ public int search(int[] A, int target) {
                 return mid;
             }
             //for duplicate element
-            if(A[mid] == A[start]){
+            if(A[start] == A[mid]){
               start++;
             }else if (A[start] < A[mid]) { // situation 1: left is sorted
                 if (A[start] <= target && target <= A[mid]) {

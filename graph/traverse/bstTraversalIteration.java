@@ -1,17 +1,21 @@
+//recursion will coz stack over flow if tree is deep, -> mimic a stack:
+//iterator:
 public List<Integer> inOrderTraversal(TreeNode root){
-	Stack<TreeNode> stack = new Stack<TreeNode>();   //record for direction
+	Deque<TreeNode> stack = new LinkedList<TreeNode>();   //new object is placed on heap not on stack
 	List<Integer> res = new ArrayList<>();
 	TreeNode cur = root;
+	//not reach to the left deepest || all left subtree is visited
 	while(cur != null ||!stack.empty()){
-		//go till the very left
+		//left subtree of stack.peek elemetn is all visited
 		while(cur != null){
-			stack.push(cur);
+			stack.offerLast(cur);
 			cur = cur.left;
 		}
-		cur = stack.pop();
+		cur = stack.pollLast();
 		res.add(cur.value);
 		cur = cur.right;
 	}
+	//stop: cur == null && stack isEmpty()
 	return res;
 }
 //kth smallest node in bst
@@ -43,8 +47,6 @@ public int kthSmallest(TreeNode root, int k) {
 }
 //kth largest node in bst
 https://www.geeksforgeeks.org/kth-largest-element-in-bst-when-modification-to-bst-is-not-allowed/
-
-
 public List<Integer> preOrderTraversal(TreeNode root){
 	Stack<TreeNode> stack = new Stack<TreeNode>();
 	List<Integer> res = new ArrayList<>();
@@ -78,6 +80,30 @@ public List<Integer> postorderTraversal(TreeNode root) {
 				}
 				if(node.right!=null){
 						stack.push(node.right);
+				}
+		}
+		return res;
+}
+public List<Integer> postorderTraversal(TreeNode root) {
+	Stack<TreeNode> stack=new Stack<TreeNode>();
+	List<Integer> res = new ArrayList<>();
+	Set<TreeNode> visited = new HashSet<>();
+
+		if(root==null){
+			return res;
+		}
+		stack.push(root);
+		while(!stack.isEmpty()){
+				TreeNode cur=stack.peek();
+				if(cur.right != null && !visited.contains(cur.right))
+					stack.push(cur.right);
+				if(cur.left != null && !visited.contains(cur.left))
+					stack.push(cur.left);
+				//base case 
+				if((cur.left == null || visited.contains(cur.left)) && (cur.right == null || visited.contains(cur.right))){
+					res.add(cur.value);
+					visited.add(cur);
+					stack.pop();
 				}
 		}
 		return res;
