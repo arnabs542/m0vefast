@@ -13,7 +13,7 @@ public List<Integer> inOrderTraversal(TreeNode root){
 		res.add(cur.value);
 		cur = cur.right;
 	}
-	return res;
+	return res; 
 }
 public List<Integer> preOrderTraversal(TreeNode root){
 	Stack<TreeNode> stack = new Stack<TreeNode>();

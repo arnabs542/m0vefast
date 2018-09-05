@@ -3,7 +3,7 @@
 //Sort a nearly sorted, 常规的k size heap
 //http://massivealgorithms.blogspot.com/2014/06/sort-nearly-sorted-or-k-sorted-array.html
 public int[] ksort(int[] arr, int k) {
-  if(input.length == 0 || input == null)
+  if(arr == null || arr.length == 0)
     return arr;
   PriorityQueue<Integer> minHeap = new PriorityQueue<>(k+1);
   for(i = 0; i < k+1; i++)
@@ -12,9 +12,9 @@ public int[] ksort(int[] arr, int k) {
   while(!minHeap.isEmpty()) {
     arr[index++] = minHeap.poll();
     if(i < input.length)
-      minHeap.offer(arr[i]);  //maintann size k+1
+      minHeap.offer(arr[i++]);  //maintann size k+1
     //index++;
-    i++;
+    //i++;
   return arr;
 }
 1) Create a Min Heap of size k+1 with first k+1 elements. This will take O(k) time

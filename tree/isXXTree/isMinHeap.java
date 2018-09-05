@@ -5,9 +5,7 @@ public boolean isMinHeap(TreeNode root){
   if(root == null)
     return true;
   int amount_nodes = countNodes(root);
-  if(isComplete(root, 0, amount_nodes) && isHeap(root))
-    return true;
-  return false;
+  return (isComplete(root, 0, amount_nodes) && isHeap(root, root.key));
 }
 //if a tree is a complete tree lol
 private boolean isComplete(TreeNode root, int index, int amount_nodes){
@@ -20,26 +18,14 @@ private boolean isComplete(TreeNode root, int index, int amount_nodes){
           isComplete(root.right, 2*index+2, amount_nodes);
 }
 //check heap property of a tree
-// Every Node can have 2 children, 0 child (last level nodes) or 1 child (there can be at most one such node).
-// If Node has No child then it’s a leaf node and return true (Base case)
-// If Node has one child (it must be left child because it is a complete tree) then we need to compare this node with its single child only.
-// If Node has both child then check heap property at Node at recur for both subtrees.
-private boolean isHeap(TreeNode root){
-  //Base case : single node satisfies property
-  if(root.left == null && root.right == null)
+private boolean checkMinHeap(TreeNode root, int bound){
+  if(root == null)
     return true;
-  //node on second last level
-  if(root.right== null)
-    return root.key <= root.left.key;
-  //other level nodes
-  else{
-    //Check heap property at Node and Recursive check heap property at left and right subtree
-    if(root.key <= root.left.key && root.key <= root.right.key)
-      return isHeap(root.left) && isHeap(root.right);
-    else
-      return false;
-  }
+  if(root.key < bound)
+    return false;
+  return helper(root.left, root.key) && helper(root.right, root.key);
 }
+
 
 //determine is a array is minheap
 https://www.geeksforgeeks.org/how-to-check-if-a-given-array-represents-a-binary-heap/

@@ -8,37 +8,6 @@
  */
 //solution1:
 public TreeNode LCA2(TreeNode root, TreeNode node1, TreeNode node2){
-    ArrayList<ParentTreeNode> pathA = getPath2Root(node1);
-    ArrayList<ParentTreeNode> pathB = getPath2Root(node2);
-
-    int indexA = pathA.size() - 1;
-    int indexB = pathB.size() - 1;
-
-    ParentTreeNode lowestAncestor = null;
-    while(indexA >= 0 && indexB >= 0){
-        if(pathA.get(indexA) == pathB.get(indexB))
-            //break;
-            lowestAncestor = pathA.get(indexA);
-            break;
-        indexA--;
-        indexB--;
-    }
-    return lowestAncestor;
-}
-//from root->node
-private ArrayList<ParentTreeNode> getPath2Root(ParentTreeNode node){
-    ArrayList<ParentTreeNode> path = new ArrayList<>();
-    while(node != null){
-        path.add(node);
-        node = node.parent;
-    }
-    return path;
-}
-
-
-
-//lai
-public TreeNode LCA2(TreeNode root, TreeNode node1, TreeNode node2){
     int one = length(node1);
     int two = length(node2);
     //ganrantee first list is shorter, second list is longer
