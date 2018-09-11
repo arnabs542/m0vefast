@@ -9,11 +9,11 @@ public ListNode rotateRight(ListNode head, int n) {
     //Get the total length
     int size;
     for (size=0; fast.next !=null; size++)
-    	fast = fast.next;  //fast is at the end node
+    	fast = fast.next;  //fast is old tail
 
     //Get the i-n%i th node
     for (int j = size - n % size; j > 0; j--)
-    	slow = slow.next;
+    	slow = slow.next;   //slow is new tail
     //new head is slow.next
     //Do the rotation
     fast.next=dummy.next;

@@ -1,3 +1,4 @@
+//https://leetcode.com/problems/reverse-nodes-in-k-group/discuss/11423/Short-but-recursive-Java-code-with-comments
 public ListNode reverseKGroup(ListNode head, int k) {
     if(head==null||k==1)
         return head;

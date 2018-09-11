@@ -130,7 +130,7 @@ public ListNode deleteDuplicate0(ListNode head){
     if(cur.next.value == cur.next.next.value){
       target = cur.next.value;
       while(cur.next != null && cur.next.value == target){
-        cur.next = cur.next.next;  //might be null 
+        cur.next = cur.next.next;  //might be null  
       }
     }else{
       cur = cur.next;

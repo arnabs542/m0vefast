@@ -102,4 +102,67 @@ private void swap(char[] arr, int left, int right){
 	arr[left] = arr[right];
 	arr[right] = temp;
 }
-//[123, 132, 213, 231, 321, 312]%
+//[abc, acb, bac, bca, cba, cab]
+dfs permutation abc call stack:
+dfs->
+    i = 0, PATH = a
+    dfs->
+        i = 0
+        i = 1, PATH = ab
+        dfs->
+            i = 0
+            i = 1
+            i = 2, PATH = abc
+            dfs-> res.add(path),
+                  [return1]
+            PATH = ab   //选第三层 当然有先删掉第三层的当前选项
+            i = 3, end of the loop       //都遍历过当前路径所有可能
+            [return2]   //选第二层 当然有先删掉第二层的当前选项
+        PATH = a
+        i = 2, PATH = ac
+        dfs->
+            i = 0
+            i = 1, PATH = acb
+            dfs-> res.add(path)
+                  [return]
+            PATH = ac
+            i = 2
+            [return]  //选第二层 当然有先删掉第二 层的当前选项
+        PATH = a
+        i = 3, end of the loop
+        [return]
+    PATH = ''
+    i = 1, PATH = b
+    i = 2, PATH = c
+    i = 3 [return]
+
+
+		dfs permutation abc using swap
+		dfs-> index = 0
+					i = 0
+					INPUT = abc
+					dfs-> index=1
+								i = 1
+								INPUT = abc
+								dfs-> index=2
+											i = 2
+											INPUT = abc
+											dfs-> index = 3
+														res.add(abc)    //
+											INPUT = abc
+											i = 3 out of loop, return   //Try out all options
+								INPUT = abc
+								i = 2
+								INPUT = acb
+								dfs-> index = 2
+											i = 2
+											INPUT = acb
+											dfs-> index = 3
+														res.add(acb)    //
+											INPUT = acb
+											i = 3 out of loop, return
+								INPUT = acb
+								i = 3 out of lool, return
+					INPUT= abc
+					i= 1
+					i= 2		

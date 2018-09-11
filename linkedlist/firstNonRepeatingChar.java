@@ -1,3 +1,4 @@
+//on the fly solution
 static class Node{
   Node pre;
   Node next;
@@ -28,7 +29,7 @@ public void read(char ch){
   if(node == null){  //if not appear before
     node = new Node(ch);
     append(node);
-  }else{             //if repeated
+  }else{             //if repeated, this shouldnt appera since its in the if statmenet ?!
     remove(node);
   }
 }
@@ -56,4 +57,33 @@ public Character FirstNonRepeating(){
   if(head == tail)
     return null;
   return head.next.ch;
+}
+//one time solution
+public char FirstNonRepeating(String str){
+  char[] arr = str.toCharArray();
+  Map<Character, Integer> countMap = new HashMap<>();
+  //linkedhashset contains unique element and maintian input order
+  //remove O(1)
+  Set<Character> queue = new LinkedHashSet<>();
+  for(char each : arr){
+    int occurance = countMap.getOrDefault(each, 0);
+    //update queue
+    if(occurance == 0)
+      queue.add(each);
+    if(occurance == 1)
+      queue.remove(each);
+    //update Map
+    countMap.put(each, occurance+1);
+  }
+  Iterator<Character> itr = queue.iterator();
+  if(itr.hasNext()){
+    return itr.next();
+  }
+  return null;
+}
+
+
+
+
+
 }
