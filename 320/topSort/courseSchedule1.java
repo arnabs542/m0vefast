@@ -2,15 +2,16 @@ https://zxi.mytechroad.com/blog/graph/leetcode-207-course-schedule/
 //to take course 0 you have to first take course 1, which is expressed as a pair: [0,1]
 //BFS方法做topological sort……大概就是建图，算入度，每次移除入度为0的点直到无点可移除……一起被移除的点等级都一样…
 //topological sort: directed graph, no cycle
+//prerequsites: [1,2], [3,4]  take 2 before 1, 4 before 3
 public boolean courseSchedule1(int numCourses, int[][] prerequisites) {
     // Write your solution here
   if(prerequisites == null || prerequisites.length == 0 || numCourses == 0)
     return true;
-  //build graph: hashmap<node,indegree counter>
+  //build graph: hashmap<node,indegree counter/prerequsities>
   int[] counter = new int[numCourses];
   for(int i = 0; i < prerequisites.length; i++)
      counter[prerequisites[i][0]]++;
-  //queue: node with no indegree
+  //maintain queue
   Queue<Integer> queue = new LinkedList<>();
   for(int i = 0; i < numCourses; i++){
     if(counter[i] == 0)

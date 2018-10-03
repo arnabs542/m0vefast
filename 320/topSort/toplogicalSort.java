@@ -1,7 +1,7 @@
 //find find any topological order for the given directed graph: level order
 //以往拓扑排序怎么用呢？一般是用在有向图中，即A的neighbor/outdegree 中有B、则B的neighbor中就不会有A。因此统计入度的时候，入度为0的就丢进queue中；
 //BFS方法做topological sort……大概就是
-1)建图，算入度, maintain queue
+1)建图，算入度, maintain queue 
 2)每次移除入度为0的点直到无点可移除(add to result)……一起被移除的点等级都一样…
 /**
  * Definition for Directed graph.

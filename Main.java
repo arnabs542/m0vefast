@@ -4,8 +4,12 @@ import java.lang.StringBuilder;
 
 public class Main{
 	public static void main(String[] args){
-		LinkedList;
-		System.out.println(compress(str));
+		// LinkedList;
+		// System.out.println(compress(str));
+		String a = "String";
+		String b = "Stirng";
+		String c = "String";
+		System.out.println(a.equals(b).equals(c));
 	}
 	//assusming s1 is not null
 	//from top to bottom sorted in acsding order

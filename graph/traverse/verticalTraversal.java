@@ -7,7 +7,7 @@ public List<List<Integer>> verticalOrder(TreeNode root) {
     //<disToRoot, listOF(node_values)>
     Map<Integer, List<Integer>> map = new TreeMap<>();
     Queue<Item> queue = new LinkedList<>();
-    queue.offer(new Item(root, 0));
+    queue.offer(new Item(0, root));
     //不需要先放左边的node进result，你依然可以从上到下的顺序遍历，use linkedlist offerlast and offerfirst
     while(!queue.isEmpty()){
       Item cur = queue.poll();
@@ -16,7 +16,6 @@ public List<List<Integer>> verticalOrder(TreeNode root) {
       if(!map.contiansKey(cur.disToRoot)){
         map.put(cur.disToRoot, new ArrayList<>());
       }
-      //update map
       map.get(cur.disToRoot).add(node.key);  //level order for the nodes with the same distance
 
       if(node.left !=null)
@@ -25,9 +24,6 @@ public List<List<Integer>> verticalOrder(TreeNode root) {
         queue.offer(new Item(node.right, cur.disToRoot+1));
     }
     for(Map.Entry<Integer, List<Integer>> entry : map.entrySet()){
-      //for(int i = 0; i < entry.getValue().size(); i++){
-      //   res.add(entry.getValue().get(i));
-      // }
       res.add(entry.getValue());
     }
     return res;

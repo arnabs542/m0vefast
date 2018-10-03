@@ -12,7 +12,7 @@ public class BSTIterator{
   }
   public int next(){
     int cur = stack.poll();
-    int res = cur.res;
+    int res = cur.value;
     if(cur.right != null){
       cur = cur.right;
       while(cur != null){
@@ -27,6 +27,7 @@ public class BSTIterator{
   }
   return res;
 }
+
 public List<TreeNode> inOrder(TreeNode root){
   List<TreeNode> res = new ArrayList<>();
   if(root = null)
@@ -36,10 +37,12 @@ public List<TreeNode> inOrder(TreeNode root){
   TreeNode cur = root;
 
   while(cur != null || !stack.isEmpty()){
+    //inorder prepare to the first
     while(cur != null){
       stack.offer(cur);
       cur = cur.left;
     }
+    //next()
     cur = stack.poll();
     res.add(cur);
     cur = cur.right;
