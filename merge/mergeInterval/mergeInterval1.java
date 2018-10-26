@@ -4,6 +4,7 @@ public boolean canAttendMeetings(Interval[][] intervals) {
   if(intervals == null || intervals.length == 0)
     return true;
   Arrays.sort(intervals, new Comparator<Interval>(){
+      @Override
       public int compare(Interval i1, Interval i2){
           return i1.get(0) - i2.get(0);
       }

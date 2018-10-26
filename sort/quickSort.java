@@ -31,6 +31,20 @@ private int partition(int[] arr, int left, int right){
 	swap(arr, i, right);   //swap pivot and i
 	return i;
 }
+//or while loop
+while(i <= j){
+			if(arr[i] < pivot){
+				i++;
+			}else if(arr[j] >  pivot){
+				j--;
+			}else{
+				swap(arr, i, j--);
+			}
+	 }
+	 swap(arr, pivot_index, i);
+	 return i;
+
+ }
 private int randomIndex(int left, int, right){
 	return left + (int)(Math.random() * (right-left+1));
 }

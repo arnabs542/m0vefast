@@ -1,37 +1,60 @@
 //quick select: O(n) O(1)  usde for kth smallest elemtn
 // https://stackoverflow.com/questions/8783408/why-is-the-runtime-of-the-selection-algorithm-on
 //https://www.geeksforgeeks.org/quickselect-algorithm/
-public int kthLargestElement(int k, int[] nums) {
-        // write your code here
-        int low = 0;
-        int high = nums.length -1;
-        while(low <= high){
-            int pivot = nums[high];
-            int index = low-1;
-            for(int i = low; i < high; i++){
-                //larger element on left
-                if(nums[i] > nums[high]){
-                    swap(nums, i, ++index);
-                }
-            }
-            //larger_vlaue, pivot, small_value
-            swap(nums, ++index, high);
-            if(index == k - 1){
-                return nums[index];
-            }
-            if(index < k -1){
-                low = index + 1;
-            }else{
-                high = index - 1;
-            }
+public int findKthLargest(int[] nums, int k) {
+        int start = 0;
+        int end = nums.length - 1;
+        int index = nums.length - k;
+        while (start < end) {
+            int pivot_index = partition(nums, start, end);
+            if (pivot_index < index)
+                start = pivot_index + 1;
+            else if (pivot_index > index)
+                end = pivot_index - 1;
+            else
+                return nums[pivot_index];
         }
-        return -1;
+        return nums[start];
+    }
+    //using recursiion
+    //https://www.geeksforgeeks.org/quickselect-algorithm/
+    public int findKthLargest(int[] nums, int k) {
+        return findKthLargest(nums, 0, nums.length-1, k);
+    }
+    private int findKthLargest(int arr[], int l, int r, int k) {
+        if (k > 0 && k <= r - l + 1) {
+            int index = partition(arr, l, r);
+            if (index - l == k - 1)
+                return arr[index];
+            else if (index - l > k - 1)
+                return kthSmallest(arr, l, index - 1, k);
+            else
+              return kthSmallest(arr, index + 1, r, k - index + l - 1);
+        }
+        return INT_MAX;
     }
 
-    private void swap(int[] nums, int a, int b){
-        int temp = nums[a];
-        nums[a] = nums[b];
-        nums[b] = temp;
+    private int partition(int[] arr, int left, int right) {
+        int pivot_index = right;
+        int pivot_value = arr[pivot_index];
+        int i = left;
+        int j = right-1;
+        while(i <= j){
+            if(arr[i] < pivot_value)
+                i++;
+            else if(arr[j] > pivot_value)
+                j--;
+            else
+                swap(arr, i, j--);
+        }
+        swap(arr, i, pivot_index);
+        return i;
+
+    }
+    private void swap(int[] arr, int left, int right){
+        int temp = arr[left];
+        arr[left] = arr[right];
+        arr[right] = temp;
     }
 //solution using heap: O(nlogk) running time + O(k) memory
 将数组遍历一遍，加入到一个容量为k的PriorityQueue，

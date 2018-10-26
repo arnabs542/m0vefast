@@ -14,7 +14,7 @@ public int minMeetingRooms(Interval[] intervals) {
     queue.offer(intervals[0].end);
 
     for(int i=1; i<intervals.length; i++){
-        if(intervals[i].start<queue.peek()){
+        if(intervals[i].start<queue.peek()){  //why  <= is not working 
             count++;
         }else{
             queue.poll();

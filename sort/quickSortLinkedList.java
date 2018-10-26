@@ -11,7 +11,7 @@ public ListNode quickSort(ListNode head) {
     dummy1.next = quickSort(dummy1.next);
     dummy2.next = quickSort(dummy2.next);
 
-    ListNode tail1 = findTail(dummy1.next);
+    ListNode tail1 = findFirstHalfTail(dummy1.next);
     if(dummy1.next == null) {
       dummy1.next = mid;
     } else {
@@ -20,7 +20,7 @@ public ListNode quickSort(ListNode head) {
     mid.next = dummy2.next;
     return dummy1.next;
   }
-  private ListNode findTail(ListNode head) {
+  private ListNode findFirstHalfTail(ListNode head) {
     while(head != null && head.next != null) {
       head = head.next;
     }
@@ -49,6 +49,7 @@ public ListNode quickSort(ListNode head) {
       }
       head = head.next;
     }
+    //cut the ties
     cur1.next = null;
     cur2.next = null;
   }

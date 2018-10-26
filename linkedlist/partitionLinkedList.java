@@ -15,7 +15,7 @@ public ListNode partition(ListNode head, int target){
 		}
 		head = head.next;
 	}
-	//connec tthe 2 partition
+	//connect the 2 partition
 	curSmall.next = large.next;
 	//un-link the last node in larget partiiotn
 	curLarge.next = null;
