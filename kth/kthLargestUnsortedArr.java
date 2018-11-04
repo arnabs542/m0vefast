@@ -18,18 +18,19 @@ public int findKthLargest(int[] nums, int k) {
     }
     //using recursiion
     //https://www.geeksforgeeks.org/quickselect-algorithm/
-    public int findKthLargest(int[] nums, int k) {
-        return findKthLargest(nums, 0, nums.length-1, k);
+    public int findKthSmallest(int[] nums, int k) {
+        return findKthSmallest(nums, 0, nums.length-1, k);
     }
-    private int findKthLargest(int arr[], int l, int r, int k) {
-        if (k > 0 && k <= r - l + 1) {
-            int index = partition(arr, l, r);
-            if (index - l == k - 1)
+    private int findKthSmallest(int arr[], int left, int right, int k) {
+        if (k > 0 && k <= right - left + 1) {
+            int index = partition(arr, left, right);
+            //size left == k-1, then index will be the return kth smallest
+            if (index - left == k - 1)
                 return arr[index];
-            else if (index - l > k - 1)
-                return kthSmallest(arr, l, index - 1, k);
-            else
-              return kthSmallest(arr, index + 1, r, k - index + l - 1);
+            else if (index - left > k - 1)
+                return kthSmallest(arr, left, index - 1, k);
+            else                                        //find kth-leftsize value   1 for the size of pivot index
+              return kthSmallest(arr, index + 1, right, k - (index - left) - 1);
         }
         return INT_MAX;
     }

@@ -7,83 +7,44 @@ static class Node{
     this.c = c;
   }
 }
-//maintain head and tail
-//only char appearinc just once will be in the ddl
-private Node head;
-private Node tail;
-private HashMap<Character, Node> singled;
-private HashSet<Character> repeated;
-
-public FirstNonRepeating(){
-  //stand and keep watch: 单点环状结构 方便地处理一些corner case
-  tail = new Node(null);
-  tail.next = tail.prev = tail;
-  head = tail;  //point to same node
-  singled = new HashMap<Character, Node>();
-  repeated = new HashSet<Character>();
-}
-public void read(char ch){
-  if(repeated.contains(ch))
-    return;
-  Node node = singled.get(ch);
-  if(node == null){  //if not appear before
-    node = new Node(ch);
-    append(node);
-  }else{             //if repeated, this shouldnt appera since its in the if statmenet ?!
-    remove(node);
+//DDL: always return head
+//hashmap: <char, reference to DDL>
+1) X not in map: first time seen
+- appeend tail of ddl
+- add to map
+2) X in map, value is null: deleted, appeared more than once
+- do nothing
+3) X in map, value is not null: appear once before
+- set map(x).value = NUL
+- remove from ddl
+class ListNode{
+  int value;
+  ListNode prev;
+  ListNode next;
+  public ListNode(int value){
+    this.value = value;
   }
 }
-//ACTUAL NODE <-> node -> h
-// h,t              t'
-private void append(Node node){
-  singled.put(node.ch, node);
-  tail.next = node;  //head.next =  FirstNonRepeating
-  node.prev = tail;
-  node.next = head;  //单点环状结构 or node,next = null;线性结构
-  tail = tail.next;
-}
-private void remove(Node node){
-  node.prev.next = node.next;  //ignore current node
-  node.next.prev = node.prev;  //2 directions
-  if(node == tail){
-    tail = node.prev;
-  }
-  node.prev = node.next = null;  //cut connection
-  repreated.add(node.ch);
-  singled.remove(node.ch);
-}
 
-public Character FirstNonRepeating(){
-  if(head == tail)
-    return null;
-  return head.next.ch;
-}
-//one time solution
-public char FirstNonRepeating(String str){
-  char[] arr = str.toCharArray();
-  Map<Character, Integer> countMap = new HashMap<>();
-  //linkedhashset contains unique element and maintian input order
-  //remove O(1)
-  Set<Character> queue = new LinkedHashSet<>();
-  for(char each : arr){
-    int occurance = countMap.getOrDefault(each, 0);
-    //update queue
-    if(occurance == 0)
-      queue.add(each);
-    if(occurance == 1)
-      queue.remove(each);
-    //update Map
-    countMap.put(each, occurance+1);
-  }
-  Iterator<Character> itr = queue.iterator();
-  if(itr.hasNext()){
-    return itr.next();
-  }
-  return null;
-}
-
-
-
-
-
-}
+class FindFirstNonrepeatedCharacterStream {
+	public Character findFirstNonRepeating(String s) {
+		if (s == null || s.length() == 0) {
+			return null;
+		}
+		Map<Character, Character> map = new HashMap<>();
+    //https://stackoverflow.com/questions/31365998/is-there-any-doubly-linked-list-implementation-in-java
+		List<ListNode> dll = new LinkedList<>();
+		char[] arr = s.toCharArray();
+		for (int i = 0; i < arr.length; i++) {
+			// first occurrence
+			if (!map.containsKey(arr[i])) {
+				dll.add(arr[i]);
+				map.put(arr[i], arr[i]);
+			} else {  // if not first occurrence
+        // must cast Object to Character or remove() will throw exception
+				dll.remove((Character)arr[i]);
+				map.put(arr[i], null);
+			}
+		}
+		return dll.get(0);
+	}

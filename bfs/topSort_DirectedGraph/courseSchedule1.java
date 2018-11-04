@@ -1,5 +1,5 @@
 https://zxi.mytechroad.com/blog/graph/leetcode-207-course-schedule/
-//to take course 0 you have to first take course 1, which is expressed as a pair: [0,1]
+//to take course 1 you have to first take course 0, which is expressed as a pair: [1,0]
 //BFS方法做topological sort……大概就是建图，算入度，每次移除入度为0的点直到无点可移除……一起被移除的点等级都一样…
 //topological sort: directed graph, no cycle
 public boolean courseSchedule1(int numCourses, int[][] prerequisites) {
