@@ -1,20 +1,24 @@
 //preorder: Go down through the left, when right is not null, push right to stack.
 public void flatten(TreeNode root) {
-        Stack<TreeNode> stack = new Stack<>();
-        TreeNode p = root;
-        while(p != null || !stack.empty()){
-            if(p.right != null){
-                stack.push(p.right);
+        Stack<TreeNode> stack = new Stack<>();  //subtree to be explored
+        TreeNode cur = root;
+        //not reaching deep left of cur substree
+        //for all other subtree
+        while(cur != null || !stack.empty()){
+            //save right
+            if(cur.right != null){
+                stack.push(cur.right);
             }
-            if(p.left != null){
-                p.right = p.left;
-                p.left = null;
+            //change left
+            if(cur.left != null){
+                cur.right = cur.left;
+                cur.left = null;
             //reach end, pop then
             }else if(!stack.empty()){
                 TreeNode temp = stack.pop();
-                p.right=temp;
+                cur.right=temp;
             }
-            p = p.right;
+            cur = cur.right;  //move to next processing subtree node
         }
     }
 

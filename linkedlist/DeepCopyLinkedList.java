@@ -6,23 +6,26 @@ public RandomListNode copy(RandomListNode head){
 	RandomListNode dummy = new RandomListNode(0);
 	dummy.next = head;
 	RandomListNode cur = dummy;
+1) head, next, random
+2) cur, next, random
+since we are doing iterative, no need to care about .next
 	//original node, copied node
 	Map<RandomListNode, RandomListNode> map = new HashMap<>();
+
 	while(head != null){
-		//copy the current node if necessary
+		//cur node 1) checkmap, 2) copy
 		if(!map.containsKey(head)){
 			map.put(head, new RandomListNode(head.value));
 		}
-		//connect copied node to the copied list
 		cur.next = map.get(head);
-		//copy the random node if necessary
+		//random 0) valid 2) chekc map, 3) copy
 		if(head.random != null){
 			if(!map.containsKey(head.random)){
 				map.put(head.random, new RandomListNode(head.random.value));
 			}
-			//connect the copied node to the random pointer
 			cur.next.random = map.get(head.random);
 		}
+		//iteration
 		head = head.next;
 		cur = cur.next;
 	}

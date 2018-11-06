@@ -1,13 +1,12 @@
 // map<candidate, counter>
-// step1: if check if cur is key
-  // case1: if cur is key, counter++
-  // case2.1: if map.size == k-1, all counter--; remove counter== 0
-  // case2.2: if map.size < k-1, add cur as key
-// step2: iterate list to select results
+// step1: if candidate is key, counter++
+// step2: if candidate not key:
+//   case2.1: if map.size == k-1, all counter--; remove counter== 0
+//   case2.2: if map.size < k-1, add cur as key
+// step3: iterate list to select results
 
 // time complexity: O(nk)-> n
 // space complexity: O(k)
-
 public List<Integer> majority(int[] array, int k) {
     //assumption: number, k >=2, array is not null or empty
     Map<Integer, Integer> map = new HashMap<>();
@@ -20,14 +19,13 @@ public List<Integer> majority(int[] array, int k) {
           else    //case 2.2
             map.put(array[i], 1);
         }
-
     }
     //since the real occurance has been reduced a couple times
-    setZero(map);  //case 2.1
+    setZero(map);
     return getResults(map, array, k);
 }
 private void reduce(Map<Integer, Integer> map) {
-    for(Integer key : map.keySet()) {           //map.keySet()
+    for(Integer key : map.keySet()) {           //map.keySet(), entry.getValue(),entry.setValue(), entry.getKey(), itr.remove()
         Integer freq = map.get(key);
         map.put(key, freq - 1);
     }
@@ -47,7 +45,7 @@ private void setZero(Map<Integer, Integer> map) {
 private List<Integer> getResults(Map<Integer, Integer> map, int[] array, int k) {
     for(int i = 0; i < array.length; i++) {
         Integer freq = map.get(array[i]);
-        if(freq != null) {
+        if(freq != null) { //only add freq for surviving candidates
             map.put(array[i], freq + 1);
         }
     }

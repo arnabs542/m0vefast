@@ -28,6 +28,7 @@ public boolean courseSchedule1(int numCourses, int[][] prerequisites) {
         counter[prerequrisites[i][0]]--;
         if(counter[prerequrisites[i][0]] == 0){
           //if a course dont has prerequeisite, then it can be a supported course for others
+          // not to offer in counter[pre[i][0]]
           queue.offer(prerequrisites[i][0]);
         }
       }

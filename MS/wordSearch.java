@@ -4,7 +4,7 @@ public boolean exist(char[][] board, String word) {
     return true;
   for(int i = 0; i < board.length; i++){
     for(int j = 0; j < board[i].length; i++){
-      if(board[i][j] == word.charAt(0) && dfs(board, word, i, j, 0)){
+      if(dfs(board, word, i, j, 0)){
         return true;
       }
     }
@@ -15,27 +15,30 @@ public boolean exist(char[][] board, String word) {
 //branch: 4 directions to go if cur word match
 private boolean dfs(char[][] board, String word, int i, int j, int k){
   //prune
-  if(!isValid(board, word, i, j){
+  if(!isValid(board,i, j){
     return false;
   }
-  //base case
-  if(k == word.size())
-    return true;
-  //mark as visited, grid boolean map passed in, save space
-  char cur = board[i][j];
-  board[i][j] = '#';
-
-  //for options
-  if(dfs(board, word, i, j+1, k+1) ||
-    dfs(board, word, i, j-1, k+1) ||
-    dfs(board, word, i-1, j, k+1) ||
-    dfs(board, word, i+1, j, k+1))
+  //basic condition
+  if(grid[i][j] == word.charAt(k)){
+    //base cases
+    if(k == word.length())
       return true;
-  //back trace mark as unvisited
-  board[i][j] = cur;
+
+    else{
+      //mark as visited, grid boolean map passed in, save space
+      char cur = board[i][j];
+      board[i][j] = '#';
+      //for options
+      if(dfs(board, word, i, j+1, k+1) || dfs(board, word, i, j-1, k+1) || dfs(board, word, i-1, j, k+1) || dfs(board, word, i+1, j, k+1)){
+          return true;
+      }
+      //back trace mark as unvisited
+      board[i][j] = cur;
+    }
+  }
   return false;
 }
-private boolean isValid(char[][] board, String word, int i, int j){
+private boolean isValid(char[][] board, int i, int j){
   if(i < 0 || i >= board.length || j < 0 || j >= board[i].length)
     return false;
   return true;

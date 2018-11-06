@@ -3,13 +3,17 @@ public List<List<Integer>> layerByLayer(TreeNode root) {
   if(root == null)
     return res;
   Queue<TreeNode> queue = new LinkedList<>();
+  //initialization
   queue.offer(root);
+  //termination
   while(!queue.isEmpty()){
     int size = queue.size();
+    //expand
     for(int i = 0 i < size; i++){
       TreeNode cur = queue.poll();
       List<Integer> curLayer = new ArrayList<>();
       curLayer.add(cur.key);
+      //generate
       if(cur.left != null){
         queue.offer(left);
       }

@@ -23,10 +23,35 @@ public int maxSubArrayLenToK(int[] arr, int k) {
           map.put(sum, i);
       }
       //ONLY for accumulative sum bigger than k
-      diff = sum - k;
-      if(map.containsKey(diff)){
-          max = Math.max(max, i - map.get(diff));
+      //diff = sum - k;
+      if(map.containsKey(sum - k)){
+          max = Math.max(max, i - map.get(sum - k));
       }
     }
     return max;
 }
+
+  //Map<sum, counter>
+  public int subarraySum(int[] nums, int k) {
+          int count = 0;
+          int sum = 0;
+          Map<Integer, Integer> map = new HashMap<>();
+          map.put(0, 1);
+
+          for (int i = 0; i < nums.length; i++) {
+              sum += nums[i];
+              //bigger than k
+              //当map 中有sum - k时（即sum2 - sum1 = k. 两sum之间所有数和为 k）
+              if (map.containsKey(sum - k)) {
+                  count = count + map.get(sum - k);
+              }
+              //smaller or equalto k
+              if (map.containsKey(sum)) {
+                  map.put(sum, map.get(sum) + 1);
+              } else {
+                  map.put(sum, 1);
+              }
+          }
+
+          return count;
+      }

@@ -13,7 +13,7 @@ public List<Integer> zigZag(TreeNode root) {
         //the size is changing, size of each level
         int size = deque.size();
         for(int i = 0; i < size; i++){
-            if(layer == 0){  //even level, right->left
+            if(layer == 0){  //even level, right->left, root level 0 base index
                 TreeNode temp = deque.pollLast();
                 list.add(temp.key);
                 if(temp.right != null)
@@ -72,3 +72,37 @@ public ArrayList<ArrayList<Integer>> zigzagLevelOrder(TreeNode root){
     }
     return res;
 }
+vpublic List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
+
+        if(root == null)
+            return res;
+        Deque<TreeNode> deque = new LinkedList<>();
+        int layer = 0;  //1
+        deque.offerLast(root);  //first leve rule 
+
+        while(!deque.isEmpty()){
+            int size = deque.size();
+            List<Integer> cur_layer = new ArrayList<>();
+            for(int i = 0; i < size; i++){
+                if(layer == 0){
+                    TreeNode cur = deque.pollLast();
+                    cur_layer.add(cur.val);
+                    if(cur.right != null)
+                        deque.offerFirst(cur.right);
+                    if(cur.left != null)
+                        deque.offerFirst(cur.left);
+                }else{
+                    TreeNode cur2 = deque.pollFirst();
+                    cur_layer.add(cur2.val);
+                    if(cur2.left != null)
+                        deque.offerLast(cur2.left);
+                    if(cur2.right != null)
+                        deque.offerLast(cur2.right);
+                }
+            }
+            res.add(cur_layer);
+            layer = 1 - layer;
+        }
+        return res;
+    }

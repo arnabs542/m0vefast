@@ -4,6 +4,7 @@ public String longestPalindrome(String s) {
 	if(s == null || s.length() == 1){
 		return s;
 	}
+	//empty string ""
 	String res = s.substring(0,1);
 	for(int i = 0; i < s.length(); i++){
 		//aba: get the longest palindrome centering index i
@@ -19,10 +20,9 @@ public String longestPalindrome(String s) {
 	}
 	return res;
 }
+//check if  palindrom from the center to outer edge with recursion
 private Stirng helper(Stirng s, int left, int right){
-	while(left >= 0
-	&& right <= s.length()-1
-	&& s.charAt(left) == s.charAt(right)){
+	while(left >= 0 && right <= s.length()-1 && s.charAt(left) == s.charAt(right)){
 		left--;
 		right++;
 	}

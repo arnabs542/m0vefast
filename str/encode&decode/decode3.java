@@ -30,10 +30,11 @@ public String decodeString(String s) {
                 String decodedString = decode(s, index);
                 index[0]++; // skip ']'
                 // repeatedly copy k times;
-                while (cnt > 0) {
-                    sb.append(decodedString);
-                    cnt--;
-                }
+                // while (cnt > 0) {
+                //     sb.append(decodedString);
+                //     cnt--;
+                // }
+                copyStr(sb, decodedString, count);
             }
         }
         return sb.toString();
@@ -150,4 +151,3 @@ public class Solution {
     	}
     	return sb.toString();
     }
-

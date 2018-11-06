@@ -4,7 +4,8 @@ public List<Integer> inOrderTraversal(TreeNode root){
 	Deque<TreeNode> stack = new LinkedList<TreeNode>();   //new object is placed on heap not on stack
 	List<Integer> res = new ArrayList<>();
 	TreeNode cur = root;
-	//not reach to the left deepest || all left subtree is visited
+	//not reach to the left deepest of curretn subtree
+	// has not visited all (other)substree
 	while(cur != null ||!stack.empty()){
 		//left subtree of stack.peek elemetn is all visited
 		while(cur != null){
@@ -13,7 +14,7 @@ public List<Integer> inOrderTraversal(TreeNode root){
 		}
 		cur = stack.pollLast();
 		res.add(cur.value);
-		cur = cur.right;
+		cur = cur.right; //antoher subtree
 	}
 	//stop: cur == null && stack isEmpty()
 	return res;
@@ -52,10 +53,14 @@ public List<Integer> preOrderTraversal(TreeNode root){
 	List<Integer> res = new ArrayList<>();
 	if(root == null)
 		return res;
+	//initialization
 	stack.push(root);
+	//termination
 	while(!stack.empty()){
+		//expand
 		TreeNode node = stack.pop();
 		res.add(node.val);
+		//generate
 		if(node.right != null)
 			stack.push(node.right);
 		if(node.left != null)
@@ -99,7 +104,7 @@ public List<Integer> postorderTraversal(TreeNode root) {
 					stack.push(cur.right);
 				if(cur.left != null && !visited.contains(cur.left))
 					stack.push(cur.left);
-				//base case 
+				//base case
 				if((cur.left == null || visited.contains(cur.left)) && (cur.right == null || visited.contains(cur.right))){
 					res.add(cur.value);
 					visited.add(cur);

@@ -13,14 +13,14 @@ public class Solution {
   	//map to record which group the node belongs to(0 or 1)
     Map<GraphNode, Integer> visited = new HashMap<GraphNode, Integer>();
     for(GraphNode node : graph){
-    	//use bfs to check it all nodes are connected
+    	//use bfs to check 1) connected, 2) follow rule
     	if(!bfs(node, visited))
     		return false;
     }
     return true;
   }
   private boolean bfs(GraphNode node, Map<GraphNode, Integer> visited){
-  	if(visited.containsKey(node))  //has been coloured, so skip 
+  	if(visited.containsKey(node))  //has been coloured, so skip
   		return true;
   	Queue<GraphNode> queue = new LinkedList<>();
   	queue.offer(node);

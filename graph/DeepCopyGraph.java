@@ -4,6 +4,7 @@ public List<GraphNode> copy(List<GraphNode> graph){
 	if(graph == null)
 		return null;
 	Map<GraphNode, GraphNode> map = new HashMap<>();
+	//node 1)check map, 2) dfs
 	for(GraphNode node : graph){
 		if(!map.containsKey(node)){
 			map.put(node, new GraphNode(node.key));
@@ -12,6 +13,7 @@ public List<GraphNode> copy(List<GraphNode> graph){
 	}
 	return new ArrayList<GraphNode>(map.values());
 }
+//for neibours: 1)check map, 2) dfs
 private void dfs(GraphNode seed, Map<GraphNode, GraphNode> map){
 	GraphNode copy = map.get(seed);
 	for(GraphNode nei : seed.neighbours){

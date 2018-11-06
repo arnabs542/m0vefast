@@ -1,4 +1,6 @@
 public ListNode merge(List<ListNode> listOfLists){
+	if(listOfLists == null || listOfLists.length() ==0)
+		return null;
 	PriorityQueue<ListNode> minHeap = new PriorityQueue<>(11, new MyComparator());
 	ListNode dummy = new ListNode(0);
 	ListNode cur = dummy;
