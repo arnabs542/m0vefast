@@ -23,7 +23,7 @@ public String[] topKFrequent(String[] combo, int k) {
     for(Map.Entry<String, Integer> entry : map.entrySet()){
       if(minHeap.size() < k){
         minHeap.offer(entry);
-      }else if(entry.getValue().compareTo(minHeap.peek().getValue()){</strong>
+      }else if(entry.getValue().compareTo(minHeap.peek().getValue()){
         minHeap.poll();
         minHeap.offer(entry);
       }

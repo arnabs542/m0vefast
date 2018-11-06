@@ -24,7 +24,7 @@ private TreeNode mergeNode(TreeNode shorter, TreeNode longer, int diff){
     while(longer != shorter){
         longer = longer.parent;
         shorter = shorter.parent;
-    }
+     
     return longer;
 }
 //length of the path from node to root

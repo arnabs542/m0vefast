@@ -456,3 +456,33 @@ private boolean isValid(boolean[] visited, char cur){
   visited[toInt-1] = true;
   return true;
 }
+
+
+public TreeNode flatten(TreEeode root){
+  if(root == null)
+    return null;
+  Stack<TreeNode> stack = new Stack<>();
+  TreeNode cur = root;
+
+  while(cur != null || !stack.isEmpty()){
+    //save right
+    if(cur.right != null){
+      stack.push(cur.right);
+    }
+    //process left
+    //1) if not reaching deepest left of current subtree
+    if(cur.left != null)
+    {
+      cur.right = cur.left;
+      cur.left = null;
+    }else{  //2) if reachg deepest left of cur subtree
+      TreeNode temp = stack.pop();
+      cur.right = temp;
+    }
+    cur = cur.right;
+    }
+    return root;
+
+  }
+
+}

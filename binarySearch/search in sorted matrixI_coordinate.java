@@ -1,7 +1,7 @@
-//solution1: convert 2d arr to 1d arr and binary search
+//solution1: sorted in one direction
 public boolean searchMatrix(int[][] matrix, int target){
 	int[] res = new int[]{-1,-1};
-	if(matrix == null || matrix.length == 0) 
+	if(matrix == null || matrix.length == 0)
 		return res;
 	if(matrix[0] == null || matrix[0].length == 0)
 		return res;
@@ -26,5 +26,23 @@ public boolean searchMatrix(int[][] matrix, int target){
 	}
 	return res;
 }
-//solution2: 2 tiems binary search
-http://www.jiuzhang.com/solutions/search-a-2d-matrix/
+//sorect in x and sorted in y
+https://leetcode.com/problems/search-a-2d-matrix-ii/discuss/66140/My-concise-O(m%2Bn)-Java-solution
+//do binary search in 2 directions  O(m+n)
+public boolean searchMatrix(int[][] matrix, int target) {
+        if(matrix == null || matrix.length < 1 || matrix[0].length <1) {
+            return false;
+        }
+        int col = matrix[0].length-1;
+        int row = 0;
+        while(col >= 0 && row <= matrix.length-1) {
+            if(target == matrix[row][col]) {
+                return true;
+            } else if(target < matrix[row][col]) {
+                col--;
+            } else if(target > matrix[row][col]) {
+                row++;
+            }
+        }
+        return false;
+    }

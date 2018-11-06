@@ -9,11 +9,11 @@ public void flatten(TreeNode root) {
             if(cur.right != null){
                 stack.push(cur.right);
             }
-            //change left
+            //change left 1) if reach end of curr subtree
             if(cur.left != null){
                 cur.right = cur.left;
                 cur.left = null;
-            //reach end, pop then
+            //reach end, 2) try other subtree 
             }else if(!stack.empty()){
                 TreeNode temp = stack.pop();
                 cur.right=temp;

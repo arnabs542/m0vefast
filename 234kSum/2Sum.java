@@ -27,3 +27,20 @@ public boolean 2Sum(int[] arr, int target){
 	}
 	return false;
 }
+//no duplicate, return index, can reuse element, no sorted O(n) O(n)
+public int[] twoSum(int[] arr, int target) {
+        int[] res = new int[2];
+        if(arr == null || arr.length == 0)
+            return res;
+        Map<Integer, Integer> map = new HashMap<>();
+        for(int i = 0; i < arr.length; i++){
+            if(map.containsKey(target - arr[i])){
+                res[0] = map.get(target-arr[i]);
+                res[1] = i;
+                return res;
+            }else{
+                map.put(arr[i], i);
+            }
+        }
+        return res;
+    }
