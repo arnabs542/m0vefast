@@ -20,7 +20,7 @@ private boolean dfs(char[][] board, String word, int i, int j, int k){
   }
   //basic condition
   if(grid[i][j] == word.charAt(k)){
-    //base cases
+    //termination condition
     if(k == word.length())
       return true;
 
@@ -72,7 +72,7 @@ public List<String> findWords(char[][] board, String[] words){
   }
   return res;
 }
-private void dfs(char[][] grid, boolean[][] visited, String str, int i, int j, Trie trie, Set<String> res){
+private void dfs(char[][] grid, boolean[][] visited, String path, int i, int j, Trie trie, Set<String> res){
   //pruen
   if(!isValid(grid, i, j))
     return;
@@ -81,17 +81,17 @@ private void dfs(char[][] grid, boolean[][] visited, String str, int i, int j, T
   if(!trie.startsWith(grid, str))
     return;
   //base case
-  str = str + board[i][j];
-  if(trie.search(str)){
-    res.add(str);
+  path = path + board[i][j];
+  if(trie.search(path)){
+    res.add(path);
     return;
   }else{
     //mark as visited
     visited[i][j] = true;
-    dfs(grid, visited, str, i+1, j, trie, res);
-    dfs(grid, visited, str, i-1, j, trie, res);
-    dfs(grid, visited, str, i, j+1, trie, res);
-    dfs(grid, visited, str, i, j-1, trie, res);
+    dfs(grid, visited, path, i+1, j, trie, res);
+    dfs(grid, visited, path, i-1, j, trie, res);
+    dfs(grid, visited, path, i, j+1, trie, res);
+    dfs(grid, visited, path, i, j-1, trie, res);
     visited[i][j] = false;
   }
 }

@@ -41,6 +41,7 @@ public boolean isCompleted(TreeNode root) {
 
     while(!queue.isEmpty()){
     	TreeNode cur = queue.poll();
+
       if(cur.left == null)
         flag = true;
       if(cur.left != null && flag == true)

@@ -23,7 +23,7 @@ m[i] = m[i-1][j-1] + 1     if j = j the same
 
 //longest common subsequence 2D
 base case: m[0][0] = 0,edge with 0
-induction rule:longes common substr between first i and first j, might not including ith and jth
+induction rule:longes common substr between first i and first j, might not including ith and jth letter of s1 and s2
 m[i] = m[i-1][j-1] + 1                if j = j the same
      = max(m[i-1][j], m[i][j-1])      if i j not equal
 

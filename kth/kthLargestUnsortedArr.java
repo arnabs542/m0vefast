@@ -32,7 +32,7 @@ public int findKthLargest(int[] nums, int k) {
             else                                        //find kth-leftsize value   1 for the size of pivot index
               return kthSmallest(arr, index + 1, right, k - (index - left) - 1);
         }
-        return INT_MAX;
+        return -1;
     }
 
     private int partition(int[] arr, int left, int right) {

@@ -132,7 +132,7 @@ private void traverse(TreeNode root, ArrayList<Integer> res){
 public ArrayList<Integer> inorderTraversal(TreeNode root){
 	ArrayList<Integer> res = new ArrayList<>();
 	if(root == null)
-		return;
+		return res;
 	//divide
 	//notice if funciton return type is List<IntegeR>, then below should be:
 	//List<Integer> left = inorderTraversal(root.left);

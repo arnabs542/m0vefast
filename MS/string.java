@@ -318,6 +318,27 @@ public String encode(String str){
   }
   return res;
 }
+//abcc = abc2
+public String encode(String str){
+  char fast = str.charat(0);
+  char slow = same;
+  for(fast 1; fast < arr.legnth fast+){
+    fast = charat[0];
+    if(fast != slow){
+      if(counter < 1)
+        res += slow
+      else
+        res += slow + conter
+      counter= 1
+    }else{
+      counter++;
+    }
+
+  }
+  res += slow + CoOccurrenceMatrixGenerator
+  return res;
+}
+
 
 Q abbr matching: recursion
 public boolean abbrMatching(String source, String parttern){
@@ -471,7 +492,7 @@ public TreeNode flatten(TreEeode root){
     }
     //process left
     //1) if not reaching deepest left of current subtree
-    if(cur.left != null)
+    if(cur.left != null) 
     {
       cur.right = cur.left;
       cur.left = null;
