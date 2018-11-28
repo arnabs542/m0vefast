@@ -2,58 +2,45 @@ public String[] topKFrequent(String[] combo, int k) {
 	if(combo.length == 0)
 	//notice there is a 0 inside for new String!!!
 		return new String[0];
-	//{string, count}
-	HashMap<String, Integer> countMap = buildMap(combo);
-	//compare how to wirte comparator for maxHeap
-	// PriorityQueue<Integer> maxHeap = new PriorityQueue<>(k, new Comparator<Integer>(){
- //    	@Override
- //    	public int compare(Integer o1, Integer o2){
- //    		if(o1.equals(o2))
- //    			return 0;
- //    		return o1 > o2? -1 : 1;
- //    	}
-    //});
+	//build map: {string, count}
+	Map<String, Integer> map = new HashMap<>();
+	for(String str : combo){
+		map.put(str, map.getOrDefault(each, 0) + 1);
+	}
+	//build minheap
 	ProrityQueue<Map.Entry<String, Integer>> minHeap = new ProrityQueue<>(k, new Comparator<Map.Entry<String, Integer>>(){
 		@Override
 		public int compare(Map.Entry<String, Integer> a, Map.Entry<String, Integer> b){
 			//to use compareTo inside for object
+			if(a.getValue() == b.getValue()){
+				return b.getKey().compareTo(a.getKey());
+			}
 			return a.getValue().compareTo(b.getValue());
-            //https://www.javacodegeeks.com/2013/03/difference-between-comparator-and-comparable-in-java.html
+			//https://www.javacodegeeks.com/2013/03/difference-between-comparator-and-comparable-in-java.html
 		}
 	});
 	//notice countMap.entrySet()
-	for(Map.Entry<String, Integer> entry : countMap.entrySet()){
-		if(minHeap.size() < k)
-			minHeap.offer(entry);
-		else if(entry.getValue() > minHeap.peek().getValue()){
-			minHeap.poll();
-			minHeap.offer(entry);
+	for(Map.Entry<String, Integer> entry : map.entrySet()){
+		minHeap.offer(entry.getKey());
+		if(minHeap.size() >  k){
+			minheap.poll();
 		}
 	}
-	return countArr(minHeap);
-}
-private Map<String, Integer> buildMap(String[] combo){
-	Map<String, Integer> countMap = new HashMap<>();
-	for(String s : combo){
-		Integer count = countMap.get(s);
-		if(count == null)
-		//if(!countMap.containsKey(s))
-			countMap.put(s, 1);
-		else
-			countMap.put(s, count+1);
+	//get result
+	while(!minHeap.isEmpty()){
+		res.add(0, minHeap.poll().getKey());
 	}
-	return countMap;
-}
-private String[] countArr(ProrityQueue<Map.Entry<String, Integer>> minHeap){
-	String[] res = new String[minHeap.size()];
-	for(int i = minHeap.size()-1; i>=0; i--)
-		res[i] = minHeap.poll().getKey();
 	return res;
 }
-
-
-
-
+static class MyComparator implements Comparator<Map.Entry<String, Integer>>{
+        @Override
+        public int compare(Map.Entry<String, Integer> one, Map.Entry<String, Integer> two){
+            if(one.getValue() == two.getValue()){
+                return two.getKey().compareTo(one.getKey());
+            }
+            return one.getValue() - two.getValue();
+        }
+    }
 //sort business by rating
 public static List<BusinessInfo> sortBusinessesByRating(List<BusinessInfo> businesses){
         List<BusinessInfo> sortedBusinesses = new ArrayList<BusinessInfo>();

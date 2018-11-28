@@ -1,4 +1,4 @@
- //solution1: O(n^2*n) = O(n^3)
+//solution1: O(n^2*n) = O(n^3)
 //there are n^2 subarr, for each subarr, need O(n) to determine whether it is a ascending subarr
 
 //solution2: O(n), O(n)
