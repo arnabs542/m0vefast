@@ -21,17 +21,17 @@ public int longestLine(int[][] matrix) {
       if(matrix[i][j] == 1){
         for(int k = 0; k < 4; k++){
           dp[i][j][k] = 1;
-          if(j > 0 && matrix[i][j-1] == 1)
-            dp[i][j][0] += dp[i][j-1][0]; // horizontal line
-          if(i > 0 && matrix[i-1][j] == 1)
-            dp[i][j][1] += dp[i-1][j][1]; // vertical line
-          if(j > 0 && i > 0 && matrix[i-1][j-1] == 1)
-            dp[i][j][2] += dp[i-1][j-1][2]; // diagnoal line
-          if(j < col-1 && i > 0 && matrix[i-1][j+1] == 1)
-            dp[i][j][3] += dp[i-1][j+1][3]; // anti-diagnoal line
-          max = Math.max(max, Math.max(dp[i][j][0], dp[i][j][1]));
-          max = Math.max(max, Math.max(dp[i][j][2], dp[i][j][3]));
         }
+        if(j > 0 && matrix[i][j-1] == 1)
+          dp[i][j][0] += dp[i][j-1][0]; // horizontal line
+        if(i > 0 && matrix[i-1][j] == 1)
+          dp[i][j][1] += dp[i-1][j][1]; // vertical line
+        if(j > 0 && i > 0 && matrix[i-1][j-1] == 1)
+          dp[i][j][2] += dp[i-1][j-1][2]; // diagnoal line
+        if(j < col-1 && i > 0 && matrix[i-1][j+1] == 1)
+          dp[i][j][3] += dp[i-1][j+1][3]; // anti-diagnoal line
+        max = Math.max(max, Math.max(dp[i][j][0], dp[i][j][1]));
+        max = Math.max(max, Math.max(dp[i][j][2], dp[i][j][3]));
       }
     }
   }

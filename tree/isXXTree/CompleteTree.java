@@ -93,3 +93,23 @@ private int getRightHeight(TreeNode root){
 
 
 http://www.cnblogs.com/grandyang/p/4567827.html
+
+
+
+
+//google
+//count total node of a complete Tree
+iteration travrsal + a counter
+//Time complexity is O(h^2) - O(log(n)^2)
+public int totalCompleteTree(TreeNode root){
+	int total_height = getHeight(root);
+	int right_height = getHeight(root.right);
+	if(right_height + 1 == total_height)  //full tree
+		return (1 << total_height) + totalCompleteTree(root.right);
+	return (1 << (total_height - 1)) + totalCompleteTree(root.left);
+}
+private int getHeight(TreeNode root){
+	if(root == null)
+		return -1;
+	return 1 + getHeight(root.left);
+}
