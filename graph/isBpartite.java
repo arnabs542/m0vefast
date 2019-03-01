@@ -25,7 +25,7 @@ public class Solution {
    //use bfs to cur level is conflict with the neighbors level in group number
   private boolean bfs(GraphNode node, Map<GraphNode, Integer> visited){
     //caller processed this node before
-    //otherwise, current node will be assigned to 0 again, which ight have conflict 
+    //otherwise, current node will be assigned to 0 again, which might have conflict 
   	if(visited.containsKey(node))
   		return true;
     //not visited this node before

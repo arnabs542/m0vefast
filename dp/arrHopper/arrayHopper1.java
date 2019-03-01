@@ -1,4 +1,4 @@
-arrayhopper1: can jump to the end?
+ : can jump to the end?
 arrayhopper2: min to jump to the end?
 arrayhopper3: min to jump out of array?
 arrayhopper4: left/right, min to jump to the end?

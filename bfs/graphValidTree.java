@@ -1,4 +1,4 @@
-// version 1: BFS any 1)connected graph without simple 2)cycles is a tree
+// version 1: BFS any 1)connected graph n = m+1  2) without simple cycles is a tree
 public class Solution {
     /**
      * @param n an integer

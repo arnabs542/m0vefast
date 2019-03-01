@@ -7,6 +7,7 @@ public boolean canBreak(String input String[] dict){
 	arr[0] = true;
 	for(int i = 1; i < arr.length; i++){
 		for(int j = 0; j < i; j++){
+			//right: manual check dict   left: memory
 			if(set.contains(input.substring(j, i)) && arr[j]){
 				arr[i] = true;
 				break;
@@ -22,19 +23,20 @@ private Set<String> buildSet(String[] dict){
 	return set;
 }
 //optimization from O(n^3) - > O(n^2) Trie + dp
+//https://leetcode.com/problems/word-break/discuss/43908/4-different-ways-to-solve-this-with-detailed-explanation.
 public boolean wordBreak1(string str, String[] dict){
-	Trie trie = new Trie();
-	for(String each : dict){
-		trie.insert(each);
-	}
-	boolean[] dp = new boolean[str.length()+1];
-	dp[0] = true;
- 	int size = s.length();
-	for(int i = 0; i < s.length(); i++){
-		if(trie.search(str.substring(i, size-i)) && dp[i])
-			dp[i] = true;
-	}
-	return dp[dp.legnth - 1];
+	// Trie trie = new Trie();
+	// for(String each : dict){
+	// 	trie.insert(each);
+	// }
+	// boolean[] dp = new boolean[str.length()+1];
+	// dp[0] = true;
+ 	// int size = str.length();
+	// for(int i = 0; i < str.length(); i++){
+	// 	if(trie.search(str.substring(i, size-i)) && dp[i])
+	// 		dp[i] = true;
+	// }
+	// return dp[dp.legnth - 1];
 }
 
 //Trie

@@ -14,7 +14,7 @@
       }
       return globalMax;
    }
-   //cumlative column-wise addition, no need for row count
+   //cumlative top-down addition, no need for row count
    private void add(int[] cur, int[] add){
      for(int i = 0; i < cur.length; i++){
        cur[i] = cur[i] + add[i];

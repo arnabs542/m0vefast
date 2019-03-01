@@ -1,288 +1,3 @@
-import collections
-# Google 麵筋
-
-# 第一道:找到最长的字符串的长度，要求这个子字符串的头字符和尾字符相同。
-# 如 abdcbe, 则最长的是 bdcb,头 b 和尾 b 相同，返回 4。要求时间复杂度 O(n)。
-def sol(s):
-	dic = collections.defaultdict(list)
-	ans, L, R = 0, 0, 0
-	for i, c in enumerate(s):
-		dic[c].append(i)
-	for c, indices in dic.items():
-		l, r = indices[0], indices[-1]
-		if ans < r - l:
-			ans = r - l
-			L, R = l, r
-	return s[L:R+1], L, R
-
-
-# 第二道:找到最长的连续子序列，要求这个连续子序列的和为 0。
-# 先用 sum_array 转换一下，就变成了第一道题
-def sol2(l):
-	sum_array = [i for i in l]
-	for i in range(1, len(sum_array)):
-		sum_array[i] += sum_array[i-1]
-	sum_array = [0] + sum_array
-	_, L, R = sol(sum_array)
-	return l[L:R]
-
-# 第二轮:1 道题。OOD。
-# 设计一个扫地机器人。
-# 这个机器人可以前进，向左转，向右转。
-# 方法有 move, turnRight, turnLeft, clean()。 设计相应的数据结构使得它能扫完整个房间。房间大小未知，机器人的初始位置未知。
-# 489 robot room cleaner (dfs)
-def cleanRoom(self, robot):
-    self.dfs(robot, 0, 0, 0, 1, set())
-
-def dfs(self, robot, x, y, x_dir, y_dir, visited):
-    robot.clean()
-    visited.add((x, y))
-    for i in range(4):
-        next_x, next_y = x + x_dir, y + y_dir
-        if (next_x, next_y) not in visited and robot.move():
-            self.dfs(robot, next_x, next_y, x_dir, y_dir, visited)
-            robot.turnLeft()
-            robot.turnLeft()
-            robot.move()
-            robot.turnLeft()
-            robot.turnLeft()
-        robot.turnLeft()
-        x_dir, y_dir = -y_dir, x_dir
-
-
-# 给一个数组A，再给一个shuffle A得到的数组B，再给个新数组C，求shuffle C得到的数组D。要求C到D的映射与A到B要一致。 假设所有数组都未排序。
-# 比如给A= 2，3，6，7，4；B＝3，2，4，7，6；C= 5，6，1，2，3 那 D就应该是 6，5，3，2，1.
-#      A= 1, 2, 3   B = 1, 3, 2  C = 3, 3, 3   D = 3, 3, 3
-#      A= 1, 1, 2   B = 1, 2, 1  C = 3, 4, 5   D = 3, 5, 4
-#      # idea: form injection from A to C
-def findMapping(A, B, C):
-	dic = collections.defaultdict(collections.deque)
-	for a, c in zip(A, C):
-		dic[a].append(c)
-	D = []
-	for b in B:
-		D.append(dic[b].popleft())
-	return D
-
-
-# 给 x,y 轴上一堆点，点的坐标都是正整数，问这些点是否是关于 x = ? 的直线对称。
-def mirrorImage(points, x):
-	count = colections.defaultdict(int)
-	for xx, yy in points:
-		xx = abs(xx - x)
-		count[(xx, yy)] += 1
-	return 1 not in count.values()
-
-# 给一个长方形框（宽和高）和一段话，问能把整段话放进框里的最大字号，你可以调用两个现有的函数，分别返回每个字符的宽度和字符高度。
-# 典型的二分查找，在字号范围内不断二分，最后就返回能把整段话放进框里的最大字号了
-def fitScreen(screen_width, screen_height, num_chars, font_sizes):
-	def ok_or_not(width, height, screen_width, screen_height, num_chars):
-		num_chars_per_line = screen_widht // width
-		num_chars_per_column = screen_height // height
-		num_chars_can_fit = num_chars_per_line * num_chars_per_column
-		return num_chars_can_fit >= num_chars
-
-	lo, hi = 0, len(font_sizes) - 1
-	while lo < hi:
-		mid = (lo + hi + 1) // 2
-		font_size = font_sizes[mid]
-		width, height = API(font_size)
-		size_ok = ok_or_not(width, height, screen_width, screen_height, num_chars)
-		if not size_ok:
-			hi = mid -1
-		else:
-			lo = mid
-	return lo
-
-# 1st 电面： lc 459，亚裔哥们
-# Doable, O(n^2)
-def repeatedSubstringPattern(self, s):
-    l = len(s)
-    for i in range(l//2, 0, -1):
-        if l % i == 0:
-            m = l // i
-            subS = s[:i]
-            if subS * m == s: return True
-    return False
-
-# 奇技淫巧 O(n)
-def repeatedSubstringPattern(self, s):
- 	return s in (s + s)[1:-1]
-
-# KMP table, O(n)
-def repeatedSubstringPattern(self, s):
-	i, j, n = 1, 0, len(s)
-    dp = [0] * (n + 1)
-    while i < n:
-        if s[i] == s[j]:
-            i, j = i + 1, j + 1
-            dp[i] = j
-        elif j == 0: i += 1
-        else: j = dp[j]
-    return dp[n] > 0 and dp[n] % (n - dp[n]) == 0
-# 2nd 电面：lc 685变种。给出binary tree is invalid，有多余的link，要求make the binary tree valid。
-# 留了25分钟给这个题。给的输入是root节点。先给面试官讲解了我的做法，找到所有的edge，然后按着685来
-# 第二题，如果是binary tree的话，是不是可以做BFS，记住访问过的节点，遍历每个node时查看它的left和right是否已访问过，如果是就去掉。
-# +1，我也觉得是，既然给的是root就说明面试官其实想要一个recursion的解法吧...
-def removeRedundantLinkInBinaryTree(root):
-	visited = {}
-	q = deque([root])
-	while q:
-		node = q.popleft()
-		visited.add(node)
-		if node.left:
-			if node.left in visited:
-				node.left = None
-				break
-			q.append(node.left)
-		if node.right:
-			if node.right in visited:
-				node.right = None
-				break
-			q.append(node.right)
-# 定义两个binary string的distance是去掉common prefix的长度之和。
-# 比如: 1011000和1011110的common prefix是1011， distance就是len("000"+"110") = 3 + 3 = 6.
-# 现在给一个list of binary strings, 求max distance. 用trie+dfs
-# list of binary strings 的 max distance，是整个list去掉common prefix之后任意两个string的max distance中最大的那个
-#
-# 我是先build trie，然后dfs对每个node返回从那个node开始往下走的最长path, 所以就是dfs(root) = 1 + max(dfs(root.left), dfs(root.right))
-# 与此同时如果node有两个children，更新distance = max(distance , dfs(root.left)+dfs(root.right))
-# 最后返回distance
-# build trie是kn，dfs也是kn，所以是O(kn)
-
-# 刚才又仔细想了一下，dfs的时间复杂度应该是2^n而不是nk，n是list里最长的binary string. 举个例子lst=[10,01,11,00,10,01,11,00...]重复1000次，trie里只有7个node. 所以最终复杂度是nk+2^n
-#
-#
-# http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=440636&extra=page%3D1%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3089%5D%5Bvalue%5D%5B2%5D%3D2%26searchoption%5B3089%5D%5Btype%5D%3Dcheckbox%26searchoption%5B3046%5D%5Bvalue%5D%3D1%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
-def maxDistanceOfBinaryStrings(string_list):
-
-as as as as    as as as as as as as as as as as as as
-  as as        as
-  as as 	   as as as as as
-  as as 	   as
-  as as        as
-# 给一个tree, 给定两个node，求两个node之间最小的距离（edge数）是多少。
-def lca_distance(q, p):
-	dic = {}
-	distance = 0
-	while q:
-		dic[q] = distance
-		distance += 1
-		q = q.parent
-
-	distance = 0
-	while p:
-		if p in dic:
-			return distance + dic[p]
-		distance += 1
-		p = p.parent
-	return float('inf')
-
-# 1. input list[int]，output True/False，list里面如果有数字重复出现少于两次 -- False，
-# 所有数字出现都超过两次 -- True。input是乱序的，所以我最开始先排了序再做的，时间复杂度O(nlogn)。
-# 然后问可不可以降低到O(n)。说了一下用hashmap就好。
-def allDouble(numbers):
-	count = collections.defaultdict(int)
-	onlyones = set()
-	for num in numbers:
-		count[num] += 1
-		if count[num] == 1:
-			onlyones.add(num)
-		else:
-			onlyones.remove(num)
-	return len(onlyones) == 0
-# 2. 扫描线，time interval overlapping。同时重叠三个及三个以上 -- True，否则 -- False。
-# 其實就是meeting rooms II
-def minMeetingRooms(self, intervals):
-	if not intervals: return 0
-	intervals.sort(key=lambda interval: (interval.start, interval.end))
-	heap = []
-	heapq.heappush(heap, (intervals[0].end, intervals[0].start))
-	for i in range(1, len(intervals)):
-		end, start = heapq.heappop(heap)
-		if intervals[i].start >= end:
-			end = intervals[i].end
-		else:
-			heapq.heappush(heap, (intervals[i].end, intervals[i].start))
-		heapq.heappush(heap, (end, start))
-	return len(heap) >= 3
-
-# 给一个很长的字符串s，只包括正常英文单词，单词用单个空格隔开，
-# 同时给你一个正整数k。请把字符串切分为若干行，
-# 要求1：只能在单词之间换行，同一个单词不能被分开；
-# 要求2：切分后每行不能超过k个字符。
-# 我每次都问同一个问题，你们司程序员每天写代码和开会的时间分别占%多少...
-# LC 418, greedy
-def wordsTyping(self, sentence, rows, cols):
-	s = ' '.join(sentence) + ' '
-	l = len(s)
-	start = 0
-	for i in range(rows):
-		start += cols
-		if s[start%l] == ' ':
-			start += 1
-		else:
-			while start > 0 and s[(start-1)%l] != ' ':
-				start -= 1
-
-	return start // l
-
-def wordsTyping2(s, k):
-# Modified from 418. I think it's too complicated
-	s += ' '
-	l = len(s)
-	start = 0
-	indices = [0]
-	ans = []
-	while start < l:
-		runner = start
-		while runner < l and s[runner] != ' ':
-			runner += 1
-		start += max(k, runner - start)
-		if start >= l: break
-		if s[start] == ' ':
-			start += 1
-		else:
-			while start > 0 and s[start-1] != ' ':
-				start -= 1
-		indices.append(start)
-
-	prev = 0
-	for i in indices[1:]:
-		ans.append(s[prev:i].strip())
-		prev = i
-	return ans
-
-# Easier and much better imo
-def solution(s, k):
-	if len(s) == 0:
-		return []
-
-	words = s.split(' ')
-
-	res = []
-	cur_len = 0
-	cur_line = []
-	i = 0
-	while i < len(words):
-		new_len = len(words[i])
-		if cur_len + new_len <= k:
-			cur_len += new_len
-			cur_line.append(words[i])
-			i += 1
-		elif cur_len == 0:
-			res.append(words[i])
-			cur_len = 0
-			cur_line = []
-			i += 1
-		else:
-			res.append(' '.join(cur_line))
-			cur_len = 0
-			cur_line = []
-	res.append(' '.join(cur_line))
-	return res
-
-
 # 店面
 # 第一题：里扣舞灵
 def myPow(self, x, n):
@@ -1568,3 +1283,288 @@ as as as as    as as as as as as as as as as as as as
   as as 	   as as as as as
   as as 	   as
   as as        as
+
+
+  import collections
+  # Google 麵筋
+
+  # 第一道:找到最长的字符串的长度，要求这个子字符串的头字符和尾字符相同。
+  # 如 abdcbe, 则最长的是 bdcb,头 b 和尾 b 相同，返回 4。要求时间复杂度 O(n)。
+  def sol(s):
+  	dic = collections.defaultdict(list)
+  	ans, L, R = 0, 0, 0
+  	for i, c in enumerate(s):
+  		dic[c].append(i)
+  	for c, indices in dic.items():
+  		l, r = indices[0], indices[-1]
+  		if ans < r - l:
+  			ans = r - l
+  			L, R = l, r
+  	return s[L:R+1], L, R
+
+
+  # 第二道:找到最长的连续子序列，要求这个连续子序列的和为 0。
+  # 先用 sum_array 转换一下，就变成了第一道题
+  def sol2(l):
+  	sum_array = [i for i in l]
+  	for i in range(1, len(sum_array)):
+  		sum_array[i] += sum_array[i-1]
+  	sum_array = [0] + sum_array
+  	_, L, R = sol(sum_array)
+  	return l[L:R]
+
+  # 第二轮:1 道题。OOD。
+  # 设计一个扫地机器人。
+  # 这个机器人可以前进，向左转，向右转。
+  # 方法有 move, turnRight, turnLeft, clean()。 设计相应的数据结构使得它能扫完整个房间。房间大小未知，机器人的初始位置未知。
+  # 489 robot room cleaner (dfs)
+  def cleanRoom(self, robot):
+      self.dfs(robot, 0, 0, 0, 1, set())
+
+  def dfs(self, robot, x, y, x_dir, y_dir, visited):
+      robot.clean()
+      visited.add((x, y))
+      for i in range(4):
+          next_x, next_y = x + x_dir, y + y_dir
+          if (next_x, next_y) not in visited and robot.move():
+              self.dfs(robot, next_x, next_y, x_dir, y_dir, visited)
+              robot.turnLeft()
+              robot.turnLeft()
+              robot.move()
+              robot.turnLeft()
+              robot.turnLeft()
+          robot.turnLeft()
+          x_dir, y_dir = -y_dir, x_dir
+
+
+  # 给一个数组A，再给一个shuffle A得到的数组B，再给个新数组C，求shuffle C得到的数组D。要求C到D的映射与A到B要一致。 假设所有数组都未排序。
+  # 比如给A= 2，3，6，7，4；B＝3，2，4，7，6；C= 5，6，1，2，3 那 D就应该是 6，5，3，2，1.
+  #      A= 1, 2, 3   B = 1, 3, 2  C = 3, 3, 3   D = 3, 3, 3
+  #      A= 1, 1, 2   B = 1, 2, 1  C = 3, 4, 5   D = 3, 5, 4
+  #      # idea: form injection from A to C
+  def findMapping(A, B, C):
+  	dic = collections.defaultdict(collections.deque)
+  	for a, c in zip(A, C):
+  		dic[a].append(c)
+  	D = []
+  	for b in B:
+  		D.append(dic[b].popleft())
+  	return D
+
+
+  # 给 x,y 轴上一堆点，点的坐标都是正整数，问这些点是否是关于 x = ? 的直线对称。
+  def mirrorImage(points, x):
+  	count = colections.defaultdict(int)
+  	for xx, yy in points:
+  		xx = abs(xx - x)
+  		count[(xx, yy)] += 1
+  	return 1 not in count.values()
+
+  # 给一个长方形框（宽和高）和一段话，问能把整段话放进框里的最大字号，你可以调用两个现有的函数，分别返回每个字符的宽度和字符高度。
+  # 典型的二分查找，在字号范围内不断二分，最后就返回能把整段话放进框里的最大字号了
+  def fitScreen(screen_width, screen_height, num_chars, font_sizes):
+  	def ok_or_not(width, height, screen_width, screen_height, num_chars):
+  		num_chars_per_line = screen_widht // width
+  		num_chars_per_column = screen_height // height
+  		num_chars_can_fit = num_chars_per_line * num_chars_per_column
+  		return num_chars_can_fit >= num_chars
+
+  	lo, hi = 0, len(font_sizes) - 1
+  	while lo < hi:
+  		mid = (lo + hi + 1) // 2
+  		font_size = font_sizes[mid]
+  		width, height = API(font_size)
+  		size_ok = ok_or_not(width, height, screen_width, screen_height, num_chars)
+  		if not size_ok:
+  			hi = mid -1
+  		else:
+  			lo = mid
+  	return lo
+
+  # 1st 电面： lc 459，亚裔哥们
+  # Doable, O(n^2)
+  def repeatedSubstringPattern(self, s):
+      l = len(s)
+      for i in range(l//2, 0, -1):
+          if l % i == 0:
+              m = l // i
+              subS = s[:i]
+              if subS * m == s: return True
+      return False
+
+  # 奇技淫巧 O(n)
+  def repeatedSubstringPattern(self, s):
+   	return s in (s + s)[1:-1]
+
+  # KMP table, O(n)
+  def repeatedSubstringPattern(self, s):
+  	i, j, n = 1, 0, len(s)
+      dp = [0] * (n + 1)
+      while i < n:
+          if s[i] == s[j]:
+              i, j = i + 1, j + 1
+              dp[i] = j
+          elif j == 0: i += 1
+          else: j = dp[j]
+      return dp[n] > 0 and dp[n] % (n - dp[n]) == 0
+  # 2nd 电面：lc 685变种。给出binary tree is invalid，有多余的link，要求make the binary tree valid。
+  # 留了25分钟给这个题。给的输入是root节点。先给面试官讲解了我的做法，找到所有的edge，然后按着685来
+  # 第二题，如果是binary tree的话，是不是可以做BFS，记住访问过的节点，遍历每个node时查看它的left和right是否已访问过，如果是就去掉。
+  # +1，我也觉得是，既然给的是root就说明面试官其实想要一个recursion的解法吧...
+  def removeRedundantLinkInBinaryTree(root):
+  	visited = {}
+  	q = deque([root])
+  	while q:
+  		node = q.popleft()
+  		visited.add(node)
+  		if node.left:
+  			if node.left in visited:
+  				node.left = None
+  				break
+  			q.append(node.left)
+  		if node.right:
+  			if node.right in visited:
+  				node.right = None
+  				break
+  			q.append(node.right)
+  # 定义两个binary string的distance是去掉common prefix的长度之和。
+  # 比如: 1011000和1011110的common prefix是1011， distance就是len("000"+"110") = 3 + 3 = 6.
+  # 现在给一个list of binary strings, 求max distance. 用trie+dfs
+  # list of binary strings 的 max distance，是整个list去掉common prefix之后任意两个string的max distance中最大的那个
+  #
+  # 我是先build trie，然后dfs对每个node返回从那个node开始往下走的最长path, 所以就是dfs(root) = 1 + max(dfs(root.left), dfs(root.right))
+  # 与此同时如果node有两个children，更新distance = max(distance , dfs(root.left)+dfs(root.right))
+  # 最后返回distance
+  # build trie是kn，dfs也是kn，所以是O(kn)
+
+  # 刚才又仔细想了一下，dfs的时间复杂度应该是2^n而不是nk，n是list里最长的binary string. 举个例子lst=[10,01,11,00,10,01,11,00...]重复1000次，trie里只有7个node. 所以最终复杂度是nk+2^n
+  #
+  #
+  # http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=440636&extra=page%3D1%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3089%5D%5Bvalue%5D%5B2%5D%3D2%26searchoption%5B3089%5D%5Btype%5D%3Dcheckbox%26searchoption%5B3046%5D%5Bvalue%5D%3D1%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
+  def maxDistanceOfBinaryStrings(string_list):
+
+  as as as as    as as as as as as as as as as as as as
+    as as        as
+    as as 	   as as as as as
+    as as 	   as
+    as as        as
+  # 给一个tree, 给定两个node，求两个node之间最小的距离（edge数）是多少。
+  def lca_distance(q, p):
+  	dic = {}
+  	distance = 0
+  	while q:
+  		dic[q] = distance
+  		distance += 1
+  		q = q.parent
+
+  	distance = 0
+  	while p:
+  		if p in dic:
+  			return distance + dic[p]
+  		distance += 1
+  		p = p.parent
+  	return float('inf')
+
+  # 1. input list[int]，output True/False，list里面如果有数字重复出现少于两次 -- False，
+  # 所有数字出现都超过两次 -- True。input是乱序的，所以我最开始先排了序再做的，时间复杂度O(nlogn)。
+  # 然后问可不可以降低到O(n)。说了一下用hashmap就好。
+  def allDouble(numbers):
+  	count = collections.defaultdict(int)
+  	onlyones = set()
+  	for num in numbers:
+  		count[num] += 1
+  		if count[num] == 1:
+  			onlyones.add(num)
+  		else:
+  			onlyones.remove(num)
+  	return len(onlyones) == 0
+  # 2. 扫描线，time interval overlapping。同时重叠三个及三个以上 -- True，否则 -- False。
+  # 其實就是meeting rooms II
+  def minMeetingRooms(self, intervals):
+  	if not intervals: return 0
+  	intervals.sort(key=lambda interval: (interval.start, interval.end))
+  	heap = []
+  	heapq.heappush(heap, (intervals[0].end, intervals[0].start))
+  	for i in range(1, len(intervals)):
+  		end, start = heapq.heappop(heap)
+  		if intervals[i].start >= end:
+  			end = intervals[i].end
+  		else:
+  			heapq.heappush(heap, (intervals[i].end, intervals[i].start))
+  		heapq.heappush(heap, (end, start))
+  	return len(heap) >= 3
+
+  # 给一个很长的字符串s，只包括正常英文单词，单词用单个空格隔开，
+  # 同时给你一个正整数k。请把字符串切分为若干行，
+  # 要求1：只能在单词之间换行，同一个单词不能被分开；
+  # 要求2：切分后每行不能超过k个字符。
+  # 我每次都问同一个问题，你们司程序员每天写代码和开会的时间分别占%多少...
+  # LC 418, greedy
+  def wordsTyping(self, sentence, rows, cols):
+  	s = ' '.join(sentence) + ' '
+  	l = len(s)
+  	start = 0
+  	for i in range(rows):
+  		start += cols
+  		if s[start%l] == ' ':
+  			start += 1
+  		else:
+  			while start > 0 and s[(start-1)%l] != ' ':
+  				start -= 1
+
+  	return start // l
+
+  def wordsTyping2(s, k):
+  # Modified from 418. I think it's too complicated
+  	s += ' '
+  	l = len(s)
+  	start = 0
+  	indices = [0]
+  	ans = []
+  	while start < l:
+  		runner = start
+  		while runner < l and s[runner] != ' ':
+  			runner += 1
+  		start += max(k, runner - start)
+  		if start >= l: break
+  		if s[start] == ' ':
+  			start += 1
+  		else:
+  			while start > 0 and s[start-1] != ' ':
+  				start -= 1
+  		indices.append(start)
+
+  	prev = 0
+  	for i in indices[1:]:
+  		ans.append(s[prev:i].strip())
+  		prev = i
+  	return ans
+
+  # Easier and much better imo
+  def solution(s, k):
+  	if len(s) == 0:
+  		return []
+
+  	words = s.split(' ')
+
+  	res = []
+  	cur_len = 0
+  	cur_line = []
+  	i = 0
+  	while i < len(words):
+  		new_len = len(words[i])
+  		if cur_len + new_len <= k:
+  			cur_len += new_len
+  			cur_line.append(words[i])
+  			i += 1
+  		elif cur_len == 0:
+  			res.append(words[i])
+  			cur_len = 0
+  			cur_line = []
+  			i += 1
+  		else:
+  			res.append(' '.join(cur_line))
+  			cur_len = 0
+  			cur_line = []
+  	res.append(' '.join(cur_line))
+  	return res

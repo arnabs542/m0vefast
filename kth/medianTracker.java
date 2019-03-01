@@ -13,6 +13,7 @@ public class Solution {
   			smallhalf.offer(value);
   		else
   			largehalf.offer(value);
+				
   		if(smallhalf.size() - largehalf.size() >= 2)
   			largehalf.offer(smallhalf.poll());
   		else if(largehalf.size() > smallhalf.size())

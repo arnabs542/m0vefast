@@ -20,11 +20,12 @@ public int maxProduct(int length){
 	arr[1] = 0;
 	//induction:
 	//dp[i] = max(i, dp[i])
-	for(int i = 1; i <= length; i++){
+	for(int i = 2; i <= length; i++){
 		int global_max = 0;
 		for(int j = 1; j <= i/2; j++){
 											  //left              * right
-			global_max = Math.max(global_max, Math.max(j, arr[j]) * Math.max(i-j, arr[i-j]));
+			global_max = Math.max(global_max,
+									Math.max(j, arr[j]) * Math.max(i-j, arr[i-j]));
 		}
 		arr[i] = global_max;
 	}
@@ -49,7 +50,8 @@ public int maxProduct(int length){
 			//we have choice: not cut(arr[i]) and cut:
 												//da_length: max(not_cut: i-j and cut(arr[i-j])
 												//xiao_length: j
-			arr[i] = Math.max(arr[i], j * Math.max(i - j, arr[i-j]));
+			arr[i] = Math.max(arr[i],
+												j * Math.max(i - j, arr[i-j]));
 		}
 	}
 	return arr[length];
