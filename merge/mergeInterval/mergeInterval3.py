@@ -15,13 +15,24 @@ def mergeInterval3(intervals, to_add):
     return res + to_add + intervals[i:]
 
 
-class Interval:
+class Solution:
+    def mergeIntervals(self, intervals):
+        intervals = sorted(intervals, key=lambda x:x.start)
+        res = []
+        for each in intervals:
+            if(len(res) == 0 or res[-1].end < each.start):
+                res.append(each)
+            else:
+                res[-1].end = max(res[-1].end, each.end)
+        return res
+
+
+
+
+"""
+Definition of Interval.
+class Interval(object):
     def __init__(self, start, end):
         self.start = start
         self.end = end
-
-    def __lt__(self, other):
-        if self.start.val != other.left.val:
-            return self.start.val < other.start.val
-
-        return self.start.is_closed and not other.start.is_closed
+"""

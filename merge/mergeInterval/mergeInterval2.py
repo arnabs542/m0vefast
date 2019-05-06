@@ -20,10 +20,10 @@ def mergeInterval2(self, intervals):
             else:
                 available -= 1
 
-            start_index += 1
-        # no room need for sure
+            start_index += 1  # consider next start index
+        # no overlap: can reuse room
         else:
             available += 1
-            end_index += 1
+            end_index += 1  # consider next end index
 
     return res

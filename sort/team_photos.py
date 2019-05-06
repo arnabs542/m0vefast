@@ -13,7 +13,7 @@ class Team:
     # O(nlgn)
     # check A's tallest, second tallest taller than B's
     def valid_placement(A, B):
-        return all(a < b
+        return all(a < b    # all(): return boolean if all element meet the requirement
                 for a, b in zip(sorted(A._players), sorted(B._players)))
         # return all(condition for i, j in XX)
         # a,b in {(2, 'two'), (3, 'three'), (1, 'one')} arr[arr]

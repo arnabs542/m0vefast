@@ -1,21 +1,29 @@
-class Solution:
-    def mergeKIntervals(self, intervals):
-        intervals = sorted(intervals, key=lambda x:x.start)
-        res = []
-        for each in intervals:
-            if(len(res) == 0 or res[-1].end < each.start):
-                res.append(each)
-            else:
-                res[-1].end = max(res[-1].end, each.end)
-        return res
+from Queue import PriorityQueue
 
+def mergeKSortedIntervalLists(self, intervals):
+    res = []
+    heap = PriorityQueue()
 
+    for index, array in enumerate(intervals):
+        if len(array):
+            heap.put((array[0].start, array[0].end, index, 0))
 
+    while len(heap):
+        start, end, row, col = heap.get()
+        self.append_and_merge(res, Interval(start, end))
+        if col + 1 < len(intervals[row]):
+            heap.put(intervals[row][col + 1].start, intervals[row][col+1].end, row, col+1)
 
-"""
-Definition of Interval.
-class Interval(object):
-    def __init__(self, start, end):
-        self.start = start
-        self.end = end
-"""
+    return res
+
+def append_and_merge(self, res, interval):
+    if not res:
+        interval.append(interval)
+        return
+
+    last_interval = res[-1]
+    if last_interval.end < interval.start:
+        res.append(interval)
+    else:
+        last_interval.end = max(last_interval.end, interval.end)
+    return
