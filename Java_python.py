@@ -1,9 +1,36 @@
-###################################### ARRAY ===================================
+##################################### BIT AND IF STATEMENT ################################
+sign = -1 if (num1[-] < 0) ^ (num2[0] < 0) else 1
+
+    # remove leading Zero
+    # next() return the next item in an iterator
+    # next(some_condition)
+    res = res[next((i for i, x in enumerate(res) if x !=0, len(res)):] or [0]
+    return [sign * res[0]] + res[1:]
+
+
+##################################### ARRAY ===================================
 #type: tuple, list (array)
+# initialize
+res = [0] * (len(num1) + len(num2))  # intiialize 00000000
 # binary serach fo sorted list:
 bisect.bisect(A, 6)
 bisect.bisect_left(A, 6)
 bisect.bisect_right(A,6)
+
+# traverse value backwards
+list[::-1]   #list comprehension
+# traverse index backwards
+range(len(list))[::-1]
+
+for i in reversed(res):
+    print(i)
+for i in range(len(list))[::-1]
+    print(i)
+
+# value except tht last index
+for each in list[:-1]
+# index except the last index
+for each in range(len(list))[:-1]
 # copy
 
 list.reverse()  # inplace
@@ -41,7 +68,17 @@ A = [[1,2,3],[4,5,6]]
 [[x**2 for x in row] for row in M]
 # [[1,4,9], [16,25,36]]
 
+# backwards iterating
+# backwards max profit(second buy and sell) on or after day i
+for i, price in reversed(list(enumerate(prices[1:],1))):  # 1: tuple start index
 
+
+
+min_sofar, max_sofar = float('inf'), 0.0
+
+range(0, 3)  # 0,1,2
+range(1, 3)  # 1,2
+reversed(1, range(A))  # from back to the front except the first index of A
 
 ###################################### SORT ===================================
 list.sort()

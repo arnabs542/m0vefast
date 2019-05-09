@@ -1,7 +1,7 @@
- : can jump to the end?
+arrayhopper1: can jump to the end?    # a[i] max advancement from i
 arrayhopper2: min to jump to the end?
 arrayhopper3: min to jump out of array?
-arrayhopper4: left/right, min to jump to the end?
+arrayhopper4: left/right given start index, min to jump to the end?
 
 //Determine if you are able to reach the last index.
 //solution1: dp, arr[i] = from index 0 can jump to index i
