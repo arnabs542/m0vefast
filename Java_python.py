@@ -86,7 +86,7 @@ list.sort(key, reverse)   # inplace sort # key as mapping funciton
 list.sort(key=lambda x:str(x))
 b = sorted(list, key=lambda x:str(x))  # return a new list
 
-######################################## FOR LOOP
+######################################## FOR LOOP#####################
 for each in A[1:]:
 # if with condition
 a for i, a in enumerate(A)
@@ -131,6 +131,22 @@ def sortSpecial(list, my_own_order):
 res = -1e9, 1e9  # return type, extreme value
 List[int]:
 
+
+
+
+
+############################ MATRIX ######################
+# matrix    if matrix = [] then row = 0, col = 0
+matrix = [[1,2,3], [4,5,6]]
+row = len(matrix)
+col = len(matrix[0]) if row else 0
+
+# initialize
+matrix = [[0]*n for i in range(m)]
+
+
+
+
 ###################################### SORT ===================================
 # reverse list/string
 class Solution(Object):
@@ -150,10 +166,7 @@ sorted(list)   # expensive
 #
 x if y else z
 
-# matrix    if matrix = [] then row = 0, col = 0
-matrix = [[1,2,3], [4,5,6]]
-row = len(matrix)
-col = len(matrix[0]) if row else 0
+
 
 # initialize 0 to list
 list = [0 for i in range(3)]   # list = [0,0,0]
@@ -198,10 +211,37 @@ list.clear()
 list.count(x)
 
 
+#############################PRIORITY QUEUE ======================
+import heapq
+array = []
+heapq.heapify(heap)   # creatinga minheap
+heapq._heapify_max(heap)   # creating maxheap
+
+heapq.heappop(minheap)     #pop
+heapq._heappop_max(maxheap)
+
+heapq.heappush(H,8)   # push
+
+
+
+import PriorityQueue
+pq = PriorityQueue()
+pq.put(xxx)
+pq.
+
+#  MAX HEAP
+def topKFrequentWords1(words, k):
+    # hashmap to count
+    count = collections.Counter(words)
+    # using minheap->maxheap (-freq, word)
+    heap = [(-freq, word) for word, freq in count.items()]
+    heapq.heapify(heap)
+    # return the top k
+    return [heapq.heappop(heap)[1] for _ in range(k)]
 
 
 # counter
-Counter
+count = collections.Counter(words)
 
 # no return
 yield
