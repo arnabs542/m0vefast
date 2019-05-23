@@ -227,7 +227,7 @@ heapq.heappush(H,8)   # push
 import PriorityQueue
 pq = PriorityQueue()
 pq.put(xxx)
-pq.
+pq.get()
 
 #  MAX HEAP
 def topKFrequentWords1(words, k):

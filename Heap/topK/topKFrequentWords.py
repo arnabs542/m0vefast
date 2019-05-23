@@ -30,7 +30,7 @@ def topKFrequentWords1(self, words, k):
     p.sort(cmp=self.cmp)
 
     res = []
-    for i in xrange(k):
+    for i in range(k):
         res.append(pq[i][1])
     return res
 
@@ -53,12 +53,14 @@ def topKFrequentWords1(words, k):
     heap = [(-freq, word) for word, freq in count.items()]
     heapq.heapify(heap)
     # return the top k
-    return [heapq.heappop(heap)[1] for _ in range(k)]
+    return [heapq.heappop(heap)[1] for _ in range(k)]  # _ for the result of the previous exeution
 
 # print(count)
 # Counter({'i': 2, 'love': 2, 'leetcode': 1, 'coding': 1})
 # print(heap)
 # [(-2, 'i'), (-2, 'love'), (-1, 'leetcode'), (-1, 'coding')]
+
+
 
 
 

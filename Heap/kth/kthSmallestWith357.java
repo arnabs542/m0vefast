@@ -3,7 +3,7 @@ public long kth(int k){
 	PriorityQueue<Long> minHeap = new PriorityQueue<>(k);
 	Set<Long> visited = new HashSet<>();
 	//actural product value: 3^x * 5^y * 7^z to present state of <x,y,z>
-	//initial state: 1,1,1	
+	//initial state: 1,1,1
 	minHeap.offer(3*5*7L);
 	visited.add(3*5*7L);
 	while(k > 1){

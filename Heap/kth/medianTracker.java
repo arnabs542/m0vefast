@@ -13,10 +13,11 @@ public class Solution {
   			smallhalf.offer(value);
   		else
   			largehalf.offer(value);
-				
+			//small half can only have 1 more or equal size of large half
+			//just check the two bounds of small half 
   		if(smallhalf.size() - largehalf.size() >= 2)
   			largehalf.offer(smallhalf.poll());
-  		else if(largehalf.size() > smallhalf.size())
+  		else if(smallhalf.size() <  largehalf.size())
   			smallhalf.offer(largehalf.poll());
   	}
 

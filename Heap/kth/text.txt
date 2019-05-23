@@ -1,0 +1,25 @@
+# 1D
+kth smallest in unsorted array
+  - minheap
+  - quickselect
+kth largest in unsorted array
+  - maxheap
+  - quickselect
+  - oneline: minheap of size k
+
+
+
+# 2D: using heap of size(row)
+kth smallest in 2 sorted array
+  - find kth smallest(offline)
+  - quickselect recursion
+  - median tracker(online)
+  
+kth smallest sum in 2 sorted array
+  - minheap keeping two head
+kth smallest in sorted matrix
+  - minheap keeping one head
+  - minheap keeping many heads
+kth largest in unsorted matrix
+  - sort + maxheap keeping one head + visited
+  - sort + maxheap keeping many head
