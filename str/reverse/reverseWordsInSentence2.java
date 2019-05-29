@@ -1,19 +1,11 @@
 //with heading or ending white spaces
 //no duplicate white space
 //“ I  love  Google  ” → “Google love I”
-
 大家把基本的扫描三遍的方法掌握好就行，即：
-
 1. Reverse the entire string.
-
 2. Reverse each word.
-
 3. Deduplicate spaces.
-
-
-
 学有余力的同学再去考虑如何合并第二步和第三步。歌词大意是这样的：
-
 Data structure
 
 slow: slow左边不包括slow是已处理好的

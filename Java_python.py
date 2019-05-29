@@ -148,6 +148,10 @@ matrix = [[0]*n for i in range(m)]
 
 
 ###################################### SORT ===================================
+string.stripe()  # trim white space at head and tail
+string.startswith(prefix)
+string.endswith(suffix)
+
 # reverse list/string
 class Solution(Object):
     def reverseString(self, s):

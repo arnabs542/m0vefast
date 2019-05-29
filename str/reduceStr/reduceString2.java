@@ -12,7 +12,7 @@ public String reduceString2(String s){
             arr[++slow] = arr[fast];
         }else{
             if(counter < 2){
-                counter++;
+                counter = 1;
                 arr[++slow] = arr[fast];
             }
         }
