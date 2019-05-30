@@ -1,6 +1,6 @@
 public int minLength(String s, Set<String> dict) {
 	Queue<String> queue = new LinkedList<>();
-	Set<String> visited = HashSet<>(); 
+	Set<String> visited = HashSet<>();
 	//reduced s may appear before, no need to update min (dict might contain duplicate)
 	//aabcdd, (ab,cd,abcd)=>ab
 
@@ -22,7 +22,7 @@ public int minLength(String s, Set<String> dict) {
 				}
 				//continue to check the rest for this dict.each
 				found = s.indexOf(each, found+1);
-				//Returns the index within this string of the first occurrence of 
+				//Returns the index within this string of the first occurrence of
 				//the specified substring, starting at the specified index.
 			}
 		}

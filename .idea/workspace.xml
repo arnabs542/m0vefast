@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a1de5261-5907-46e4-bac3-ac57bf9f6a3b" name="Default Changelist" comment="" />
+    <list default="true" id="a1de5261-5907-46e4-bac3-ac57bf9f6a3b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/A2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/str/AbbrMatching.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/str/isomorphicStr1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/str/removal/removeCertainChar.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/str/removal/removeSpaces.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/str/removal/removeSubstring.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/str/replace/stringReplace.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/str/reverse/reverseString.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/str/reverse/reverseVowls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/str/reverse/reverseWordsInSentence2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/str/stringShuffle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/str/encode&amp;decode/decode1.java" beforeDir="false" afterPath="$PROJECT_DIR$/str/encode&amp;decode/decode1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/str/encode&amp;decode/decode1.py" beforeDir="false" afterPath="$PROJECT_DIR$/str/encode&amp;decode/decode1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/str/reduceStr/reduceDuplicatE.py" beforeDir="false" afterPath="$PROJECT_DIR$/str/reduceStr/reduceDuplicatE.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/str/removal/removeSubstring.java" beforeDir="false" afterPath="$PROJECT_DIR$/str/removal/removeSubstring.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/str/replace/stringReplace.java" beforeDir="false" afterPath="$PROJECT_DIR$/str/replace/stringReplace.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/str/replace_remove.py" beforeDir="false" afterPath="$PROJECT_DIR$/str/replace/replace_remove.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/str/reverse/reverseWordInSentence1.py" beforeDir="false" afterPath="$PROJECT_DIR$/str/reverse/reverseWordInSentence1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/str/stringShuffle.java" beforeDir="false" afterPath="$PROJECT_DIR$/str/stringShuffle.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -10,11 +31,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/graph/dfs/subsetI.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/A2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="109">
+              <caret line="60" column="24" lean-forward="true" selection-start-line="60" selection-start-column="24" selection-end-line="60" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -39,11 +69,12 @@
         <option value="$PROJECT_DIR$/matrix/spiralOrderTraverse1.py" />
         <option value="$PROJECT_DIR$/topK/topKFrequent.py" />
         <option value="$PROJECT_DIR$/graph/dfs/subsetI.py" />
+        <option value="$PROJECT_DIR$/A2.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="20" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="13" />
     <option name="y" value="23" />
     <option name="width" value="1680" />
     <option name="height" value="1027" />
@@ -94,8 +125,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.subsetI">
-    <configuration name="generate_prime" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.A2">
+    <configuration name="A2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="m0vefast" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -103,11 +134,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/math" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/math/generate_prime.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/A2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -202,11 +233,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.A2" />
         <item itemvalue="Python.subsetI" />
         <item itemvalue="Python.topKFrequent" />
         <item itemvalue="Python.sample_online_data" />
         <item itemvalue="Python.permutation_inorder" />
-        <item itemvalue="Python.generate_prime" />
       </list>
     </recent_temporary>
   </component>
@@ -233,11 +264,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="20" y="23" width="1680" height="1027" extended-state="0" />
+    <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.1506932" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.1506932" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.32834226" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
@@ -245,8 +276,8 @@
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" weight="0.32941177" />
       <window_info anchor="bottom" id="Version Control" order="5" weight="0.32834226" />
-      <window_info anchor="bottom" id="Run" order="6" weight="0.3775401" />
-      <window_info anchor="bottom" id="Debug" order="7" visible="true" weight="0.39679146" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.17005348" />
+      <window_info anchor="bottom" id="Debug" order="7" weight="0.19572192" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="10" weight="0.32938644" />
@@ -270,6 +301,20 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>if not path[3]: print(1)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>path[3]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/math/generate_prime" />
@@ -383,7 +428,14 @@
     <entry file="file://$PROJECT_DIR$/graph/dfs/subsetI.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/A2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="60" column="24" lean-forward="true" selection-start-line="60" selection-start-column="24" selection-end-line="60" selection-end-column="24" />
         </state>
       </provider>
     </entry>

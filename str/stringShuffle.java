@@ -3,11 +3,12 @@
 //merge sort
 public int[] reorder(int[] array) {
  	if(array.length % 2 == 0)
- 		helper(array, 0, arrary.length -1);
+ 		helper(array, 0, array.length -1);
  	else //odd number: ignore the last one
  		helper(array, 0, array.length -2);
  	return array;
 }
+
 private void helper(int[] array, int left, int right){
 	int size = right - left + 1;
 	//base case
@@ -19,10 +20,10 @@ private void helper(int[] array, int left, int right){
 	int rightmid = left + size * 3/4;
     //AB|CD->XXXX->AC|BD
 	reverse(array, leftmid, mid-1);  //reverseB
-	reverse(array, mid, rmid-1);     //reverseC
+	reverse(array, mid, rightmid-1);     //reverseC
 	reverse(array, leftmid, rightmid-1);  //reverseBC ->ACBD
-	helper(array, left, left + (leftmid-left)*2-1);
-	helper(array, left + (leftmid - left)*2, right);
+	helper(array, left, left + (leftmid-left)*2-1);    //左少
+	helper(array, left + (leftmid - left)*2, right);   //右多
 }
 private void reverse(int[] array, int left, int right){
 	while(left < right){

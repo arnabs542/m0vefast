@@ -1,29 +1,15 @@
-//Q3: reduct all e to one e, keep one copy
-public String reduceDuplicateE(String s){
-	if(s == null || s.length() == 0)
-		return null;
-	if(s.contains("ee"))
-		return reduceDuplicateE(s.replace("ee", "e"));
-	else
-		return s;
-}
-//antoehr version  not using recursion
-public String reduceDuplicateE(String s){
-	if(s == null)
-		return null;
-	StringBuilder sb = new StringBuilder();
-	for(int i = 0; i < s.length()){
-		if(s.charAt(i) == 'e'){
-			sb.append(s.charAt(i));
-			while(i < s.length() && s.charAt(i) == 'e')
-				i++;
-		}else{
-			sb.append(s.charAt(i));
-			i++;
-		}
-	}
-	return sb.toString();
-}
-
+# replace eeeee to e in a string
 def removeDupliateE(input):
-	
+	if input is None or not input:
+		return input
+	arr = list(input)
+	slow = 0
+	for fast in range(1, len(arr)):
+		if arr[fast] != 'e':
+			slow += 1
+			arr[slow] = arr[fast]
+		else:
+			slow += 1
+			arr[slow] = arr[fast]
+			while fast + 1 < len(arr) and arr[fast+1]=='e':
+				fast += 1

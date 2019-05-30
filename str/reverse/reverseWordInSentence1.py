@@ -4,7 +4,7 @@
 
 # can not handle leading and tail white space
 def ilovegoogle(str):
-    # step1: reverse string
+    # step1: reverse entire string
     str.reverse()
 
     # reverse each substring
@@ -13,7 +13,7 @@ def ilovegoogle(str):
         end = s.find(' ', start)  # find the first index starting frog the "start" index
         if end < 0:
             break
-        reverse(str, start, end-1)
+        reverse_range(str, start, end-1)
         start = end + 1
     # step2: reverse last words
     reverse(str, start, len(str)-1)

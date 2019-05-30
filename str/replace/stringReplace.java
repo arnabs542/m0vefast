@@ -49,7 +49,7 @@ private String replaceLonger(char[] arr, String s, String t){
   private List<Integer> getAllMathces(char[] arr, String s){
     //all ending matching index of s in arr
   	List<Integer> matches = new ArrayList<>();
-    int cur_index = 0;
+    int start_index = 0;
     //for all possible starting index
     while(start_index <= arr.length - s.length()){
     	if(equalSubStr(arr, start_index, s)){

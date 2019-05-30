@@ -1,11 +1,11 @@
 # apply rule to given array of string
 # replace each 'a' by 'dd'    (replace longer helper)
-# delete entry containing 'b'
+# delete entry containing 'b' (replace with shorter '')
 def replace_remove(arr):
 	size = len(arr)
 	a_count = 0
 
-	# forward iteration for removal
+	# forward iteration for replace with shorter
 	write_index = 0
 	for fast in range(size):
 		if arr[fast] != 'b':
@@ -16,9 +16,10 @@ def replace_remove(arr):
 
 	# backward iteration for replacement with longer a -> dd
 	cur_index = write_index - 1
-	final_size = write_index + 1 + a_count
-	write_index += a_count - 1
-	while cur_index >= 0:
+	write_index = write_index + a_count - 1   # index + count = index, count + count = count,
+	final_size = write_index + 1
+
+	while cur_index >= 0:       # cur_index ______ write_index
 		if arr[cur_index] == 'a':
 			arr[write_index - 1 : write_index + 1] = 'dd'
 			write_index -= 2
