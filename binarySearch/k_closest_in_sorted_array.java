@@ -13,7 +13,7 @@ public int[] kClosest(int[] arr, int target, int k){
 		//				 2) left, right in bound, but arr[left] closer to target
 		if(right >= array.length || (left >= 0 && target - arr[left] <= arr[right] - target))
 			res[i] = arr[left--];
-		else
+		elses
 			res[i] = arr[right++];
 	}
 	return res;

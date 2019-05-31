@@ -2,26 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1de5261-5907-46e4-bac3-ac57bf9f6a3b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/A2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/str/AbbrMatching.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/str/isomorphicStr1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/str/removal/removeCertainChar.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/str/removal/removeSpaces.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/str/removal/removeSubstring.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/str/replace/stringReplace.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/str/reverse/reverseString.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/str/reverse/reverseVowls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/str/reverse/reverseWordsInSentence2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/str/stringShuffle.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/str/encode&amp;decode/decode1.java" beforeDir="false" afterPath="$PROJECT_DIR$/str/encode&amp;decode/decode1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/str/encode&amp;decode/decode1.py" beforeDir="false" afterPath="$PROJECT_DIR$/str/encode&amp;decode/decode1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/str/reduceStr/reduceDuplicatE.py" beforeDir="false" afterPath="$PROJECT_DIR$/str/reduceStr/reduceDuplicatE.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/str/removal/removeSubstring.java" beforeDir="false" afterPath="$PROJECT_DIR$/str/removal/removeSubstring.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/str/replace/stringReplace.java" beforeDir="false" afterPath="$PROJECT_DIR$/str/replace/stringReplace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/str/replace_remove.py" beforeDir="false" afterPath="$PROJECT_DIR$/str/replace/replace_remove.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/str/reverse/reverseWordInSentence1.py" beforeDir="false" afterPath="$PROJECT_DIR$/str/reverse/reverseWordInSentence1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/str/stringShuffle.java" beforeDir="false" afterPath="$PROJECT_DIR$/str/stringShuffle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/A2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/binarySearch/closet in sorted array.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/binarySearch/k closest in sorted array.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/palindrome_permutation1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/palindrome_permutation2.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,11 +25,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/A2.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/majorityElement/majority3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="60" column="24" lean-forward="true" selection-start-line="60" selection-start-column="24" selection-end-line="60" selection-end-column="24" />
+            <state relative-caret-position="355">
+              <caret line="63" column="35" lean-forward="true" selection-start-line="63" selection-start-column="35" selection-end-line="63" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/binarySearch/k_closest_in_sorted_array.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="212">
+              <caret line="22" column="67" selection-start-line="22" selection-start-column="67" selection-end-line="22" selection-end-column="67" />
             </state>
           </provider>
         </entry>
@@ -70,11 +64,12 @@
         <option value="$PROJECT_DIR$/topK/topKFrequent.py" />
         <option value="$PROJECT_DIR$/graph/dfs/subsetI.py" />
         <option value="$PROJECT_DIR$/A2.py" />
+        <option value="$PROJECT_DIR$/majorityElement/majority3.py" />
+        <option value="$PROJECT_DIR$/binarySearch/k_closest_in_sorted_array.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="13" />
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="y" value="23" />
     <option name="width" value="1680" />
     <option name="height" value="1027" />
@@ -95,13 +90,7 @@
             <path>
               <item name="m0vefast" type="b2602c69:ProjectViewProjectNode" />
               <item name="m0vefast" type="462c0819:PsiDirectoryNode" />
-              <item name="graph" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="m0vefast" type="b2602c69:ProjectViewProjectNode" />
-              <item name="m0vefast" type="462c0819:PsiDirectoryNode" />
-              <item name="graph" type="462c0819:PsiDirectoryNode" />
-              <item name="dfs" type="462c0819:PsiDirectoryNode" />
+              <item name="binarySearch" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -125,7 +114,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.A2">
+  <component name="RunManager" selected="Python.k_closest_in_sorted_array">
     <configuration name="A2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="m0vefast" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -147,7 +136,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="permutation_inorder" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="k_closest_in_sorted_array" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="m0vefast" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -155,11 +144,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Array" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/binarySearch" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Array/permutation_inorder.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/binarySearch/k_closest_in_sorted_array.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -168,7 +157,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="sample_online_data" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="majority3" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="m0vefast" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -176,11 +165,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/math/random" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/majorityElement" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/math/random/sample_online_data.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/majorityElement/majority3.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -233,11 +222,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.k_closest_in_sorted_array" />
+        <item itemvalue="Python.majority3" />
         <item itemvalue="Python.A2" />
         <item itemvalue="Python.subsetI" />
         <item itemvalue="Python.topKFrequent" />
-        <item itemvalue="Python.sample_online_data" />
-        <item itemvalue="Python.permutation_inorder" />
       </list>
     </recent_temporary>
   </component>
@@ -264,7 +253,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
+    <frame x="0" y="23" width="1680" height="1027" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
@@ -276,7 +265,7 @@
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" weight="0.32941177" />
       <window_info anchor="bottom" id="Version Control" order="5" weight="0.32834226" />
-      <window_info anchor="bottom" id="Run" order="6" weight="0.17005348" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.17005348" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.19572192" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -378,9 +367,7 @@
         <state relative-caret-position="-3592" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/matrix/spiralOrderTraversI.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/matrix/spiralOrderTraversI.py" />
     <entry file="file://$PROJECT_DIR$/matrix/spiralOrderGenerateI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -398,19 +385,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/topK/topKFrequentWord.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/topK/topKFrequent.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="53" column="44" lean-forward="true" selection-start-line="53" selection-start-column="44" selection-end-line="53" selection-end-column="44" />
-          <folding>
-            <element signature="e#212#224#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/topK/topKFrequentWord.java" />
+    <entry file="file://$PROJECT_DIR$/topK/topKFrequent.py" />
     <entry file="file://$PROJECT_DIR$/matrix/spiralOrderTraversI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -434,8 +410,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/A2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="60" column="24" lean-forward="true" selection-start-line="60" selection-start-column="24" selection-end-line="60" selection-end-column="24" />
+        <state relative-caret-position="703">
+          <caret line="110" column="36" selection-start-line="110" selection-start-column="36" selection-end-line="110" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/majorityElement/majority3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="63" column="35" lean-forward="true" selection-start-line="63" selection-start-column="35" selection-end-line="63" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/binarySearch/k_closest_in_sorted_array.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="22" column="67" selection-start-line="22" selection-start-column="67" selection-end-line="22" selection-end-column="67" />
         </state>
       </provider>
     </entry>
