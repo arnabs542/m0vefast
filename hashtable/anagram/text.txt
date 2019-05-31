@@ -1,0 +1,11 @@
+- isAnagram: s1, s2
+  - sort and compare
+  - hashmap or []
+
+- anagrams: Given an array of strings, group anagrams together.
+- groupAnagrams
+  - dict[sorteditem] = dict.get(sorteditem, []) + [str]
+
+
+- substringAnagram: (long str, short string), find all startign index
+  - sliding window and map
