@@ -1,5 +1,5 @@
 //FB：firstKCommonElements
-//k common elements in n sorted arrays
+//k common elements in n sorted arrays  O(n^2) O(n)
 //https://blog.csdn.net/yaokai_assultmaster/article/details/53938792
 public int[] firstKCommonElements(int[][] arr, int k) {
 
@@ -33,35 +33,3 @@ public int[] firstKCommonElements(int[][] arr, int k) {
     }
     return res;
   }
-
-
-
-
-        for (int i = 0; i < arrays[0].length; i++) {
-            int pivot = arrays[0][i];
-            int counter = 1;  //for the firs row
-            for (int j = 1; j < n; j++) {
-              //if cur < pivot, move right
-                while (pointers[j] < arrays[j].length && pivot > arrays[j][pointers[j]]) {
-                    pointers[j]++;
-                }
-
-                if (pointers[j] == arrays[j].length || pivot != arrays[j][pointers[j]]) {
-                    break;
-                }
-                //row count only there is common element
-                counter++;
-
-            //after this pivot, if all row contians common element, push to res
-            if (counter == n) {
-                ret[index++] = pivot;
-            }
-            if (index == k) {
-                return res;
-            }
-        }
-
-        return res;
-    }
-
-//
