@@ -1,26 +1,18 @@
-//preorder: Go down through the left, when right is not null, push right to stack.
-public void flatten(TreeNode root) {
-        Stack<TreeNode> stack = new Stack<>();  //subtree to be explored
-        TreeNode cur = root;
-        //not reaching deep left of cur substree
-        //for all other subtree
-        while(cur != null || !stack.empty()){
-            //save right
-            if(cur.right != null){
-                stack.push(cur.right);
-            }
-            //change left 1) if reach end of curr subtree
-            if(cur.left != null){
-                cur.right = cur.left;
-                cur.left = null;
-            //reach end, 2) try other subtree
-            }else if(!stack.empty()){
-                TreeNode temp = stack.pop();
-                cur.right=temp;
-            }
-            cur = cur.right;  //move to next processing subtree node
-        }
-    }
+# preorder: Go down through the left, when right is not null, push right to stack.
+def flattenSingleList(root):
+    if root is None:
+        return root
+    stack = [root]
+    while stack:
+        node = stack.pop()
+        if node.right:
+            stack.append(node)
+        if node.left:
+            stack.append(node)
+
+        node.left = None
+        node.right = stack[-1] if stack else None
+    return
 
     public List<Integer> preOrderTraversal(TreeNode root){
     	Stack<TreeNode> stack = new Stack<>();

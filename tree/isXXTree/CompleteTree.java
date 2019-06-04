@@ -1,3 +1,4 @@
+//https://web.cecs.pdx.edu/~sheard/course/Cs163/Doc/FullvsComplete.html
 public boolean isCompleted(TreeNode root){
 	if(root == null)
 		return true;
@@ -12,7 +13,7 @@ public boolean isCompleted(TreeNode root){
 		//first time: if no left child => there should not be any children from now on,
 		if(cur.left == null)
 			flag = true;
-		//have left child, but there shouldnt be => wrong;
+		//have left child, earlier, there are already missing element
 		else if(flag)
 			return false;
 		//have left child, and full slot since begining

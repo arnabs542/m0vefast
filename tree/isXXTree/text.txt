@@ -1,0 +1,35 @@
+- isSibling(root, node1, node2)
+  - helper()
+  if both null
+  if one null
+  if both not null: recursive
+
+- isSymmentric
+  - helper(root.left, root.right)
+  if both null
+  if one null
+  if value not equal
+  if both not null: recursive
+
+- isFull(node)
+    - if node is null
+    - if both left, right null
+    - if both left, right not null: isfull(left) and isfull(right)
+    - else false
+
+
+- isCousin(root, node1, node2)
+  1) same level: findlevel(node1) and findlevel(node2)
+  2) not sibling(root, node1, node2)
+
+
+- isBalanced
+  if getheight(root) != -1
+  helper()
+    divide and conquer
+    if left or right or diff is -1, return -1
+    else: return height
+
+- isBST
+
+- isComplete
