@@ -1,29 +1,66 @@
-
+//recursion will coz stack over flow if tree is deep, -> mimic a stack:
+//iterator:
 public List<Integer> inOrderTraversal(TreeNode root){
-	Stack<TreeNode> stack = new Stack<TreeNode>();   //record for direction
+	Deque<TreeNode> stack = new LinkedList<TreeNode>();   //new object is placed on heap not on stack
 	List<Integer> res = new ArrayList<>();
 	TreeNode cur = root;
+	//not reach to the left deepest of curretn subtree
+	// has not visited all (other)substree
 	while(cur != null ||!stack.empty()){
-		//go till the very left
+		//left subtree of stack.peek elemetn is all visited
 		while(cur != null){
-			stack.push(cur);
+			stack.offerLast(cur);
 			cur = cur.left;
 		}
-		cur = stack.pop();
+		cur = stack.pollLast();
 		res.add(cur.value);
-		cur = cur.right;
+		cur = cur.right; //antoher subtree
 	}
-	return res; 
+	//stop: cur == null && stack isEmpty()
+	return res;
 }
+//kth smallest node in bst
+public int kthSmallest(TreeNode root, int k) {
+    Stack<TreeNode> stack = new Stack<TreeNode>();
+    TreeNode p = root;
+		//go to the deepest left
+    while(p!=null){
+        stack.push(p);
+        p=p.left;
+    }
+		//start poping k times
+    int i = 0;
+    while(!stack.isEmpty()){
+        TreeNode cur = stack.pop();
+        i++;
+
+        if(i == k)
+            return cur.val;
+ 				else{
+					TreeNode r = cur.right;
+	        while(cur!=null){
+	            stack.push(r);
+	            r=r.left;
+	        }
+				}
+    }
+    return -1;
+}
+//kth largest node in bst
+https://www.geeksforgeeks.org/kth-largest-element-in-bst-when-modification-to-bst-is-not-allowed/
 public List<Integer> preOrderTraversal(TreeNode root){
 	Stack<TreeNode> stack = new Stack<TreeNode>();
 	List<Integer> res = new ArrayList<>();
 	if(root == null)
 		return res;
+	//initialization
 	stack.push(root);
+	//termination
 	while(!stack.empty()){
+		//expand
 		TreeNode node = stack.pop();
 		res.add(node.val);
+		//generate
 		if(node.right != null)
 			stack.push(node.right);
 		if(node.left != null)
@@ -52,6 +89,30 @@ public List<Integer> postorderTraversal(TreeNode root) {
 		}
 		return res;
 }
+public List<Integer> postorderTraversal(TreeNode root) {
+	Stack<TreeNode> stack=new Stack<TreeNode>();
+	List<Integer> res = new ArrayList<>();
+	Set<TreeNode> visited = new HashSet<>();
+
+		if(root==null){
+			return res;
+		}
+		stack.push(root);
+		while(!stack.isEmpty()){
+				TreeNode cur=stack.peek();
+				if(cur.right != null && !visited.contains(cur.right))
+					stack.push(cur.right);
+				if(cur.left != null && !visited.contains(cur.left))
+					stack.push(cur.left);
+				//base case
+				if((cur.left == null || visited.contains(cur.left)) && (cur.right == null || visited.contains(cur.right))){
+					res.add(cur.value);
+					visited.add(cur);
+					stack.pop();
+				}
+		}
+		return res;
+}
 
 //solution: traverse
 public ArrayList<Integer> inorderTraversal(TreeNode root){
@@ -71,7 +132,7 @@ private void traverse(TreeNode root, ArrayList<Integer> res){
 public ArrayList<Integer> inorderTraversal(TreeNode root){
 	ArrayList<Integer> res = new ArrayList<>();
 	if(root == null)
-		return;
+		return res;
 	//divide
 	//notice if funciton return type is List<IntegeR>, then below should be:
 	//List<Integer> left = inorderTraversal(root.left);

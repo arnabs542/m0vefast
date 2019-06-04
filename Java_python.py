@@ -203,7 +203,7 @@ set(counter) # convert a map to a set
 
 
 ###################################### DEQUE ===================================
-TODO: check how to use deque
+
 # fast queue
 import collections
 import bisect
@@ -215,7 +215,7 @@ list.clear()
 list.count(x)
 
 
-#############################PRIORITY QUEUE ======================
+############################# PRIORITY QUEUE ======================
 import heapq
 array = []
 heapq.heapify(heap)   # creatinga minheap
@@ -226,7 +226,25 @@ heapq._heappop_max(maxheap)
 
 heapq.heappush(H,8)   # push
 
+def levelOrder(root):
+	if root is None:
+		return []
 
+	res = []
+	queue = collections.deque([root])
+
+	while queue:
+		level = []
+		for _ in range(len(queue)):
+			node = queue.popleft()
+			level.append(node)
+			if node.left:
+				queue.append(node.left)
+			if node.right:
+				queue.append(node.right)
+		res.append(level)
+
+	return res[::-1]
 
 import PriorityQueue
 pq = PriorityQueue()
@@ -249,3 +267,9 @@ count = collections.Counter(words)
 
 # no return
 yield
+
+###########  sliding window ######
+there are len(arr) - k + 1 windows
+current window left bound index: i - k + 1
+left our of the window index: if deque[0] == i - k + 1:  # out of window
+    deque.popleft()

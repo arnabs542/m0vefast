@@ -1,7 +1,7 @@
 # sliding window
 def substringAnagram(source, target):
 	res = []
-	sum = [0] * 30
+	sum = [0] * 26
 	t_len = len(target)
 	s_len = len(source)
 	for i in range(t_len):
@@ -49,6 +49,8 @@ def substringAnagram_map(long, short):
 					match -= 1
 
 		if match == len(dict):
-			res.append(index - len(target) + 1)
+			res.append(i - len(target) + 1)
+
+		i += 1
 
 	return res

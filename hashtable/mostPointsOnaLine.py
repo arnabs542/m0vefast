@@ -7,7 +7,7 @@ def mostPointOneLine(points):
         same = 1 # current point
         sameX = 0 # vertical slope
         most_slope = 0
-        for other_index, other_point in points:
+        for other_index in points:
             slope_count = {}
             if index == other_index:
                 continue
