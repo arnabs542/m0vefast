@@ -23,9 +23,9 @@
 - for each using ij as coordiante
 
 
-
+    0       1
 1) [[1,2], [3,4]]:
-- is bipartite
+- eg: is bipartite
 - for loop: for i in range(len(graph)):
     if not self.bfs(queue, i, coloring):
         return False
@@ -33,9 +33,10 @@
 - use given edges to check nei
 
 2) [[1,2], [2,3]]
-- eg: graph valid tree
+- eg: graph valid tree : one pass, initlaize with 0
+- eg: number of connected component: for loop use counter
 - build graph: using dict = defaultdict(list) mutual to check nei
-- bfs using queue, dict, visited
+- for each: bfs, pass, visited, node, dict
 
 
 

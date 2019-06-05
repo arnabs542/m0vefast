@@ -7,16 +7,12 @@ def binaryTreeAllPath(root):
 # branching factor: left, right child
 # depth: reach the end of node
 def dfs(node, res, path):
-    # prune
-    if node is None:
-        return
-    path = path + '->' + node.value
     # base case
     if node.left is None and root.right None:
-        res.append(path[2:])  # exclude -> that was added at the first when paht is empty
+        res.append(path + str(root.val)
         return
     # two branching factor
     if root.left:
-        dfs(root.left, res, path)
+        dfs(root.left, res, path + str(root.val) + '->')
     if root.right:
-        dfs(root.right, res, path)
+        dfs(root.right, res, path + str(root.val) + '->')

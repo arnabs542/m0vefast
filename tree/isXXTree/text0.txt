@@ -4,7 +4,7 @@
   if one null
   if both not null: recursive
 
-- isSymmentric
+- isSymmentric 同理 (isSameTree)
   - helper(root.left, root.right)
   if both null
   if one null

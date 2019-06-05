@@ -40,3 +40,43 @@ def bfs(self, graph, queue, node, coloring):
             if coloring[nei] != -cur_color:
                 return False
     return True
+
+
+
+
+def isBipartite(self, graph: List[List[int]]) -> bool:
+        if graph is None:
+            return True
+
+        color = [-1]*len(graph)  # use 1 and 0
+        for node in range(len(graph)):
+            if color[node] == -1 and self.bfs(graph, node, color) is False:
+                    return False
+
+        return True
+
+    def bfs(self, graph, node, color):
+        # initialization
+        queue = collections.deque([node])
+        # duplication
+        color[node] = 1
+
+        while queue:
+            # expansion
+            cur_node = queue.popleft()
+            cur_colour = color[cur_node]
+            # generation
+            for kid in graph[cur_node]:
+                if color[kid] == cur_colour:
+
+                    return False
+                elif color[kid] == -1:  # not coloured
+                    queue.append(kid)
+                    color[kid] = 1-cur_colour
+                # else:
+                #     continue   # correctled coloured
+        return True
+
+
+
+        

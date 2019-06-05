@@ -9,7 +9,7 @@ def levelOrder(root):
 		level = []
 		for _ in range(len(queue)):
 			node = queue.popleft()
-			level.append(node)
+			level += [cur.val]  # level.append(cur.val)
 			if node.left:
 				queue.append(node.left)
 			if node.right:
@@ -29,7 +29,7 @@ def levelOrder(root):
 		level = []
 		for _ in range(len(queue)):
 			node = queue.popleft()
-			level.append(node)
+			level += [cur.val]
 			if node.left:
 				queue.append(node.left)
 			if node.right:

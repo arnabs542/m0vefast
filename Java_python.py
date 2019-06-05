@@ -131,7 +131,12 @@ def sortSpecial(list, my_own_order):
 res = -1e9, 1e9  # return type, extreme value
 List[int]:
 
+=============GRAPH
+# visited
+visited = {}
+visited[0] = False    len(visited)
 
+visited = [0] * len(graphg)
 
 
 
