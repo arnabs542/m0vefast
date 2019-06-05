@@ -151,6 +151,30 @@ matrix = [[0]*n for i in range(m)]
 string.stripe()  # trim white space at head and tail
 string.startswith(prefix)
 string.endswith(suffix)
+####
+about reverse a list: https://dbader.org/blog/python-reverse-list
+Reversing a list in-place with the list.reverse() method
+Using the “[::-1]” list slicing trick to create a reversed copy
+Creating a reverse iterator with the reversed() built-in function
+It neither reverses a list in-place, nor does it create a full copy.
+Instead we get a reverse iterator we can use to cycle through the elements of the list in reverse order:
+>>> mylist = [1, 2, 3, 4, 5]
+>>> for item in reversed(mylist):
+...     print(item)
+5
+4
+3
+2
+1
+>>> mylist
+>>> [1, 2, 3, 4, 5]
+create a reversed copy of a list using Python’s reversed() function?
+
+Here’s how:
+
+>>> mylist = [1, 2, 3, 4, 5]
+>>> list(reversed(mylist))
+[5, 4, 3, 2, 1]
 
 # reverse list/string
 class Solution(Object):

@@ -1,51 +1,50 @@
-public class BSTIterator{
-  private Deque<TreeNode> stack;
-  public BSTIterator(TreeNode root){
-    stack = new LinkedList<>();
-    while(root.left != null){
-      stack.offer(root);
-      root = root.left;
-    }
-  }
-  public boolean hasNext(){
-    return !stack.isEmpty();
-  }
-  public int next(){
-    int cur = stack.poll();
-    int res = cur.value;
-    if(cur.right != null){
-      cur = cur.right;
-      while(cur != null){
-        stack.offer(cur);
-        cur = cur.left;
-      }
-    }
-    //else{
-    // if leaf node, then continue pop
-    //}
+# inorder
+class BSTIterator:
 
-  }
-  return res;
-}
+    def __init__(self, root: TreeNode):
+        self.stack = []
+        cur = root
+        while cur:
+            stack.append(cur)
+            cur = cur.left
 
-public List<TreeNode> inOrder(TreeNode root){
-  List<TreeNode> res = new ArrayList<>();
-  if(root = null)
-    return res;
+    def next(self) -> int:
+        """
+        @return the next smallest number
+        """
+        cur = stack.pop()
+        res = cur.value
+        if cur.right:
+            while cur:
+                stack.append(cur)
+                cur = cur.left
+        return res
 
-  Deque<TreeNode> stack = new LinkedList<>();
-  TreeNode cur = root;
 
-  while(cur != null || !stack.isEmpty()){
-    //inorder prepare to the first
-    while(cur != null){
-      stack.offer(cur);
-      cur = cur.left;
-    }
-    //next()
-    cur = stack.poll();
-    res.add(cur);
-    cur = cur.right;
-  }
-  return res;
-}
+    def hasNext(self) -> bool:
+        """
+        @return whether we have a next smallest number
+        """
+        return len(self.stack) > 0
+
+# Your BSTIterator object will be instantiated and called as such:
+# obj = BSTIterator(root)
+# param_1 = obj.next()
+# param_2 = obj.hasNext()
+
+
+def inOrderTraversal(root):
+    if root is None:
+        return []
+
+    res = []
+    stack = []
+    cur = root
+    while root or cur:
+        while cur:
+            stack.append(cur)
+            cur = cur.left
+        cur = stack.pop()
+        res.append(cur.value)
+        cur = cur.next
+    return res

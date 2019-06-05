@@ -2,11 +2,92 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1de5261-5907-46e4-bac3-ac57bf9f6a3b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/A2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/binarySearch/closet in sorted array.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/binarySearch/k closest in sorted array.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/palindrome_permutation1.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/palindrome_permutation2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/234kSum/2Sum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/234kSum/2Sum_2Arr.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/234kSum/2Sum_closest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/234kSum/2Sum_inexPair.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/234kSum/2Sum_smaller.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/234kSum/2Sum_valuePair.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/234kSum/3Sum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/234kSum/3Sum_3arr.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/234kSum/3Sum_closest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/234kSum/3Sum_smaller.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/234kSum/3Sum_valuePair.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/234kSum/4Sum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Array/flattenNestedListItr.py" beforeDir="false" afterPath="$PROJECT_DIR$/Array/flattenNestedListItr.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Java_python.py" beforeDir="false" afterPath="$PROJECT_DIR$/Java_python.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LCA/LCA0.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LCA/LCA1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LCA/LCA1.notExist.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LCA/LCA2.P.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LCA/LCA3.k_node.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LCA/LCA4.k_nary.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LCA/LCA5.k_nodes_k_nary.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LCA/LCA_BST.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/commonInKSortedArr/commonIn2SortedArr.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/commonInKSortedArr/commonIn2SortedArr.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/commonInKSortedArr/commonIn3sortedArr.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/commonInKSortedArr/commonIn3sortedArr.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/commonInKSortedArr/commonInKSortedArr.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/commonInKSortedArr/commonInKSortedArr.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/commonInKSortedArr/commonInUnsortedArr.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/commonInKSortedArr/commonInUnsortedArr.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/commonInKSortedArr/commonInUnsortedArr2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/reconstructTree/postByPreIn.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/reconstructTree/reconstructBSTInOrder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/reconstructTree/reconstructBSTLevelOrder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/reconstructTree/reconstructBSTPostOrder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/reconstructTree/reconstructBSTPreOrder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/reconstructTree/reconstructBTLevelOrder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/reconstructTree/reconstructBTPostOrder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/reconstructTree/reconstructBTPreOrder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/reconstructTree/reconstructCompleteBTLevelOrder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorityElement/majority1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorityElement/majority1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorityElement/majority3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorityElement/majority3.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrix/k_closest_in_sorted_array.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrix/k_closest_in_sorted_array.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrix/rotateMatrix.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrix/rotateMatrix.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrix/spiralOrderGenerateI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrix/spiralOrderGenerateI.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrix/spiralOrderGenerateII.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrix/spiralOrderGenerateII.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrix/spiralOrderTraversI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrix/spiralOrderTraversII.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrix/spiralOrderTraverse1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrix/spiralOrderTraverse2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrix/sukoku_checker.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrix/valid_sudoku.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/maxPath/maxPathLength(leaf-leaf).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/maxPath/maxPathSum0.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/maxPath/maxPathSum1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/maxPath/maxPathSum2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/maxPath/maxPathSum3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/maxPath/maxPathSum4.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/maxPath/maxPathSum5.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/merge/mergeInteger/merge2SortedArr.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/merge/mergeInteger/merge2SortedArr.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/merge/mergeInteger/merge2sortedLinkedList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/merge/mergeInteger/merge2sortedLinkedList.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/merge/mergeInteger/mergeKSortedArr.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/merge/mergeInteger/mergeKSortedArr.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/merge/mergeInteger/mergeKSortedList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/merge/mergeInteger/mergeKSortedList.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/merge/mergeInterval/merge2SortedintervalLists.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/merge/mergeInterval/merge2SortedintervalLists.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/merge/mergeInterval/mergeInterval1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/merge/mergeInterval/mergeInterval1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/merge/mergeInterval/mergeInterval2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/merge/mergeInterval/mergeInterval2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/merge/mergeInterval/mergeInterval3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/merge/mergeInterval/mergeInterval3.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/merge/mergeInterval/mergeKsortedIntervalList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/merge/mergeInterval/mergeKsortedIntervalList.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/merge/smallerRange.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/merge/smallerRange.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tree/traverse/bstIterator.py" beforeDir="false" afterPath="$PROJECT_DIR$/tree/traverse/bstIterator.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,19 +107,24 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/majorityElement/majority3.py">
+        <entry file="file://$PROJECT_DIR$/binarySearch/k_closest_in_sorted_array.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="63" column="35" lean-forward="true" selection-start-line="63" selection-start-column="35" selection-end-line="63" selection-end-column="35" />
+            <state relative-caret-position="399">
+              <caret line="33" column="27" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
             </state>
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tree/reconstructTree/reconstructBTPrePost.java">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/binarySearch/k_closest_in_sorted_array.py">
+        <entry file="file://$PROJECT_DIR$/tree/reconstructTree/reconstructBTPrePost.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="22" column="67" selection-start-line="22" selection-start-column="67" selection-end-line="22" selection-end-column="67" />
+            <state relative-caret-position="136">
+              <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -66,10 +152,11 @@
         <option value="$PROJECT_DIR$/A2.py" />
         <option value="$PROJECT_DIR$/majorityElement/majority3.py" />
         <option value="$PROJECT_DIR$/binarySearch/k_closest_in_sorted_array.py" />
+        <option value="$PROJECT_DIR$/tree/reconstructTree/reconstructBTPrePost.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1680" />
     <option name="height" value="1027" />
@@ -90,7 +177,13 @@
             <path>
               <item name="m0vefast" type="b2602c69:ProjectViewProjectNode" />
               <item name="m0vefast" type="462c0819:PsiDirectoryNode" />
-              <item name="binarySearch" type="462c0819:PsiDirectoryNode" />
+              <item name="tree" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="m0vefast" type="b2602c69:ProjectViewProjectNode" />
+              <item name="m0vefast" type="462c0819:PsiDirectoryNode" />
+              <item name="tree" type="462c0819:PsiDirectoryNode" />
+              <item name="reconstructTree" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -114,7 +207,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.k_closest_in_sorted_array">
+  <component name="RunManager" selected="Python.reconstructBTPrePost">
     <configuration name="A2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="m0vefast" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -178,6 +271,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="reconstructBTPrePost" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="m0vefast" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tree/reconstructTree" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tree/reconstructTree/reconstructBTPrePost.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="subsetI" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="m0vefast" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -199,34 +313,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="topKFrequent" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="m0vefast" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/topK" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/topK/topKFrequent.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.reconstructBTPrePost" />
         <item itemvalue="Python.k_closest_in_sorted_array" />
         <item itemvalue="Python.majority3" />
         <item itemvalue="Python.A2" />
         <item itemvalue="Python.subsetI" />
-        <item itemvalue="Python.topKFrequent" />
       </list>
     </recent_temporary>
   </component>
@@ -257,7 +350,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.1506932" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.21217601" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.32834226" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
@@ -265,11 +358,11 @@
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" weight="0.32941177" />
       <window_info anchor="bottom" id="Version Control" order="5" weight="0.32834226" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.17005348" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.2513369" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.19572192" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="10" weight="0.32938644" />
+      <window_info anchor="bottom" id="TODO" order="10" weight="0.32834226" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -287,6 +380,11 @@
           <url>file://$PROJECT_DIR$/math/random/sample_online_data.py</url>
           <line>17</line>
           <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tree/reconstructTree/reconstructBTPrePost.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -401,13 +499,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/graph/dfs/subsetI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/A2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="703">
@@ -422,10 +513,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/graph/dfs/subsetI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tree/reconstructTree/reconstructBTPrePost.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/binarySearch/k_closest_in_sorted_array.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="22" column="67" selection-start-line="22" selection-start-column="67" selection-end-line="22" selection-end-column="67" />
+        <state relative-caret-position="399">
+          <caret line="33" column="27" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tree/reconstructTree/reconstructBTPrePost.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
         </state>
       </provider>
     </entry>
