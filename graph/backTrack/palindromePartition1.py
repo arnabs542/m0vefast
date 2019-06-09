@@ -23,4 +23,6 @@ def dfs(self, res, arr, path):
 
 def is_palindrome(self, s):
 	return s == s[::-1]
-			
+
+
+https://www.jiuzhang.com/solution/palindrome-partitioning/#tag-highlight-lang-python

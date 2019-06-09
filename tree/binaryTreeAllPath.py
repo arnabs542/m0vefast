@@ -7,7 +7,7 @@ def binaryTreeAllPath(root):
 # branching factor: left, right child
 # depth: reach the end of node
 def dfs(node, res, path):
-    # base case
+    # reach the depth 
     if node.left is None and root.right None:
         res.append(path + str(root.val)
         return

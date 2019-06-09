@@ -17,16 +17,11 @@ def findItinerary(self, tickets: List[List[str]]) -> List[str]:
         destination[f] += t
 
     res = []
-    self.dfs(destination, 'jfk')
+    self.dfs(destination, res, 'jfk')
     return res[::-1]
 
 def dfs(self, from):
     for each_to in destination[from]:
-
-
-
-
-
 
 
 

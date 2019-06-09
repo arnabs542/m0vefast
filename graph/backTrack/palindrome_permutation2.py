@@ -1,4 +1,5 @@
-# Given a string s, return all the palindromic permutations (without duplicates) of it. Return an empty list if no palindromic permutation could be form.
+# Given a string s, return all the palindromic permutations (without duplicates) of it.
+# Return an empty list if no palindromic permutation could be form.
 '''
 这是一个组合问题
 首先这个问题要分字符串长度奇偶讨论，如果是奇数，那么还需要枚举中间的字符
@@ -7,7 +8,7 @@
 Input: "aabb"
 Output: ["abba", "baab"]
 '''
-def generatePalindromes(self, s):
+def palindrome_permutation2(self, s):
     counter = collections.Counter(s)
     odds_count = sum(value % 2 for value in counter.values())
     if odds_count > 1:
@@ -19,7 +20,7 @@ def generatePalindromes(self, s):
     self.dfs(res, base, mid, 0)
     return res
 
-
+# get left and mid parts
 def preprocess(self, counter):
     base = mid = ''
     for char in counter:
@@ -34,9 +35,43 @@ def dfs(self, res, base, mid, depth):
         return
 
     for i in range(depth, len(base)):
+        # avoid duplidate
         if i > depth and (base[i] == base[i-1] or base[i] == base[depth]):
             continue
-
         permu = base if i == depth else base[:depth] + base[i] + base[depth+1:i] + base[depth] + base[i+1:]
-
         self.dfs(res, permu, mid, depth+1)
+
+
+# using swap:
+def palindrome_permutation2(str):
+    counter = collections.Counter(str)
+    odd_count = sum(value % 2 for value in counter.values())
+    if odd_count <= 1:
+        base, mid = self.preprocess(counter)
+    else:
+        return []
+
+    res = []
+    self.dfs(res, list(base), list(mid), 0)
+    return res
+
+def preprocess(self, counter):
+    base = mid = ''
+    for char in counter:
+        if counter[char] % 2 == 0:
+            mid = char
+        else:
+            base += char * (counter[char]//2)
+    return base, mid
+
+def dfs(self, res, base, mid, depth):
+    if len(arr) == 0:
+        res.append(''.join(base + mid + base[::-1]))
+        return
+    visited = set()
+    for index in range(depth, len(arr)):
+        if base[i] not in visited:
+            visited.add(base[index])
+            base[index], base[depth] = base[depth], base[index]
+            self.dfs(res, base, mid, depth+1)
+            base[index], base[depth] = base[depth], base[index]
