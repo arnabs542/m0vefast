@@ -33,7 +33,7 @@ def deepcopylist(head):
 		if head.random:
 			if head.random not in dict:
 				dict[head.random] = ListNode(head.random)
-			cur.next.random(dict.get(head.random))
+			cur.next.random = dict.get(head.random)
 		# update
 		cur = cur.next
 		head = head.next

@@ -75,6 +75,7 @@ for i, price in reversed(list(enumerate(prices[1:],1))):  # 1: tuple start index
 
 
 min_sofar, max_sofar = float('inf'), 0.0
+float('-inf')
 
 range(0, 3)  # 0,1,2
 range(1, 3)  # 1,2
@@ -153,6 +154,9 @@ matrix = [[0]*n for i in range(m)]
 
 
 ###################################### SORT ===================================
+strip(): returns a new string after removing any leading and trailing whitespaces including tabs (\t).
+rstrip(): returns a new string with trailing whitespace removed. It’s easier to remember as removing white spaces from “right” side of the string.
+lstrip(): returns a new string with leading whitespace removed, or removing whitespaces from the “left” side of the string.
 string.stripe()  # trim white space at head and tail
 string.startswith(prefix)
 string.endswith(suffix)

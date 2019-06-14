@@ -9,12 +9,13 @@
 '''
 def solveSudoku(board):
     dfs(board)
+
 def dfs(board):
     row, col = findFirstUnassigned(board)
     # base case
     if (row, col) == (-1, -1):
         return True    # all solved
-    for number in map(str, range(1, 10)):
+    for number in map(str, range(1, 10)):    # apply str(x) to each x collections
         if isvalid(board, row, col, number):
             board[row][col] = number
             if dfs(board):
@@ -31,3 +32,10 @@ def isvalid(board, row, col, number):
 def gerRange(x):
     x -= x % 3
     return range(x, x+3)
+
+def findFirstUnassigned(board):
+    for row in range(9):
+        for col in range(9):
+            if board[row][col] == '.':
+                return row, col
+    return -1, -1

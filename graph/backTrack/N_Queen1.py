@@ -4,18 +4,19 @@ def solveNQueens(self, n: int) -> List[List[str]]:
 	return res
 
 def dfs(self, res, path, n):
-	# branching factor: choose which col index
-	# depth: for each row
+	# branching factor: candidate col index for row
+	# depth: 9 row
 	if len(path) == n:
 		res.append(self.render(path))
 		return
-	for row, col in enumerate(path):
+	row = len(path)
+	for col in range(n):
 		if self.is_valid(path, row, col):
 			self.dfs(res, path + [col], n)
 
 def is_valid(self, cols, row, col):
 	for r, c in enumerate(cols):
-		if col == c or row == r or abs(col - c) == abs(row - r):
+		if col == c or abs(col - c) == abs(row - r):
 			return False
 	return True
 

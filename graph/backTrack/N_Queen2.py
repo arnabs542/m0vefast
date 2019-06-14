@@ -9,7 +9,7 @@ def dfs(self, res, path, n):
     if len(path) == n:
         res.append(self.render(path))
         return res
-    for row, col in enumerate(path):
+    for col in range(n):
         if self.is_valid(row, col, path):
             self.dfs(res, path+[col], n)
 

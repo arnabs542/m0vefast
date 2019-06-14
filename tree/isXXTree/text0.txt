@@ -33,3 +33,5 @@
 - isBST
 
 - isComplete
+  using flag
+  check left and right seperatedly 
