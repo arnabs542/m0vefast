@@ -1,3 +1,5 @@
+about boolean : true, false, none:
+https://stackoverflow.com/questions/3901144/difference-between-if-x-and-if-x-is-not-none
 ##################################### BIT AND IF STATEMENT ################################
 sign = -1 if (num1[-] < 0) ^ (num2[0] < 0) else 1
 
@@ -6,6 +8,18 @@ sign = -1 if (num1[-] < 0) ^ (num2[0] < 0) else 1
     # next(some_condition)
     res = res[next((i for i, x in enumerate(res) if x !=0, len(res)):] or [0]
     return [sign * res[0]] + res[1:]
+
+######################### TREE ###############################3
+大部分: bottom up(, divice and conquer): lca, max depth, max path sum,
+少部分: top down(bfs):
+https://www.jiuzhang.com/qa/1019/
+不绝对 ,bfs -> []  from left to right is top down
+                  from right to left is bottom up  
+
+
+
+
+
 
 
 ##################################### ARRAY ===================================

@@ -1,7 +1,3 @@
-# 1. Reverse the entire string.
-# 2. Reverse each word.
-# 3. Deduplicate spaces.
-
 # can not handle leading and tail white space
 def reverseWords(self, s: str) -> str:
 #         res = ' '.join(x[::-1] for x in s.split())
@@ -22,15 +18,16 @@ def reverseWords(self, s: str) -> str:
             left += 1
             right -= 1
 
+    # steop1: trim white space
     arr = removeSpace(list(s))
-
+    # step2: reverse each string
     start = 0
     for i, item in enumerate(arr):
         if arr[i] != ' ' and (i == 0 or arr[i-1] == ' '):
             start = i
         if arr[i] != ' ' and (i==len(arr)-1 or arr[i+1] == ' '):
             reverse_range(arr, start, i)
-
+    # step3: reverse entire string
     reverse_range(arr, 0, len(arr)-1)
 
     return ''.join(arr)

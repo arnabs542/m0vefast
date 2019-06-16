@@ -75,7 +75,7 @@ def LCA_knary(root, one, two):
     return temp
 
 #LCA_kk
-# think should be the same as above 
+# think should be the same as above
 def LCA_kk(root, knodes_set):
     if root is None:
         return root
@@ -97,11 +97,9 @@ def LCA_kk(root, knodes_set):
 def LCA_bst(root, one, two):
     if root is None:
         return root
-    if root is one or root is two:
-        return root
-    left = LCA_bst(root.left, one, two)
-    right = LCA_bst(root.right, one, two)
-    if left and right:
-        return root
+    if root.val < one.val and root.val < two.val:
+        return LCA_bst(root.right, one, two)
+    elif root.val > one.val and root.val > two.val:
+        return LCA_bst(root.left, one, two)
     else:
-        return left if left else right
+        reutrn root
