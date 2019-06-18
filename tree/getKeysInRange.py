@@ -1,15 +1,16 @@
-def getKeysInRange(root, min, max):
-	res = []
-	helper(res, root, min, max)
-	return res
-# res will be in order
-def helper(res, root, min, max):
+def getRangeSum(root, left, right):
+	self.sum = 0
+	self.inorder(root, left, right)
+	return self.sum
+
+def inorder(self, root, left, right):
 	if root is None:
 		return
-	# traverse left Tree
-	if root.key > max:
-		helper(root.left, res, min, max)
-	if root.key <= max and root.key >= min:
-		res.append(root.key)
-	if root.key < min:
-		heper(root.left, res, min, right)
+	if left <= root.val<= right:
+		self.sum += root.val
+		self.inorder(root.left, left, right)
+		self.inorder(root.right, left, right)
+	if left > root.val:
+		self.inorder(root.right, left, right)
+	if right < root.val:
+		self.inorder(root.left, left, right)

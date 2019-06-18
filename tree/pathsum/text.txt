@@ -5,14 +5,26 @@
   - 以每个node 为root, apply pathsum1
 - pathsum3: https://leetcode.com/problems/path-sum-iv/
 
-
 # max path sum
-- max path length: node to node
+- diameter/longest: node to node
+    - update max with left+right
+    - return height/single path
+
 - max path 1: node to node (no constrain)
+    - update max with root+left+right
+    - return single path
+- max path 4: node to node (one path)
+    - update max with root + max(left,right)
+    - return single path
+- max path 2: leaf to leaf (child discurssion)
+    - can not get rid of neg value
+    - update max only has 2 child,
+    - return single path
+
+
+
+
 
 3) max path 0: root to node
-
-5) max path 2: leaf to leaf
 6) max path 3: leaf to root
-7) max path 4: node to node (one path)
 8) has path sum: node to node (one path)  ?

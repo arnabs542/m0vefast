@@ -37,56 +37,53 @@ public TreeNode search(TreeNode root, int target){
   }
   return null;
 }
-//????
-public TreeNode delete(TreeNode root, int target){
-  if(root == null)
-    return null;
-  //target on right tree
-  if(root.value < target){
-    root.right= delete(root.right, target);
-  //target on left tree
-  }else if(root.value > target){
-    root.left = delete(root.left, target);
-  //target is the root
-  }else{
-    //no child
-    if(root.left == null && root.right == null)
-      return null;
-    //only one child
-    if(root.left == null || root.right == null)
-      return root.left == null ? root.right : root.left;
-    //two children
-    //with no successor
-    if(root.right.left == null){
-      root.right.left = root.left;
-      //root = root.right;
-      return root.right;
-    }else{//with successor
-      TreeNode successor = findSmallest(root.right);
-      root.value = successor.value;
-      //delete(root.right, successor.value);
-      root.right = delete(root.right, successor.value);
-    }
-  }
-  return root;
-}
-private TreeNode findSmallest(TreeNode root){
-  while(root.left.left != null){
-    root = root.left;
-  }
-  return root.left;
-}
-public TreeNode insert(TreeNode root, int value){
-  if(root == null){
-    return new TreeNode(value);
-  }
-  if(root.value < value){
-    return insert(root.right, value);
-  else if(root.value > value){
-    return insert(root.left, value);
-  }
-  return root;
-}
+# return the new root
+def deleteNode(root, key):
+	if not root:
+		return root
+	if root.val > key:
+		root.left = deleteNode(root.left, key)
+	elif root.val < key:
+		root.right= deleteNode(root.right, key)
+	else:
+        # have 1 or no child return
+        if not root.left and not root.right:
+            return None
+		if not root.right:
+			return root.left
+		if not root.left:
+			return root.right
+
+        # have both child
+        succeor = root.right
+		while succeor.left:
+			succeor = temp.left
+        root.val = succeor.val # replace value
+
+		root.right = deleteNode(root.right,root.val)
+
+    return root
+# like binary search, find the first that is bigger
+def inorderSuccessor(self, root, p):
+    succ = None
+    while root:
+        if root.val > p.val:
+            succ = root
+            root = root.left
+        else:
+            root = root.right
+    return succ
+
+# return new root
+def insert(root, value):
+    if root is None:
+        return TreeNode(value)
+    if root.val < value:
+        return insert(root.right, value)
+    if root.val > value:
+        return insert(root.left, value)
+    return root
+
 //level order
 public boolean isComplete(TreeNode root){
   if(root == null)

@@ -12,7 +12,9 @@ private int helper(TreeNode root, int[] max){
     int right = helper(root.right, max);
     left = left < 0 ? 0 : left;
     right = right < 0 ? 0 : right;
-    int sin = Math.max(Math.max(left, right), 0) + root.key;
+    // return a single path
+    int sin = Math.max(left, right) + root.key;
+    //max should be compare to single path 
     max[0] = Math.max(max[0], sin);
     return sin;
 }
