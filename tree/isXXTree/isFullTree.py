@@ -1,4 +1,4 @@
-# excep leaf node, other nodes should have 2 nodes
+# except leaf node, other nodes should have 2 nodes
 def isfulltree(root):
     # edge case
     if root is None:

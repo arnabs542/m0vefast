@@ -6,7 +6,7 @@ def maxDepth(self, root: TreeNode) -> int:
     return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
 
 # mindepth is the shorpest path length of a tree
-def minDepth(root)
+def minDepth(root):
     if root is None:
             return 0
         if root.left and root.right:
