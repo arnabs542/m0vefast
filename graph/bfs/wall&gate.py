@@ -1,2 +1,0 @@
-def wallAndGates(rooms):
-    

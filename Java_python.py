@@ -14,13 +14,13 @@ sign = -1 if (num1[-] < 0) ^ (num2[0] < 0) else 1
 少部分: top down(bfs):
 https://www.jiuzhang.com/qa/1019/
 不绝对 ,bfs -> []  from left to right is top down
-                  from right to left is bottom up  
+                  from right to left is bottom up
 
 
 
 
 
-
+string
 
 ##################################### ARRAY ===================================
 #type: tuple, list (array)
@@ -217,7 +217,9 @@ sorted(list)   # expensive
 #
 x if y else z
 
-
+list.index(target)
+res = re.findall(r'\w+', str)  # w: any char, +: 1 or more
+res = re.findall('[^a-zA-Z0-9]', str)   reutrn a collections
 
 # initialize 0 to list
 list = [0 for i in range(3)]   # list = [0,0,0]
@@ -240,7 +242,14 @@ counter = collections.Counter()  #return a hashmap
 for word in ['red', 'blue', 'orange']:
     counter[word] += 1
 
-counter
+counter.most_common(k)
+'''  O(nlogk) runtime 
+If we use most_common to return k > 1 elements, then we use heapq.nlargest.
+This is an O(k) + O((n - k) log k) + O(k log k) algorithm, which is very good for a small constant k, since it's essentialy linear.
+The O(k) part comes from heapifying the initial k counts,
+the second part from n - k calls to heappushpop method
+and the third part from sorting the final heap of k elements.
+'''
 # Counter({'blue': 3, 'red': 2, 'green': 1})
 counter['blue']
 3

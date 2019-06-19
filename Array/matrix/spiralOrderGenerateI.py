@@ -9,19 +9,19 @@ def spiralGenerate1(n):
         for i in range(start, end):
             matrix[start][i] = num
             num += 1
-            i += 1
+
         for i in range(start, end):
             matrix[i][end] = num
             num += 1
-            i += 1
+
         for i in range(end, start, -1):
             matrix[end][i] = num
             num += 1
-            i -= 1
+
         for i in range(end, start, -1):
             matrix[i][start] = num
             num += 1
-            i -= 1
+
         start += 1
         end -= 1
 

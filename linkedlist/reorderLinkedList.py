@@ -5,8 +5,10 @@ def reorder(head):
 		return head
 	# find mid
 	mid = self.findmid(head)
+	second = mid.next
+	mid.next = None
 	# reverse
-	newHead = self.reverse(mid.next)
+	newHead = self.reverse(second)
 	# interleave
 	return self.interleave(head, newHead)
 
@@ -35,7 +37,7 @@ def interleave(node1, node2):
 	cur = dummy
 	while node1 and node2:
 		cur.next = node1
-		cur.next.next = node2.next
+		cur.next.next = node2
 		node1 = node1.next
 		node2 = node2.next
 		cur = cur.next.next

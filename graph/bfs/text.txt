@@ -25,7 +25,7 @@
 
     0       1
 1) [[1,2], [3,4]]:
-- eg: is bipartite
+- eg: is bipartite, shortestPathToallNodes
 - for loop: for i in range(len(graph)):
     if not self.bfs(queue, i, coloring):
         return False

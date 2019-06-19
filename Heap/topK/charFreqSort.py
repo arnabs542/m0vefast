@@ -17,8 +17,16 @@ def frequencySort(self, s):
     if not s:
         return ""
     count = collections.Counter(s)
-    counter = count_s.most_common()
+    counter = count_s.most_common()   # O(n log k) return k element
     rs = ''
     for i in counter:
         rs += i[0] * i[1]
     return rs
+
+def mostFreqWordNotBanned(str, banned):
+
+    ban = set(banned)
+    words = re.findall(r'\w+', str.lower())
+    counter = collection.Counter(each for each in words if each not in ban)
+    # most common(1) -> [('ball', 2)]
+    return counter.most_common(1)[0][0]

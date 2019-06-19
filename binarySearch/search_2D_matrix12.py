@@ -17,8 +17,8 @@ def search2DMatrix1(matrix, target):
 
 	while left <= right
 		mid = left + (right - left) // 2
-		x = mid // row
-		y = mid * row
+		x = mid // col
+		y = mid * col
 		if matrix[x][y] == target:
 			return True
 		elif matrix[x][y] < target:

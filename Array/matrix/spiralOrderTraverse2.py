@@ -12,30 +12,31 @@ def spiralOrderTraverse2(self, matrix: List[List[int]]) -> List[int]:
     while left < right and up < down:
         for i in range(left, right):
             res.append(matrix[up][i])
-            i += 1
+
         for i in range(up, down):
             res.append(matrix[i][right])
-            i += 1
+
         for i in range(right, left, -1):
             res.append(matrix[down][i])
-            i -= 1
+
         for i in range(down, up, -1):
             res.append(matrix[i][left])
-            i -= 1
+
         left += 1
         right -= 1
         up += 1
         down -= 1
 
-    if left > right or up > down:
-        return res
+    # if left > right or up > down:
+    #     return res
+
     if left == right:
         for i in range(up, down+1):
             res.append(matrix[i][right])
-            i += 1
+
     else:
         for i in range(left, right+1):
             res.append(matrix[down][i])
-            i += 1
+
 
     return res

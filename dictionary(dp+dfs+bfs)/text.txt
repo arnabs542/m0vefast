@@ -1,0 +1,8 @@
+wordSearch1: backtracking
+wordsarch2: backtracking, trie
+
+wordladder1
+wordladder2: bfs
+
+wordbreak1:
+wordbreak2: dp
