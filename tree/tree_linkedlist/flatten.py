@@ -14,6 +14,7 @@ def flattenSingleList(root):
         node.right = stack[-1] if stack else None
     return
 
+'''
     public List<Integer> preOrderTraversal(TreeNode root){
     	Stack<TreeNode> stack = new Stack<>();
     	List<Integer> res = new ArrayList<>();
@@ -30,3 +31,4 @@ def flattenSingleList(root):
     	}
     	return res;
     }
+'''

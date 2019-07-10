@@ -4,34 +4,32 @@ class MedianFinder:
         """
         initialize your data structure here.
         """
-        self.smallhalf = []
-        self.largehalf = []
+        self.small = []  # use minheap to mock maxheap by negate value added
+        self.big = []
+
 
     def addNum(self, num: int) -> None:
-        # add value
-        if not self.smallhalf or num <= self.smallhalf[0]:
-            heapq.heappush(self.smallhalf, num)
+        if not self.small or -self.small[0] > num:   # if value is smaller than maxheap, then add to maxheap 
+            heapq.heappush(self.small, -num)
         else:
-            heapq.heappush(self.largehalf, -num)
-        # maintain balance
-        if len(self.smallhalf) - len(self.largehalf) >= 2:
-            heapq.heappush(self.largehalf, (-heapq.heappop(self.smallhalf)))
-        elif len(self.smallhalf) < len(self.largehalf):
-            heapq.heappush(self.smallhalf, (-heapq.heappop(self.largehalf)))
+            heapq.heappush(self.big, num)
 
+        if len(self.small) - len(self.big) >= 2:
+            heapq.heappush(self.big, -heapq.heappop(self.small))
+        elif len(self.small) < len(self.big):
+            heapq.heappush(self.small, -heapq.heappop(self.big))
 
 
     def findMedian(self) -> float:
-        size = len(self.smallhalf) + len(self.largehalf)
+        #print(self.small, self.big)
+
+        size = len(self.small) + len(self.big)
         if size == 0:
             return None
-        if size % 2 == 0:
-            return self.smallhalf[0]
+
+        elif size %2 == 0:
+
+            return (self.big[0] - self.small[0])/2.0
+
         else:
-            return (self.smallhalf[0] + self.largehalf[0])/2
-
-
-# Your MedianFinder object will be instantiated and called as such:
-# obj = MedianFinder()
-# obj.addNum(num)
-# param_2 = obj.findMedian()
+            return -self.small[0]

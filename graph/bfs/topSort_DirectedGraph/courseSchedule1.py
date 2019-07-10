@@ -1,6 +1,6 @@
 def canFinish(numCourses, prerequisites):
     # build map to calcuate indegree
-    m = {x: 0 for x in range(numCourses)}
+    m = {x: 0 for x in range(numCourses)}   #{210:2}  to take 210, need pre 2 courses
     for each in prerequisites:
         if each[0] in m:
             m[each[0]] += 1

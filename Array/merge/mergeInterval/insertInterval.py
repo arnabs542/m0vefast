@@ -17,7 +17,8 @@ def mergeInterval3(intervals, to_add):
 
 class Solution:
     def mergeIntervals(self, intervals):
-        intervals = sorted(intervals, key=lambda x:x.start)
+        intervals.sort(key=lambda x:x.start)
+        #intervals = sorted(intervals, key=lambda x:x.start)
         res = []
         for each in intervals:
             if(len(res) == 0 or res[-1].end < each.start):

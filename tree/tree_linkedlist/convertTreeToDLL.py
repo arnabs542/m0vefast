@@ -23,14 +23,14 @@ def treeToCircularDLL(root):
             prev.right = cur
             cur.left = prev
         prev = cur # update prev
-        cur = cur.right  #update cur 
+        cur = cur.right  #update cur
 
     head.left = prev  #circular
     prev.right = head
     return head
 
 
-
+'''
   public List<Integer> inOrderTraversal(TreeNode root){
   	Stack<TreeNode> stack = new Stack<TreeNode>();   //record for direction
   	List<Integer> res = new ArrayList<>();
@@ -47,3 +47,4 @@ def treeToCircularDLL(root):
   	}
   	return res;
   }
+  '''

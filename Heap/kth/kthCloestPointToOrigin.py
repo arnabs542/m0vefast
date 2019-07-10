@@ -11,6 +11,24 @@
 
     """
 # solution: minheap
+# O(k) + (n-k)lgk + (n-k)   -> (nlgk), O(k)
+ def kClosest(self, points: List[List[int]], K: int) -> List[List[int]]:
+        # using priority queue with size k, sorting by distance
+        if points is None or not points:
+            return points
+        minheap = []
+        for index, point in enumerate(points):
+            heapq.heappush(minheap, (-self.getDistance(point), point))
+
+            if len(minheap) > K:
+                heapq.heappop(minheap)
+
+        return [heapq.heappop(minheap)[1] for i in range(K)]
+
+    def getDistance(self, point):
+        return point[0]**2 + point[1]**2
+
+# O(nlgn + k) = O(nlgn), O(n)
 def kClosest(self, points: List[List[int]], K: int) -> List[List[int]]:
         res = []
         minheap = []
@@ -26,7 +44,7 @@ def kClosest(self, points: List[List[int]], K: int) -> List[List[int]]:
     def getDist(self, point):
         return point[0]**2 + point[1]**2
 
-# solution: mapheap O(nlgk), O(nlgk)
+# solution: mapheap O(nlgk), O(k)
 def kClosest(self, points, origin, k):
 	res = []
 

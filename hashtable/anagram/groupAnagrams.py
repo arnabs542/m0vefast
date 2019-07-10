@@ -13,6 +13,18 @@ def groupAnagrams(strs):
 		dict[sortedItem] = dict.get(sortedItem,[]) + [str]  # each value is a list not str
 	return [each for each in dict.values()]
 
+def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+	if strs is None or not strs:
+		return []
+	dic = collections.defaultdict(list)
+	for str in strs:
+		sorted_item = ''.join(sorted(str))
+		dic[sorted_item].append(str)
+
+	return [each for each in dic.values()]
+
+
+
 
 # {'333': ['333']}
 # {'333': ['333'], 'aab': ['aba']}

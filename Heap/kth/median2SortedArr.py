@@ -14,8 +14,8 @@ def helper(self, A, aleft, B, bleft, k):
         return A[aleft + k - 1]
     if k == 1:
         return min(A[aleft], B[bleft])
-    ak = A[aleft + k//2 - 1] if aleft + k//2 <= len(A) else None
-    bk = B[bleft + k//2 - 1] if bleft + k//2 <= len(B) else None
+    ak = A[aleft + k//2 - 1] if aleft + k//2 <= len(A) else float('inf')   # <= compare length
+    bk = B[bleft + k//2 - 1] if bleft + k//2 <= len(B) else float('inf')
     if ak < bk:
         return self.helper(A, aleft + k//2, B, bleft, k-k//2)
     else:

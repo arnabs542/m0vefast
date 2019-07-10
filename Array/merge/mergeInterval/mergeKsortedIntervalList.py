@@ -1,11 +1,11 @@
 from Queue import PriorityQueue
 
-def mergeKSortedIntervalLists(self, intervals):
+def mergeKSortedIntervalLists(self, intervals):  # sort by start
     res = []
     heap = PriorityQueue()
 
     for index, array in enumerate(intervals):
-        if len(array):
+        if len(array):  # (value, row_id, col_id)
             heap.put((array[0].start, array[0].end, index, 0))
 
     while len(heap):
@@ -25,5 +25,6 @@ def append_and_merge(self, res, interval):
     if last_interval.end < interval.start:
         res.append(interval)
     else:
+        # this directly change the last item on the res
         last_interval.end = max(last_interval.end, interval.end)
     return
