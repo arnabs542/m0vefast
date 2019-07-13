@@ -226,6 +226,10 @@ list = [0 for i in range(3)]   # list = [0,0,0]
 list = [[0 for i in range(3)] for j in range(2)] # list = [[0,0,0], [0,0,0]]
 
 ###################################### HASHMAP ===================================
+The get() method returns a default value if the key is missing.
+However, if the key is not found when you use dict[key], KeyError exception is raised.
+
+
 D = {}
 if 1 in D:
     val = D[1]
@@ -243,7 +247,7 @@ for word in ['red', 'blue', 'orange']:
     counter[word] += 1
 
 counter.most_common(k)
-'''  O(nlogk) runtime 
+'''  O(nlogk) runtime
 If we use most_common to return k > 1 elements, then we use heapq.nlargest.
 This is an O(k) + O((n - k) log k) + O(k log k) algorithm, which is very good for a small constant k, since it's essentialy linear.
 The O(k) part comes from heapifying the initial k counts,

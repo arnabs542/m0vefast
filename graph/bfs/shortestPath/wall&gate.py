@@ -9,7 +9,7 @@ bfs: 一开始将所有的门push到队列中，然后bfs遍历整张图即可�
 '''
 def wallsAndGates(self, rooms: List[List[int]]) -> None:
     # push all door(targt) to queue
-    queue = collections.deque()
+    queue = collections.deque()  # gate->room
     for i in range(len(rooms)):
         for j in range(len(rooms[0])):
             if rooms[i][j] == 0:
@@ -21,8 +21,9 @@ def wallsAndGates(self, rooms: List[List[int]]) -> None:
         i, j = queue.popleft()
         for k in [(1,0), (-1,0), (0, 1), (0, -1)]:
             newx, newy = i+k[0], j+k[1]
-            if self.isValid(rooms, newx, newy) and rooms[newx][newy] >= rooms[i][j] + 1:  # can not be -1
+            if self.isValid(rooms, newx, newy) and rooms[newx][newy] > rooms[i][j] + 1:  # can not be -1
                 rooms[newx][newy] = rooms[i][j] + 1
+                # enqueue room
                 queue.append((newx, newy))
 
 

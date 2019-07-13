@@ -1,151 +1,81 @@
-//Given a 2D board and a list of words from the dictionary, find all words in the board.
-//https://www.programcreek.com/2014/06/leetcode-word-search-ii-java/
-//optimal solution: dfs + trie
-public List<String> findWords(char[][] board, String[] words) {
-        int row = board.length;
-        int col = board[0].length;
-        Trie trie = new Trie();
-        for(String each : words){
-            trie.insert(each);
-        }
-         //注意去重问题
-// [["a","a"]]
-// ["a"]
-// Output:
-// ["a","a"]
-// Expected:
-// ["a"]
-        Set<String> res = new HashSet<>();
-        boolean[][] visited = new boolean[row][col];
+'''
+Time: O(m * n * wl) = max(O(l * wl), O(m * n * l * wl)) where
+O(l * wl) - Build the trie
+O(wl) - search a word in the trie 
+O(m * n * l * wl) - In the worst case where all words start with different chracters,
+and there is a word starting with a character in the cell board[m - 1][n - 1], we have O(m * n * l * wl).
+However, if there are words starting with same characters and paths sharing cells,
+Trie can check multiple words when DFS from a certain cell, rather than check only one word when DFS from a certain cell like the naive way.
 
-        for(int i = 0; i < row; i++){
-            for(int j = 0; j < col; j++){
-                dfs(board, trie, visited, i, j, "", res);
-            }
-        }
-        return new ArrayList<String>(res);
-    }
-    private void dfs(char[][] board, Trie trie, boolean[][] visited, int i, int j, String path, Set<String> res){
-        int n = board.length;
-        int m = board[0].length;
-        //validation
-        if(!isValid(i, j, n, m))
-            return;
-        if(visited[i][j])
-            return;
-        path = path + board[i][j];
-        if(!trie.startsWith(path))
-            return;
-        if(trie.search(path))
-            res.add(path);
-        //dfs optiosn
-        visited[i][j] = true;
-        dfs(board, trie, visited, i+1, j, path, res);
-        dfs(board, trie, visited, i-1, j, path, res);
-        dfs(board,  trie, visited, i, j+1, path, res);
-        dfs(board,  trie, visited, i, j-1, path, res);
-        visited[i][j] = false;
-    }
-    private boolean isValid(int i, int j, int n, int m){
-        return i >= 0 && i < n && j >= 0 && j < m;
-    }
-//Trie Node
-class TrieNode{
-    public TrieNode[] children = new TrieNode[26];
-    public String item = "";
-}
+Space: O(l * wl) = max(O(wl), O(l * wl)) where
+O(wl) - The recursive stack can grow at most to wl layers.
+O(l * wl) - In the worst case when all words start with different characters,
+the trie has l * wl nodes. Also, since each word is stored in a leaf node, all the leaf nodes require l * wl memory.
+'''
 
-//Trie
-class Trie{
-    public TrieNode root = new TrieNode();
+class Solution:
+    def wordSearch2(board, words):
+        if board is None or len(board) == 0:
+            return []
 
-    public void insert(String word){
-        TrieNode node = root;
-        for(char c: word.toCharArray()){
-            if(node.children[c-'a']==null){
-                node.children[c-'a']= new TrieNode();
-            }
-            node = node.children[c-'a'];
-        }
-        node.item = word;
-    }
+        self.dir = [(1,0),(-1,0),(0,1),(0,-1)]
 
-    public boolean search(String word){
-        TrieNode node = root;
-        for(char c: word.toCharArray()){
-            if(node.children[c-'a']==null)
-                return false;
-            node = node.children[c-'a'];
-        }
-        if(node.item.equals(word)){
-            return true;
-        }else{
-            return false;
-        }
-    }
+        trie = Trie()
+        for word in words:
+            trie.insert(word)
 
-    public boolean startsWith(String prefix){
-        TrieNode node = root;
-        for(char c: prefix.toCharArray()){
-            if(node.children[c-'a']==null)
-                return false;
-            node = node.children[c-'a'];
-        }
-        return true;
-    }
-}
-//brute force solution: dfs
-public List<String> wordSearch2(char[][] board, String[] words){
-  List<String> res = new ArrayList<>();
-  int n = board.length;
-  int m = board[0].length;
-  for(String word : words){
-    boolean isFound = false;
-    for(int i = 0; i < n; i++){
-      for(int j = 0; j < m; j++){
-        char[][] newBoard = new char[n][m];
-        for (int x = 0; x < n; x++){
-					for (int y = 0; y < m; y++){
-						newBoard[x][y] = board[x][y];
-          }
-        }
-        if (dfs(newBoard, word, i, j, 0)) {
-					isFound = true;
-				}
-      }
-    }
-    if (isFound) {
-      result.add(word);
-    }
-    return res;
-  }
-  public boolean dfs(char[][] board, String word, int i, int j, int k){
-        int n = board.length;
-        int m = board[0].length;
-        //validation
-        if(!isValid(i, j, n, m)){
-            return false;
-        }
-        //validation
-        if(word.charAt(index) != board[i][j]){
-            return false;
-        }
-        //base case
-        if(index == word.length() - 1)
-            return true;
-        //dfs options for
-        //1)
-        char temp = board[i][j];
-        board[i][j] = '#';
-        //2)
-        if(dfs(board, word, i+1, j, index+1) || dfs(board, word, i, j+1, index+1) || dfs(board, word, i-1, j, index+1) || dfs(board, word, i, j-1, index+1)){
-            return true;
-        }
-        //3)
-        board[i][j] = temp;
-        return false;
-    }
+        res = set()
+        # visited = set()
 
-    private boolean isValid(int i, int j, int n, int m){
-        return i >= 0 && i < n && j >= 0 && j < m;
-    }
+        for i in range(len(board)):
+            for j in range(len(board[0])):
+                # visited.add((i,j))
+                dfs(board, i, j, trie.root.children.get(board[i][j]), set([(i, j)]), res)
+
+        return list(res)
+
+    def dfs(baord, i, j, trie_node, visited, res):
+        # node = trie.root.children.get(board[i][j])
+        if trie_node is None:
+            return
+        if notrie_nodede.is_word:
+            res.add(trie_node.word)
+        for d in self.dir:
+            newx = i + d[0]
+            newy = j + d[1]
+
+            if isValid(board, newx, newy) and (newx, newy) not in visited:
+                visited.add((newx, newy))
+                dfs(board, newx, newy, trie_node.children.get(board[newx][newy]), visited, res)
+                visited.remove((newx, newy))
+
+    def isValid(board, i, j):
+        return 0 <=i<len(board) and 0 <= j < len(board[0])
+
+
+class TrieNode:
+    def __init__(self):
+        self.children = {}
+        self.is_word = False
+        self.word = None
+
+class Trie:
+    def __init__(self):
+        self.root = TrieNode()
+
+    def insert(self, word):
+        node = self.root
+        for c in word:
+            if c not in node.children:
+                node.children[c] = TrieNode()
+            node = node.children[c]
+        node.is_word = True
+        node.word = word
+
+    def search(self, word):
+        node = self.root
+        for c in word:
+            node = node.children.get(c)
+            if node is None:
+                return None
+        return node

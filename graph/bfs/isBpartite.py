@@ -76,7 +76,3 @@ def isBipartite(self, graph: List[List[int]]) -> bool:
                 # else:
                 #     continue   # correctled coloured
         return True
-
-
-
-        

@@ -33,11 +33,11 @@ def top_sort(graph):
         for nei in graph[node]:
             indegree[nei] += 1
     # 2)
-    queue = collections.deque()
-    for node in graph:
-        if indegree[node] == 0:
-            queue.append(node)
+    queue = collections.deque([node for node in graph if indegree[node] == 0])
     # 3)
+    # detect cycle with bfs : https://www.geeksforgeeks.org/detect-cycle-in-a-directed-graph-using-bfs/
+    # If count of visited nodes/res is not equal to the number of nodes in the graph has cycle, otherwise not.
+
     res = ""
     while queue:
         cur = queue.popleft()
@@ -47,7 +47,7 @@ def top_sort(graph):
             if indegree[nei] == 0:
                 queue.append(indegree[nei])
 
-    # if all nodes popped
+    # if all nodes popped: "z, x, z": queue will be empty if there is cycle
     if len(res) == len(graph):
         return res
     return ""

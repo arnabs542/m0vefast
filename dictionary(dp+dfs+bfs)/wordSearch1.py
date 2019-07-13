@@ -1,49 +1,35 @@
-// Given a 2D board and a word, find if the word exists in the grid.
-// dfs
-public boolean wordSearch1(char[][] board, String word) {
-    int m = board.length;
-    int n = board[0].length;
+# O(n^2 * 4 * 3^(k-1)) = O(n^2 * 3^k), 3 is can not move back one you move next
+# O(n)
+def wordSearch1(board, word):
+    self.dir = [(0,1), (0,-1), (1, 0), (-1,0)]
+    for i in range(len(board)):
+        for j in range(len(board[0])):
+            if dfs(board, i, j, word, 0):
+                return True
+    return False
 
-    boolean result = false;
-    for(int i=0; i<m; i++){
-        for(int j=0; j<n; j++){
-           if(dfs(board,word,i,j,0)){
-               result = true;
-           }
-        }
-    }
+def dfs(board, i, j, word, index):
+    if board[i][j] != word[index]:  # only for the first call
+        return False
 
-    return result;
-}
+    if index == len(word)-1:
+        return True
 
-public boolean dfs(char[][] board, String word, int i, int j, int k){
-      int n = board.length;
-      int m = board[0].length;
-      //validation
-      if(!isValid(i, j, n, m)){
-          return false;
-      }
-      //validation
-      if(word.charAt(index) != board[i][j]){
-          return false;
-      }
-      //base case
-      if(index == word.length() - 1)
-          return true;
+    # branching factors: for directions to continue
+    # depth: length of the target word
+    char = board[i][j]
+    board[i][j] = "*"
 
-      //dfs options for
-      //1)
-      char temp = board[i][j];
-      board[i][j] = '#';
-      //2)
-      if(dfs(board, word, i+1, j, index+1) || dfs(board, word, i, j+1, index+1) || dfs(board, word, i-1, j, index+1) || dfs(board, word, i, j-1, index+1)){
-          return true;
-      }
-      //3)
-      board[i][j] = temp;
-      return false;
-  }
+    for d in self.dir:
+        newx = i + d[0]
+        newy = j + d[1]
+        if isValid(board, newx, newy) and board[newx][newy] == word[index+1]:
+            if dfs(board, newx, newy, word, index+1):
+                return True
 
-  private boolean isValid(int i, int j, int n, int m){
-      return i >= 0 && i < n && j >= 0 && j < m;
-  }
+    board[i][j] = char
+    return False
+
+
+def isValid(board, i, j):
+    return 0 <= i < len(board) and 0 <= j < len(board[0])

@@ -1,6 +1,6 @@
 //Build Post Office II完全一样的题，从每个建筑开始BFS，找最短路径的和。
 //similar to wallsAndGates
-http://www.cnblogs.com/grandyang/p/5297683.html
+//http://www.cnblogs.com/grandyang/p/5297683.html
     public int shortestDistance(int[][] grid) {
         // write your code here
         int row = grid.length;
