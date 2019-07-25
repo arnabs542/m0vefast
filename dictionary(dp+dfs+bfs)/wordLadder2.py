@@ -4,18 +4,21 @@
 然后在从 start 到 end 做一次 DFS，每走一步必须确保离 end 的 distance 越来越近。
 '''
 def wordladder2(start, end, wordlist):
+    if end not in wordlist:
+        return []
     wordlist.append(start)
-    wordlist.append(end)
+    # wordlist.append(end)
     index = build_index(wordList)
     distance = bfs(end, index)
     res = []
-    return dfs(start, end, index, distance, [start], res)
+    dfs(start, end, index, distance, [start], res)
+    return res
 
 def build_index(wordlist):
     index = {}
     for word in wordlist:
         for i in range(len(word)):
-            base = word[:i] + "_" + word[i+1:]
+            pattern = word[:i] + "_" + word[i+1:]
             if pattern in index:
                 index[pattern].add(word)
             else:
@@ -56,7 +59,7 @@ def dfs(start, end, index, distance, path, res):
     if start == end:
         res.append(path)
         return
-    # branching factor:
+    # branching factor: neightbour node that are one char difference and less dirference to target node
     # depth: from start to end
     for nei in get_nei_word(start, index):
         if distance[nei] == distance[start] - 1:

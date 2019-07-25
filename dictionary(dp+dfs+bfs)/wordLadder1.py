@@ -1,8 +1,8 @@
 # find the shortest transformation, return int
 #
 def wordladder1(start, end, wordlist):
-    dictionary = build_index(wordlist)
-    return bfs(dictionary, start, end, 0)
+    index = build_index(wordlist)
+    return bfs(index, start, end)
 '''
 这里寻找下一个变换单词的方法是建立 index，即，如果有一个单词 abc，分别去掉第1,2,3个字符之后，把 abc 这个单词分别扔进
 %bc, a%c, ab% 这三个不同的 key 的 hash 里。hash 里的 key 是去掉一个字符之后的 pattern，value 是一个 set，保存满足这个
@@ -34,21 +34,20 @@ def build_index(wordlist):
     '''
     return map
 
-def bfs(dictionary, start, end, step):
+def bfs(index, start, end):
     queue = collections.deque([(start, 1)])
-    visited = set()  # when expand
+    visited = set()
+
     while queue:
         cur, step = queue.popleft()
-        step += 1
-
         if cur not in visited:
             visited.add(cur)
             if cur == end:
                 return step
-            # restricting the branching factors
-            for next_word in self.get_nei_word(cur, indexes):
-                if next_word not in visited:
-                    queue.append(next_word)
+            for nei in get_nei_word(cur, index):
+                if nei not in visited:
+                    queue.append((nei, stpe+1))
+
     return 0
 
 def get_nei_word(self, word, indexes):

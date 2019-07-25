@@ -12,7 +12,7 @@ A solution set is:
 def combinationSum1(self, candidates, target):
     res = []
     self.dfs(sorted(candidates), res, [], target, 0)
-    # option: coin candidate
+    # option: coin candidate types
     # deep: remaining
     return res
 

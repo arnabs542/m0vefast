@@ -4,10 +4,11 @@ subset2
 permutation1
 permutation2
 
-combination  ####
+combination   nCk
 
 combinationSum1
 combinationSum2
+combinationSum3
 
 coinchange12
 
@@ -15,10 +16,10 @@ nqueen1
 nqueen2
 
 palindrome permutation1
-palindrome permutation2
+palindrome permutation2: dfs
 
-palindrome partition1
-palindrome partition2
+palindrome partition1: dfs
+palindrome partition2: DP
 
 parenthesis12345
 https://leetcode.com/problems/permutations/discuss/18284/Backtrack-Summary%3A-General-Solution-for-10-Questions!!!!!!!!-Python-(Combination-Sum-Subsets-Permutation-Palindrome)

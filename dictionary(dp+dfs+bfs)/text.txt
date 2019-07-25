@@ -2,8 +2,18 @@ wordSearch1(boolean): dfs
 wordsarch2(return all words): dfs, trie
 # 注意两题visited 加减的位置 根据题目
 
+Only one letter can be changed at a time
+Each intermediate word must exist in the dictionary. (Start and end words do not need to appear in the dictionary )
+
 wordladder1: build_index + bfs
 wordladder2: build_index + bfs + dfs
 
 wordbreak1: backtracking
 wordbreak2: dp
+
+
+wordPattern1: dfs, map + used
+wordPattern2: dfs
+
+
+wordSquare: trie

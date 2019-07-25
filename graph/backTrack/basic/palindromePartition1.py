@@ -15,8 +15,9 @@ def dfs(self, res, arr, path):
 	if len(arr) = 0:
 		res.append(path)
 		return
-
-	for i in range(1 + len(arr) + 1):
+    # branching facotr: cutting poing to form s[:i]
+    # depth: length of the given string 
+	for i in range(1, len(arr) + 1):
 		prefix = arr[:i]
 		if self.is_palindrome(prefix):
 			self.dfs(res, arr[i:], path + [prefix])
