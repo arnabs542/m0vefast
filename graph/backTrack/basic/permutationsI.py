@@ -11,7 +11,7 @@ def dfs(arr, res, depth):
 	for index in range(depth, len(arr)):
 		arr[depth], arr[index] = arr[index], arr[depth]
 		self.dfs(res, arr, depth+1)
-		arr[depth], arr[] = arr[index], arr[depth]
+		arr[depth], arr[index] = arr[index], arr[depth]
 
 
 

@@ -8,40 +8,6 @@
 Input: "aabb"
 Output: ["abba", "baab"]
 '''
-def palindrome_permutation2(self, s):
-    counter = collections.Counter(s)
-    odds_count = sum(value % 2 for value in counter.values())
-    if odds_count > 1:
-        return []
-    else:
-        base, mid = self.preprocess(counter)
-
-    res = []
-    self.dfs(res, base, mid, 0)
-    return res
-
-# get left and mid parts
-def preprocess(self, counter):
-    base = mid = ''
-    for char in counter:
-        if counter[char] % 2 == 1:
-            mid = char
-        base += char * (counter[char]//2)
-    return base, mid
-
-def dfs(self, res, base, mid, depth):
-    if depth == len(base):
-        res.append(base + mid + base[::-1])
-        return
-
-    for i in range(depth, len(base)):
-        # avoid duplidate
-        if i > depth and (base[i] == base[i-1] or base[i] == base[depth]):
-            continue
-        permu = base if i == depth else base[:depth] + base[i] + base[depth+1:i] + base[depth] + base[i+1:]
-        self.dfs(res, permu, mid, depth+1)
-
-
 # using swap:
 def palindrome_permutation2(str):
     counter = collections.Counter(str)
@@ -68,10 +34,10 @@ def dfs(self, res, base, mid, depth):
     if len(arr) == 0:
         res.append(''.join(base + mid + base[::-1]))
         return
-    visited = set()
+        
     for index in range(depth, len(arr)):
-        if base[i] not in visited:
-            visited.add(base[index])
-            base[index], base[depth] = base[depth], base[index]
-            self.dfs(res, base, mid, depth+1)
-            base[index], base[depth] = base[depth], base[index]
+        if index > depth and (base[i] == base[i-1] or base[i] == base[depth]):
+            continue
+        base[index], base[depth] = base[depth], base[index]
+        self.dfs(res, base, mid, depth+1)
+        base[index], base[depth] = base[depth], base[index]

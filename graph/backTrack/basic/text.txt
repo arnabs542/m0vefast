@@ -1,25 +1,76 @@
 subset1
-subset2
+subset2:
+    dfs(arr, res, path, depth)
+    for i in range(len(arr)):
+      dfs(arr, res, path+arr[i], depth+1)
+      while i > 0 and arr[i] == arr[i-1]: continue
+      dfs(arr, res, path, depth+1)
 
 permutation1
 permutation2
+    dfs(arr, res, path, depth)
+    visited = set()
+    for i in range(depth, len(arr)):
+      if arr[i] in visited: continue
+      swap(i, depth)
+      dfs(arr, res, path+arr[i], depth+1)
+      swpa(i, depth)
+
 
 combination   nCk
+    dfs(k, start, n, res, path, depth)
+    for i in range(start, len(arr)):
+      dfs(k, i, n, res, path+[i], depth+1)
 
+
+combinationSum3/combination
 combinationSum1
 combinationSum2
-combinationSum3
+    dfs(arr, target, res, path)
+    for i in range(depth, len(arr)):
+      if i > depth and arr[i] == arr[i-1]: continue
+      dfs(arr, target-arr[i], res, path+arr[i])
+
+
 
 coinchange12
 
 nqueen1
 nqueen2
 
-palindrome permutation1
+palindrome permutation1:
 palindrome permutation2: dfs
+    1) check Q1
+    2) preprocess
+    3) dfs
+    dfs(arr, res, path, depth)
+    for i in range(depth, len(arr)):
+      if i > 0 and arr[i] == arr[i-1]: continue
+      swap(i, depth)
+      dfs(arr, res, path+arr[i], depth+1)
+      swap(i, depth)
+
+
 
 palindrome partition1: dfs
-palindrome partition2: DP
 
-parenthesis12345
+palindrome partition2: DP mincut
+    dfs(arr, res, path)
+    for i in range(1, len(arr)+1):
+      prefix = arr[:i]
+      if is_palindrome(prefix):
+        dfs(arr[i:], res, path+[prefix])
+
+
+
+
+
+
 https://leetcode.com/problems/permutations/discuss/18284/Backtrack-Summary%3A-General-Solution-for-10-Questions!!!!!!!!-Python-(Combination-Sum-Subsets-Permutation-Palindrome)
+
+
+parenthesis1: is valid: map + stack
+parenthesis2: longest valid: stack(index, left-or-right)
+parenthesis3: remove invalid: dfs(source, left, right, res, depth)  # i from depth to len(source) # deduplicate check during dfs
+parenthesis4: generate valid: n pairs of (): dfs("", left, right, res)
+parenthesis5: generate valid: n m k for ([{}]): dfs()
