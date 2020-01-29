@@ -20,7 +20,7 @@ https://www.jiuzhang.com/qa/1019/
 
 
 
-string
+##################################### STRING ===================================
 
 ##################################### ARRAY ===================================
 #type: tuple, list (array)
@@ -33,7 +33,7 @@ bisect.bisect_right(A,6)
 
 # traverse value backwards
 list[::-1]   #list comprehension
-# traverse index backwards
+# traverse index backwardst
 range(len(list))[::-1]
 
 for i in reversed(res):
@@ -142,11 +142,11 @@ def sortSpecial(list, my_own_order):
 	# sorted(used, key=lambda x:sorted[x])
 	used.extend(unused)
 
-###############################expression
+############################### MATH ###############################
 res = -1e9, 1e9  # return type, extreme value
 List[int]:
 
-=============GRAPH
+############################### GRAPH  ###############################
 # visited
 visited = {}
 visited[0] = False    len(visited)
@@ -160,9 +160,17 @@ visited = [0] * len(graphg)
 matrix = [[1,2,3], [4,5,6]]
 row = len(matrix)
 col = len(matrix[0]) if row else 0
+#flattern
+flatten = [n for row in matrix for n in row]
 
 # initialize
 matrix = [[0]*n for i in range(m)]
+
+A = [1,3,5]
+B = ["a", "b"]
+[(x,y) for x in A for y in B]  #(1,a)(1,b)...
+
+[[x**2 for x in row] for row in matrix]
 
 
 
@@ -225,7 +233,7 @@ res = re.findall('[^a-zA-Z0-9]', str)   reutrn a collections
 list = [0 for i in range(3)]   # list = [0,0,0]
 list = [[0 for i in range(3)] for j in range(2)] # list = [[0,0,0], [0,0,0]]
 
-###################################### HASHMAP ===================================
+###################################### MAP ===================================
 The get() method returns a default value if the key is missing.
 However, if the key is not found when you use dict[key], KeyError exception is raised.
 
