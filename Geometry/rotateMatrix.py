@@ -1,9 +1,8 @@
 def rotateMatrix(matrix):
-    n = len(matrix)
-    # y=x  # right bottom triangle
+    n = len(matrix)# top right  triangle
     for i in range(n):
         for j in range(i+1, n):
             matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
-    # x = 0
+    # x= 0
     for i in range(n):
         matrix[i].reverse()

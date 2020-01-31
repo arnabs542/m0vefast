@@ -55,8 +55,8 @@ def zuma(arr):
 	slow = 0  # stack top
 	fast = 0
 	while fast < len(arr):
-		fast += 1
-		if slow == -1 or arr[slow] != arr[fast]:
+		fast += 1.   # slow + 1 = fast
+		if slow == -1 or arr[slow] != arr[fast]:  # aggresive 
 			slow += 1
 			arr[slow] = arr[fast]
 		else:

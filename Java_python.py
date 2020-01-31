@@ -31,6 +31,10 @@ bisect.bisect(A, 6)
 bisect.bisect_left(A, 6)
 bisect.bisect_right(A,6)
 
+arr[:] return shallow(reference) copy of the original list
+del arr # Deletes the array itself
+del arr[:]  # Deletes all the elements in the array
+
 # traverse value backwards
 list[::-1]   #list comprehension
 # traverse index backwardst

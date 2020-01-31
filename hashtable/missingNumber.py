@@ -20,10 +20,3 @@ def missingNumber(nums):
 
 
 
-# number from 1 - n, no duplicate, find the missing one
-def missingNumber(nums):
-	s = set(nums)
-	for each in range(1, len(nums) + 1):
-		if each not in s:
-			return each
-	return -1
