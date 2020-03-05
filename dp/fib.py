@@ -16,3 +16,14 @@ def fib(self, N: int) -> int:
 		b = a
 		a = res
 	return res
+
+
+def tribonacci(n):
+	a, b, c = 0, 1, 1
+	if n == 0: return 0
+	if n < 3: return 1
+	
+	for i range(3, n+1):
+		a, b, c = b, c, a+b+c
+
+	return c

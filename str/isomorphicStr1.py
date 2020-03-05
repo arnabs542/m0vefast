@@ -1,8 +1,12 @@
 #follow up: https://www.youtube.com/watch?v=MNDOsYgVRyY
 # mapping is 'a' <-> 'x', 'b' <-> 'y', 'c' <-> 'z'.
+# x-> y
 def ismorphic(s, t):
     if s is None or len(s) <= 1:
         return True
+    if len(s) != lsn(t):
+        return False
+
     dict = {}
     s_arr = list(s)
     t_arr = list(t)

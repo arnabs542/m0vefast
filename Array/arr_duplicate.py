@@ -38,7 +38,7 @@ def dedup0(arr):
 	for fast in range(len(arr) - 1):
 		if arr[slow] == arr[fast]:  # same
 			hasSeen = True
-		elif hasSeen:				# different 
+		elif hasSeen:				# different override
 			arr[slow] = arr[fast]
 			hasSeen = False
 		else:						# different 

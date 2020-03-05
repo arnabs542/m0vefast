@@ -41,7 +41,7 @@ class Solution:
 class TrieNode:
     def __init__(self):
         self.children = {}
-        seld.is_word = False
+        self.is_word = False
 
 class Trie:
     def __init__(self):
@@ -51,7 +51,7 @@ class Trie:
         node = self.root
         for each in word:
             if each not in node.children:
-                children[each] = TrieNode()
+                node.children[each] = TrieNode()
             node = node.children[node]
         node.is_word = True
 
@@ -62,3 +62,16 @@ class Trie:
             if node is None:
                 return False
         return node.is_word
+
+    def startWith(self, prefix):
+        node = self.root
+        for each in prefix:
+            if each not in node.children:
+                return False
+            node = node.children[each]
+        return True
+
+
+
+
+

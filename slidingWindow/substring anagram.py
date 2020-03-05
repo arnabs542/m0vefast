@@ -55,3 +55,4 @@ def substringAnagram_map(long, short):
 		i += 1
 
 	return res
+

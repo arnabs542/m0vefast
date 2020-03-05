@@ -16,15 +16,27 @@ def toString(x):
 
 # string to integer
 # converting forward
+# leading white space 
 def stringToInteger(self, str):
-	# Write your code here
+	
 	num, sig = 0, 1
-
+	# leaidng wehite spalce
+	str.stripe()
+	
+	# sign 
 	if str[0] == '-':
 		sig = -1
-		str = str[1:]   # O(n) tiem
+		str = str[1:]   # O(n) time
 
+	# char: validity, stack overflow 
 	for c in str:
+		if c < '0' or c > '9':
+			break
+
 		num = num * 10 + (ord(c) - ord('0'))  # ascii number
 
-	return num * sig
+		if num > sys.maxint:
+			break
+
+	# return num * sig
+	return max(-2 ** 31, min(2 ** 31 - 1, num * sig))

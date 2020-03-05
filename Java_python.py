@@ -22,7 +22,23 @@ https://www.jiuzhang.com/qa/1019/
 
 ##################################### STRING ===================================
 
+
+
+#################################### LIST / COLLECITONS (ARRAY) ===================================
+del list(1)
+list.pop(1)
+del list
+list.clear()
+thislist = list(("apple", "banana", "cherry")) # note the double round-brackets
+list1.extend(list2)
+list1 + list2
+
+
 ##################################### ARRAY ===================================
+arr.pop(1)
+arr.remove("car")
+
+
 #type: tuple, list (array)
 # initialize
 res = [0] * (len(num1) + len(num2))  # intiialize 00000000
@@ -90,10 +106,13 @@ A = [[1,2,3],[4,5,6]]
 # backwards max profit(second buy and sell) on or after day i
 for i, price in reversed(list(enumerate(prices[1:],1))):  # 1: tuple start index
 
-
+0x7FFF FFFF       #  !!!!!!!
 
 min_sofar, max_sofar = float('inf'), 0.0
 float('-inf')
+
+max = -2**(32)
+min = 2**(32) - 1
 
 range(0, 3)  # 0,1,2
 range(1, 3)  # 1,2
@@ -179,13 +198,50 @@ B = ["a", "b"]
 
 
 
-###################################### SORT ===================================
+###################################### STRING ===================================
+==================FINDING WHITE SHPACE====================
+str = re.sub("[^A-Za-z0-9]", "", str).lower()
+
+
+    left = 0
+    for i, item in enumerate(arr):
+        if arr[i] != ' ' and (i == 0 or arr[i-1] == ' '):
+            left = i
+        if arr[i] != ' ' and (i == len(arr) - 1 or arr[i+1] == ' '):
+            reverse_range(arr, start, i)
+
+
+    arr = list(input)
+    slow = 0  # not lazy 
+    for fast in range(len(arr)):
+        # ignoring head or consecutive " "
+        if arr[fast] == " " and (fast == 0 or arr[fast - 1] == " "):
+            continue
+        else:
+            arr[slow] = arr[fast]
+            slow += 1
+    # remove tail " "
+    if slow > 0 and arr[slow - 1] == " ":
+        slow -= 1
+
+
 strip(): returns a new string after removing any leading and trailing whitespaces including tabs (\t).
 rstrip(): returns a new string with trailing whitespace removed. It’s easier to remember as removing white spaces from “right” side of the string.
 lstrip(): returns a new string with leading whitespace removed, or removing whitespaces from the “left” side of the string.
 string.stripe()  # trim white space at head and tail
 string.startswith(prefix)
 string.endswith(suffix)
+ord()
+chr(65) = 'a'
+INT_MAX = (1<<31) - 1.    2**31 − 1
+if c < '0' or c > '9':
+    break
+
+num = num * 10 + (ord(c) - ord('0'))  # ascii number
+
+if num > sys.maxsize:
+    break
+sys.minint = -sys.maxsize - 1
 ####
 about reverse a list: https://dbader.org/blog/python-reverse-list
 Reversing a list in-place with the list.reverse() method
@@ -272,6 +328,24 @@ counter['blue']
 
 counter.clear()
 set(counter) # convert a map to a set
+
+
+
+
+###################################### SET ===================================
+
+var = set("letter")   # -> {"l", "e", "t", "r"}
+var.intersect(another_set)
+var = set()
+another_set = {"a", "e", "i", "o", "u"}
+
+a_set = frozenset({"a", "e", "i", "o", "u"})  # can be modified 
+a_set.add()
+
+
+
+
+
 
 
 ###################################### DEQUE ===================================

@@ -30,8 +30,9 @@ def reverseK(head, k):
     while cur:
         i += 1  # ith node(1-index)
         if i % k == 0:
-            pre = helper(pre, cur.next)  # pre (thiscur.next (next group head), return the reversed tail
-            cur = pre.next
+            pre = helper(pre, cur.next)  # pre = 1 
+            # 321->45678910
+            cur = pre.next  # cur = 4
         else:
             cur = cur.next
 
@@ -39,17 +40,17 @@ def reverseK(head, k):
 
 # reverse, return the new head and connect to the next head
 def helper(pre, next):
-    oldhead = pre.next  # alwasy be the old head
-    cur = last.next
-    while cur is not next:
-        last.next = cur.next    # 1.next = 3
-        cur.next = pre.next     # 2.next = 1       # prev.next: alwasy the left most one   [drag]
-        pre.next= cur       # 0.next = 2            # cur: alwasy will put to the left in next round
-        cur = last.next       # 2 = 3
-    return oldhead
+    oldhead = pre.next  # oldhead = 1
+    cur = oldhead.next  # cur = 2
+    while cur is not next:   # 2 != 4
+        oldhead.next = cur.next    # 1.next = 3
+        cur.next = pre.next     # 2.next = 1
+        pre.next= cur       # null.next(1) = 2 
+        cur = oldhead.next  # 2 = 3    
+    return oldhead    # return 1
 
 
-''' k=4
+''' k=3
 null-1,2,3,4,5(next)
 null-2,1,3,4,5(next)
 null-3-2-1-4-5(next)

@@ -2,6 +2,7 @@
 # //a1a2a3 a4a5a6 a7 -> a1a4 a2a5 a3a6 a7
 # //merge sort
 # https://app.laicode.io/app/problem/108
+# https://leetcode.com/problems/interleaving-string/
 
 
 # 123|4567 | abc| defg
@@ -20,11 +21,17 @@ def helper(arr, left, right):
     if size <= 2:
         return
     mid = left + size // 2
-    leftmid = left + size * 1 // 2
-    righmid = left + size * 3 // 4
+    leftmid = left + size // 4
+    righmid = left + size // 4 * 3
 
     reverse(arr, leftmid, mid-1)
     reverse(arr, mid, rightmid-1)
     reverse(arr, leftmid, rightmid-1)
     helper(arr, left, left + (leftmid - left) * 2 - 1)
     helper(arr, left + (leftmid - left) * 2, right)
+
+def reverse(arr, left, right):
+    while left < right:
+        arr[left], arr[right] = arr[right], arr[left]
+        left += 1
+        right -= 1

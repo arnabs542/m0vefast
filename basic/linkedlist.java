@@ -88,6 +88,8 @@ public ListNode delete(ListNode head, int pos) {
   cur.next = cur.next.next;
   return head;
 }
+
+
 //delete value
 public ListNode deleteElement(ListNode head, int target){
   if(head == null)
@@ -118,6 +120,9 @@ public ListNode deleteDuplicate1(ListNode head, int target){
   }
   return dummy.next;
 }
+
+
+
 //sorted
 public ListNode deleteDuplicate0(ListNode head){
   if(head == null)
